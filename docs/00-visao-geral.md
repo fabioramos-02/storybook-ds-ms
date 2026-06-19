@@ -12,18 +12,16 @@ O que **não** existe:
 
 ## A dor (na prática)
 
-```
-Designer atualiza o Figma
-        │
-        ▼
-Dev abre o Figma, "mede no olho", reimplementa em CSS/HTML do seu jeito
-        │
-        ├── Time A (PHP)    → uma versão do botão
-        ├── Time B (Python) → outra versão do botão
-        └── Time C (JS)     → mais uma versão do botão
-        ▼
-3 implementações divergentes do mesmo componente → drift visual, retrabalho,
-acessibilidade inconsistente, e nenhuma forma de "corrigir num lugar só".
+```mermaid
+flowchart TD
+    A["Designer atualiza o Figma"] --> B["Dev abre o Figma, 'mede no olho',<br/>reimplementa em CSS/HTML do seu jeito"]
+    B --> C1["Time A · PHP<br/>uma versão do botão"]
+    B --> C2["Time B · Python<br/>outra versão do botão"]
+    B --> C3["Time C · JS<br/>mais uma versão do botão"]
+    C1 --> D
+    C2 --> D
+    C3 --> D
+    D["3 implementações divergentes do mesmo componente<br/>→ drift visual, retrabalho, acessibilidade inconsistente,<br/>e nenhuma forma de 'corrigir num lugar só'"]
 ```
 
 ## Objetivo

@@ -2,21 +2,21 @@
 
 A solução se organiza em três camadas independentes. Cada camada tem uma responsabilidade única e pode evoluir sem quebrar as outras.
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ CAMADA 1 — TOKENS  (fonte única de verdade)                  │
-│ tokens/*.json (W3C DTCG)  ──Style Dictionary──►  css/scss/   │
-│                                                  js/php/python│
-├─────────────────────────────────────────────────────────────┤
-│ CAMADA 2 — COMPONENTES  (híbrido)                            │
-│ • CSS classes + HTML  (modelo USWDS/gov.uk)                  │
-│ • Web Components Lit   (só interativos: header, busca…)      │
-├─────────────────────────────────────────────────────────────┤
-│ CAMADA 3 — DISTRIBUIÇÃO                                      │
-│ • npm @dsms/ds-sis        (times JS)                         │
-│ • CDN (jsDelivr)          (times PHP/Python sem Node)        │
-│ • dist/php, dist/python   (tokens nativos por linguagem)     │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph C1["CAMADA 1 — TOKENS · fonte única de verdade"]
+        T["tokens/*.json — W3C DTCG"] -->|Style Dictionary| O["css · scss · js · php · python"]
+    end
+    subgraph C2["CAMADA 2 — COMPONENTES · híbrido"]
+        H1["CSS classes + HTML — modelo USWDS/gov.uk"]
+        H2["Web Components Lit — só interativos: header, busca…"]
+    end
+    subgraph C3["CAMADA 3 — DISTRIBUIÇÃO"]
+        D1["npm @dsms/ds-sis — times JS"]
+        D2["CDN jsDelivr — times PHP/Python sem Node"]
+        D3["dist/php · dist/python — tokens nativos por linguagem"]
+    end
+    C1 --> C2 --> C3
 ```
 
 ## Camada 1 — Tokens

@@ -1,0 +1,24 @@
+{
+  "name": "ds-ms-design-system",
+  "version": "1.0.0",
+  "description": "> **Em uma frase:** Sistema de design oficial dos serviços digitais do governo de Mato Grosso do Sul (Brasil), mantido pela **SETDIG — Secretaria-Executiva de Transformação Digital**.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabioramos-02/DS-MS-Design-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/fabioramos-02/DS-MS-Design-System/issues"
+  },
+  "homepage": "https://github.com/fabioramos-02/DS-MS-Design-System#readme"
+}
