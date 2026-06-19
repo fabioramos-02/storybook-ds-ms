@@ -1,0 +1,28 @@
+{
+  "color": {
+    "primary": {
+      "100": { "value": "#CCDCEC", "comment": "tint azul" },
+      "200": { "value": "#99B9D9" },
+      "300": { "value": "#6695C5" },
+      "400": { "value": "#3372B2" },
+      "500": { "value": "#004F9F", "comment": "azul institucional MS — marca" },
+      "600": { "value": "#002F5F" },
+      "700": { "value": "#002040" }
+    },
+    "neutral": {
+      "white": { "value": "#FFFFFF" },
+      "300": { "value": "#A9AEB1" },
+      "500": { "value": "#545D64" },
+      "700": { "value": "#212A31" }
+    },
+    "feedback": {
+      "error": { "value": "#DA1E28" },
+      "success": { "value": "#198038" },
+      "warning": { "value": "#FF6200" },
+      "info": { "value": "#067BCC" }
+    },
+    "content": {
+      "onBrand": { "value": "#FFFFFF", "comment": "texto sobre superfície de marca" }
+    }
+  }
+}

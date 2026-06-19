@@ -1,0 +1,21 @@
+{
+  "name": "@dsms/ds-sis-poc",
+  "version": "0.1.0",
+  "private": true,
+  "description": "POC ponta-a-ponta do DS-MS: token JSON -> Style Dictionary -> CSS/SCSS/JS/PHP/Python -> Storybook (web-components + a11y).",
+  "scripts": {
+    "tokens": "style-dictionary build --config style-dictionary.config.js",
+    "storybook": "npm run tokens && storybook dev -p 6006",
+    "build-storybook": "npm run tokens && storybook build"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.6.0",
+    "@storybook/addon-essentials": "^8.6.0",
+    "@storybook/blocks": "^8.6.0",
+    "@storybook/web-components-vite": "^8.6.0",
+    "lit": "^3.1.4",
+    "storybook": "^8.6.0",
+    "style-dictionary": "^3.9.2",
+    "vite": "^5.4.0"
+  }
+}

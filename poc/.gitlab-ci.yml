@@ -1,0 +1,61 @@
+# ============================================================================
+# DS-MS — Pipeline GitLab CI (exemplo de referência da POC)
+# Caminho: mudança -> tokens -> testes (a11y/visual) -> build -> publish.
+# Detalhes em ../docs/05-pipeline-gitlab-ci.md
+# ============================================================================
+stages: [tokens, test, build, publish]
+
+default:
+  image: node:20-alpine
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths: [.npm/, node_modules/]
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+
+# 1) Gera TODAS as saídas de token a partir do JSON (fonte única)
+tokens:
+  stage: tokens
+  script:
+    - npm run tokens            # Style Dictionary -> dist/{css,scss,js,php,python,json}
+  artifacts:
+    paths: [dist/]
+    expire_in: 1 day
+
+# 2) Qualidade — acessibilidade (eMAG/WCAG) + lint (+ regressão visual)
+test:
+  stage: test
+  script:
+    - npm run build-storybook
+    # - npm run test:a11y       # @storybook/test-runner + axe (habilitar na Fase 3)
+    # - npx chromatic --project-token $CHROMATIC_TOKEN   # regressão visual
+  artifacts:
+    paths: [storybook-static/]
+    expire_in: 1 day
+
+# 3) Build do pacote distribuível + site de docs
+build:
+  stage: build
+  script:
+    - npm run build-storybook
+  artifacts:
+    paths: [dist/, storybook-static/]
+
+# 4) Publica versão (npm/Package Registry) + deploy do site — só em tag semver
+publish:
+  stage: publish
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/'
+  script:
+    - echo "npm publish (ou GitLab Package Registry) — habilitar na Fase 3"
+    # - npm publish
+
+# GitLab Pages servindo o Storybook como designsystem.ms.gov.br
+pages:
+  stage: publish
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+$/'
+  script:
+    - mv storybook-static public
+  artifacts:
+    paths: [public]

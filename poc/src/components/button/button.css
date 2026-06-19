@@ -1,0 +1,74 @@
+/* ============================================================================
+   DS-MS — Button (POC)
+   Consome os tokens GERADOS pelo Style Dictionary (dist/css/tokens.css).
+   Base reaproveitada de components.css da raiz (.btn / .btn-primary / ...).
+   ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-weight: var(--button-font-weight);
+  border-radius: var(--button-radius);
+  border: 2px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease, transform .05s ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* Foco visível — requisito de acessibilidade (eMAG/WCAG: foco perceptível) */
+.btn:focus-visible {
+  outline: 2px solid var(--color-feedback-info);
+  outline-offset: 2px;
+}
+.btn:active { transform: translateY(1px); }
+.btn[disabled],
+.btn[aria-disabled="true"] {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+/* Tamanhos */
+.btn-sm { height: var(--button-size-sm-height); padding: 0 var(--button-size-sm-padding-x); font-size: var(--button-size-sm-font-size); }
+.btn-md { height: var(--button-size-md-height); padding: 0 var(--button-size-md-padding-x); font-size: var(--button-size-md-font-size); }
+.btn-lg { height: var(--button-size-lg-height); padding: 0 var(--button-size-lg-padding-x); font-size: var(--button-size-lg-font-size); }
+
+/* Variante: primária */
+.btn-primary {
+  background: var(--button-primary-background-default);
+  color: var(--button-primary-text);
+  border-color: var(--button-primary-background-default);
+}
+.btn-primary:hover  { background: var(--button-primary-background-hover);  border-color: var(--button-primary-background-hover); }
+.btn-primary:active { background: var(--button-primary-background-active); border-color: var(--button-primary-background-active); }
+
+/* Variante: secundária (outline) */
+.btn-secondary {
+  background: transparent;
+  color: var(--color-primary-500);
+  border-color: var(--color-primary-500);
+}
+.btn-secondary:hover  { background: rgba(0, 79, 159, .06); }
+.btn-secondary:active { background: rgba(0, 79, 159, .12); }
+
+/* Variante: simples (link) */
+.btn-simple {
+  background: transparent;
+  color: var(--color-primary-500);
+  border-color: transparent;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.btn-simple:hover { color: var(--color-primary-600); text-decoration: underline; }
+
+/* Variante: perigo */
+.btn-danger {
+  background: var(--color-feedback-error);
+  color: #fff;
+  border-color: var(--color-feedback-error);
+}
