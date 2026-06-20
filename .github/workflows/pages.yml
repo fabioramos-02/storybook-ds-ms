@@ -1,9 +1,9 @@
-name: Deploy Storybook (GitHub Pages)
+name: Deploy Storybook + exemplo (GitHub Pages)
 
 on:
   push:
     branches: [main]
-    paths: ["poc/**", ".github/workflows/pages.yml"]
+    paths: ["poc/**", "exemplo-consumo/**", ".github/workflows/pages.yml"]
 
 permissions:
   pages: write
@@ -12,10 +12,6 @@ permissions:
 concurrency:
   group: pages
   cancel-in-progress: true
-
-defaults:
-  run:
-    working-directory: poc
 
 jobs:
   build:
@@ -27,10 +23,26 @@ jobs:
         with:
           node-version: "22"
           cache: "npm"
-          cache-dependency-path: poc/package-lock.json
+          cache-dependency-path: |
+            poc/package-lock.json
+            exemplo-consumo/package-lock.json
 
-      - run: npm ci
-      - run: npm run build-storybook
+      - name: Buildar Storybook (site raiz)
+        working-directory: poc
+        run: |
+          npm ci
+          npm run build-storybook
+
+      - name: Instalar @design-system-ms/ds-sis publicado (exemplo de consumo real)
+        working-directory: exemplo-consumo
+        run: npm ci
+
+      - name: Montar site combinado (raiz = Storybook, /exemplo-consumo = demo via npm)
+        run: |
+          mkdir -p public-site/exemplo-consumo
+          cp -r poc/storybook-static/. public-site/
+          cp exemplo-consumo/index.html public-site/exemplo-consumo/
+          cp -r exemplo-consumo/node_modules public-site/exemplo-consumo/node_modules
 
       - uses: actions/configure-pages@v5
         with:
@@ -38,7 +50,7 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: poc/storybook-static
+          path: public-site
 
   deploy:
     needs: build

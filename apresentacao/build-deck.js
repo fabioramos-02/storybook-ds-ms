@@ -1,5 +1,5 @@
 /* ============================================================================
-   DS-MS — Apresentação para gestão (5 slides)
+   DS-MS — Apresentação para gestão (7 slides)
    Identidade DS-MS: azul #004F9F, Open Sans. Gera DS-MS-Apresentacao.pptx
    ============================================================================ */
 const pptxgen = require("pptxgenjs");
@@ -28,6 +28,7 @@ const C = {
 };
 const HEAD = "Open Sans";
 const BODY = "Open Sans";
+const TOTAL_SLIDES = 7;
 
 // ---------- helpers de imagem ----------
 async function rasterSvg(svgFile, hexColor, outName, widthPx = 600) {
@@ -52,6 +53,12 @@ async function cropTop(srcRel, outName, ratio) {
   return { path: out, w: meta.width, h: cropH };
 }
 
+async function loadImage(srcRel) {
+  const p = path.join(ROOT, srcRel);
+  const meta = await sharp(p).metadata();
+  return { path: p, w: meta.width, h: meta.height };
+}
+
 // ---------- componentes de layout ----------
 function footer(slide, pres, n, dark) {
   const col = dark ? C.ice : C.mute;
@@ -59,8 +66,8 @@ function footer(slide, pres, n, dark) {
     "SETDIG — Secretaria-Executiva de Transformação Digital · Governo de MS",
     { x: 0.5, y: 7.05, w: 9.5, h: 0.3, fontFace: BODY, fontSize: 9, color: col, align: "left", margin: 0 }
   );
-  slide.addText(String(n).padStart(2, "0"), {
-    x: 12.4, y: 7.05, w: 0.5, h: 0.3, fontFace: BODY, fontSize: 9, color: col, align: "right", margin: 0,
+  slide.addText(`${String(n).padStart(2, "0")} / ${TOTAL_SLIDES}`, {
+    x: 12.1, y: 7.05, w: 0.8, h: 0.3, fontFace: BODY, fontSize: 9, color: col, align: "right", margin: 0,
   });
 }
 
@@ -73,10 +80,17 @@ const W = 13.33, H = 7.5;
 (async () => {
   // assets
   const dsLogoWhite = await rasterSvg("logo-ds-ms.svg", C.white, "ds-logo-white.png", 600);
-  const dsLogoBlue = await rasterSvg("logo-ds-ms.svg", C.brand, "ds-logo-blue.png", 600);
   const setdigWhite = await rasterSvg("setdig-wordmark.svg", C.white, "setdig-white.png", 420);
-  const imgHome = await cropTop("ds-visaogeral.png", "home-crop.png", 0.56);
-  const imgHeader = await cropTop("ds-header.png", "header-crop.png", 0.72);
+  // Os PNGs crus (ds-visaogeral.png/ds-header.png) foram limpos do root;
+  // os crops já gerados em sessão anterior sobrevivem em apresentacao/ — reaproveita.
+  const imgHome = fs.existsSync(path.join(ROOT, "ds-visaogeral.png"))
+    ? await cropTop("ds-visaogeral.png", "home-crop.png", 0.56)
+    : await loadImage("apresentacao/home-crop.png");
+  const imgHeader = fs.existsSync(path.join(ROOT, "ds-header.png"))
+    ? await cropTop("ds-header.png", "header-crop.png", 0.72)
+    : await loadImage("apresentacao/header-crop.png");
+  const imgSegovAberto = await loadImage("docs/assets/segov-codesul/segov-codesul-aberto.png");
+  const imgSegovDropdown = await loadImage("docs/assets/segov-codesul/segov-dropdown.png");
 
   const pres = new pptxgen();
   pres.defineLayout({ name: "DSMS", width: W, height: H });
@@ -92,7 +106,6 @@ const W = 13.33, H = 7.5;
   // =====================================================================
   let s = pres.addSlide();
   s.background = { color: C.brand };
-  // bloco lateral decorativo (motivo)
   s.addShape(pres.shapes.RECTANGLE, { x: W - 2.3, y: 0, w: 2.3, h: H, fill: { color: C.brandDark } });
   s.addShape(pres.shapes.RECTANGLE, { x: W - 2.3, y: 0, w: 0.16, h: H, fill: { color: C.ice } });
 
@@ -106,13 +119,13 @@ const W = 13.33, H = 7.5;
   s.addText("Como escalar a biblioteca de componentes para todos os times do Estado — PHP, Python e JS.", {
     x: 0.85, y: 4.85, w: 9.4, h: 0.9, fontFace: BODY, fontSize: 19, color: C.ice, margin: 0,
   });
-  s.addText("Fabio Ramos · SETDIG · junho de 2026", {
-    x: 0.85, y: 6.7, w: 8, h: 0.4, fontFace: BODY, fontSize: 12, color: C.ice, margin: 0,
+  s.addText("Fabio Ramos · SETDIG · junho de 2026 · pacote já publicado no npm", {
+    x: 0.85, y: 6.7, w: 9, h: 0.4, fontFace: BODY, fontSize: 12, color: C.ice, margin: 0,
   });
   s.addImage({ path: setdigWhite, x: W - 1.95, y: 6.55, w: 1.5, h: 1.5 * (12.565 / 53.929) });
 
   // =====================================================================
-  // SLIDE 2 — O QUE JÁ TEMOS
+  // SLIDE 2 — O QUE JÁ TEMOS (DS-MS oficial)
   // =====================================================================
   s = pres.addSlide();
   s.background = { color: C.white };
@@ -137,7 +150,6 @@ const W = 13.33, H = 7.5;
     s.addText(st[1], { x: x + 0.2, y: y + 0.92, w: cw - 0.4, h: 0.45, fontFace: BODY, fontSize: 12.5, color: C.ink, margin: 0 });
   });
 
-  // imagem (site) à direita
   const iw2 = 5.6, ih2 = iw2 * (imgHome.h / imgHome.w);
   const ix2 = 6.9, iy2 = 1.95;
   s.addShape(pres.shapes.RECTANGLE, { x: ix2 - 0.06, y: iy2 - 0.06, w: iw2 + 0.12, h: ih2 + 0.12, fill: { color: C.white }, line: { color: C.line, width: 1 }, shadow: shadow() });
@@ -159,7 +171,6 @@ const W = 13.33, H = 7.5;
   leftBorder(s, pres, C.error);
   s.addText("O gargalo: o design não vira código", { x: 0.6, y: 0.45, w: 12, h: 0.7, fontFace: HEAD, fontSize: 32, bold: true, color: C.ink, margin: 0 });
 
-  // imagem header à direita (evidência)
   const iw3 = 5.5, ih3 = iw3 * (imgHeader.h / imgHeader.w);
   const ix3 = 7.1, iy3 = 1.35;
   s.addShape(pres.shapes.RECTANGLE, { x: ix3 - 0.06, y: iy3 - 0.06, w: iw3 + 0.12, h: ih3 + 0.12, fill: { color: C.white }, line: { color: C.line, width: 1 }, shadow: shadow() });
@@ -182,7 +193,6 @@ const W = 13.33, H = 7.5;
     py += 1.0;
   });
 
-  // callout de risco
   s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 5.9, w: 6.2, h: 0.95, fill: { color: C.errorSoft } });
   s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 5.9, w: 0.1, h: 0.95, fill: { color: C.error } });
   s.addText([
@@ -192,14 +202,58 @@ const W = 13.33, H = 7.5;
   footer(s, pres, 3, false);
 
   // =====================================================================
-  // SLIDE 4 — A SOLUÇÃO
+  // SLIDE 4 — EVIDÊNCIA REAL: comparação com SEGOV/Codesul
+  // =====================================================================
+  s = pres.addSlide();
+  s.background = { color: C.white };
+  leftBorder(s, pres, C.error);
+  s.addText("Não é teoria: já está acontecendo", { x: 0.6, y: 0.45, w: 12.3, h: 0.7, fontFace: HEAD, fontSize: 30, bold: true, color: C.ink, margin: 0 });
+  s.addText("Inspeção real (DOM/CSS) do site da SEGOV — outra secretaria do mesmo governo, fora do DS-MS oficial.", {
+    x: 0.62, y: 1.16, w: 11.8, h: 0.4, fontFace: BODY, fontSize: 13.5, color: C.mute, margin: 0,
+  });
+
+  const iw4 = 3.55, ih4a = iw4 * (imgSegovAberto.h / imgSegovAberto.w), ih4b = iw4 * (imgSegovDropdown.h / imgSegovDropdown.w);
+  const ix4 = 0.62, iy4 = 1.75;
+  s.addShape(pres.shapes.RECTANGLE, { x: ix4 - 0.05, y: iy4 - 0.05, w: iw4 + 0.1, h: ih4a + 0.1, fill: { color: C.white }, line: { color: C.line, width: 1 }, shadow: shadow() });
+  s.addImage({ path: imgSegovAberto.path, x: ix4, y: iy4, w: iw4, h: ih4a });
+  s.addText("Acordeão aberto (segov.ms.gov.br)", { x: ix4, y: iy4 + ih4a + 0.06, w: iw4, h: 0.3, fontFace: BODY, fontSize: 9.5, italic: true, color: C.mute, margin: 0 });
+
+  const iy4b = iy4 + ih4a + 0.45;
+  s.addShape(pres.shapes.RECTANGLE, { x: ix4 - 0.05, y: iy4b - 0.05, w: iw4 + 0.1, h: ih4b + 0.1, fill: { color: C.white }, line: { color: C.line, width: 1 }, shadow: shadow() });
+  s.addImage({ path: imgSegovDropdown.path, x: ix4, y: iy4b, w: iw4, h: ih4b });
+  s.addText("Mega-menu “Institucional” — padrão sem equivalente no DS-MS", { x: ix4, y: iy4b + ih4b + 0.06, w: iw4, h: 0.3, fontFace: BODY, fontSize: 9.5, italic: true, color: C.mute, margin: 0 });
+
+  const findings = [
+    [C.success, "Cor certa", "Faixa e acordeão usam #004F9F — exatamente o nosso token primário."],
+    [C.error, "Falha de teclado", "Acordeão tem tabIndex=\"-1\": impossível abrir navegando só com Tab."],
+    [C.error, "Falha de leitor de tela", "Sem role, aria-expanded ou aria-controls — leitor de tela não anuncia nada."],
+    [C.error, "Tipografia divergente", "Usa a fonte padrão do sistema, não Open Sans/Roboto da marca."],
+  ];
+  let fy2 = 1.75;
+  const fx2 = 4.55, fw2 = 8.2;
+  findings.forEach((f) => {
+    s.addShape(pres.shapes.OVAL, { x: fx2, y: fy2 + 0.03, w: 0.22, h: 0.22, fill: { color: f[0] } });
+    s.addText(f[1], { x: fx2 + 0.35, y: fy2 - 0.06, w: fw2 - 0.35, h: 0.35, fontFace: HEAD, fontSize: 14, bold: true, color: C.ink, margin: 0 });
+    s.addText(f[2], { x: fx2 + 0.35, y: fy2 + 0.3, w: fw2 - 0.35, h: 0.55, fontFace: BODY, fontSize: 12, color: C.mute, margin: 0 });
+    fy2 += 1.0;
+  });
+
+  s.addShape(pres.shapes.RECTANGLE, { x: fx2, y: 5.85, w: fw2, h: 1.0, fill: { color: C.errorSoft } });
+  s.addShape(pres.shapes.RECTANGLE, { x: fx2, y: 5.85, w: 0.1, h: 1.0, fill: { color: C.error } });
+  s.addText([
+    { text: "Argumento de negócio: ", options: { bold: true } },
+    { text: "publicar o pacote não é só padronizar visual — é corrigir falhas de acessibilidade reais, hoje, em produção, em outro órgão do mesmo Estado." },
+  ], { x: fx2 + 0.25, y: 5.85, w: fw2 - 0.4, h: 1.0, fontFace: BODY, fontSize: 12.5, color: "7F161A", valign: "middle", margin: 0 });
+  footer(s, pres, 4, false);
+
+  // =====================================================================
+  // SLIDE 5 — A SOLUÇÃO
   // =====================================================================
   s = pres.addSlide();
   s.background = { color: C.white };
   leftBorder(s, pres, C.brand);
   s.addText("A solução: uma fonte única que gera código", { x: 0.6, y: 0.45, w: 12.3, h: 0.7, fontFace: HEAD, fontSize: 30, bold: true, color: C.brand, margin: 0 });
 
-  // fluxo
   const flow = [
     ["Figma", "Tokens Studio → JSON"],
     ["Style Dictionary", "gera automaticamente"],
@@ -218,7 +272,6 @@ const W = 13.33, H = 7.5;
     fx += fb + fgap;
   });
 
-  // pontos de apoio
   const sols = [
     ["Multi-stack de verdade", "Os tokens viram CSS, SCSS, JS, PHP e Python a partir de um único arquivo."],
     ["Componentes híbridos", "Classe CSS+HTML para o grosso; Web Components (<ms-*>) nos interativos."],
@@ -234,53 +287,96 @@ const W = 13.33, H = 7.5;
     sx += sw + sgap;
   });
 
-  // prova POC (verde)
   s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 5.6, w: 12.13, h: 0.95, fill: { color: C.successSoft } });
   s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 5.6, w: 0.1, h: 0.95, fill: { color: C.success } });
   s.addText([
-    { text: "POC já funciona: ", options: { bold: true } },
-    { text: "o token #004F9F foi gerado em 5 linguagens (CSS/SCSS/JS/PHP/Python) e o Storybook compilou com sucesso." },
+    { text: "Já não é só prova de conceito: ", options: { bold: true } },
+    { text: "10 componentes implementados, Web Component próprio e o pacote já publicado de verdade (próximo slide)." },
   ], { x: 0.85, y: 5.6, w: 11.7, h: 0.95, fontFace: BODY, fontSize: 13.5, color: "08210F", valign: "middle", margin: 0 });
-  footer(s, pres, 4, false);
+  footer(s, pres, 5, false);
 
   // =====================================================================
-  // SLIDE 5 — PRÓXIMOS PASSOS
+  // SLIDE 6 — JÁ ESTÁ NO AR
   // =====================================================================
   s = pres.addSlide();
   s.background = { color: C.brand };
   s.addShape(pres.shapes.RECTANGLE, { x: 0, y: 0, w: 0.16, h: H, fill: { color: C.ice } });
-  s.addText("Próximos passos", { x: 0.6, y: 0.5, w: 11, h: 0.8, fontFace: HEAD, fontSize: 34, bold: true, color: C.white, margin: 0 });
+  s.addText("Já está no ar", { x: 0.6, y: 0.5, w: 11, h: 0.8, fontFace: HEAD, fontSize: 34, bold: true, color: C.white, margin: 0 });
+  s.addText("Publicado e funcionando — não é mockup, é o link real.", {
+    x: 0.62, y: 1.25, w: 11, h: 0.4, fontFace: BODY, fontSize: 14, color: C.ice, margin: 0,
+  });
+
+  const liveStats = [
+    ["10 / 41", "componentes já no pacote"],
+    ["R$ 0/mês", "custo de infraestrutura"],
+    ["0.1.0", "primeira versão publicada"],
+  ];
+  const lgx = 0.6, lgy = 1.85, lgw = 3.85, lgh = 1.25, lggap = 0.25;
+  liveStats.forEach((st, i) => {
+    const x = lgx + i * (lgw + lggap);
+    s.addShape(pres.shapes.RECTANGLE, { x, y: lgy, w: lgw, h: lgh, fill: { color: C.brandDark } });
+    s.addText(st[0], { x: x + 0.2, y: lgy + 0.12, w: lgw - 0.4, h: 0.6, fontFace: HEAD, fontSize: 26, bold: true, color: C.white, margin: 0 });
+    s.addText(st[1], { x: x + 0.2, y: lgy + 0.75, w: lgw - 0.4, h: 0.4, fontFace: BODY, fontSize: 11.5, color: C.ice, margin: 0 });
+  });
+
+  const links = [
+    ["Pacote npm", "npmjs.com/package/@design-system-ms/ds-sis", "@design-system-ms/ds-sis instalável via npm i, hoje"],
+    ["Documentação viva", "fabioramos-02.github.io/DS-MS-Design-System", "Storybook publicado via GitHub Pages — substitui as imagens"],
+    ["Repositório", "github.com/fabioramos-02/DS-MS-Design-System", "Código aberto, CI automático a cada push"],
+  ];
+  let ly = 3.4;
+  links.forEach((l) => {
+    s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: ly, w: 12.13, h: 0.95, fill: { color: C.white } });
+    s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: ly, w: 0.1, h: 0.95, fill: { color: C.success } });
+    s.addText(l[0], { x: 0.9, y: ly + 0.12, w: 3.2, h: 0.4, fontFace: HEAD, fontSize: 14, bold: true, color: C.brand, margin: 0 });
+    s.addText(l[1], { x: 0.9, y: ly + 0.5, w: 9.8, h: 0.35, fontFace: BODY, fontSize: 11.5, color: C.ink, margin: 0 });
+    s.addText(l[2], { x: 4.2, y: ly + 0.12, w: 8.4, h: 0.4, fontFace: BODY, fontSize: 11.5, italic: true, color: C.mute, margin: 0 });
+    ly += 1.1;
+  });
+  footer(s, pres, 6, true);
+
+  // =====================================================================
+  // SLIDE 7 — PRÓXIMOS PASSOS
+  // =====================================================================
+  s = pres.addSlide();
+  s.background = { color: C.white };
+  leftBorder(s, pres, C.brand);
+  s.addText("Próximos passos", { x: 0.6, y: 0.45, w: 11, h: 0.7, fontFace: HEAD, fontSize: 34, bold: true, color: C.brand, margin: 0 });
 
   const steps = [
-    ["1", "Tokens do Figma", "Exportar via Tokens Studio; o CSS deixa de ser escrito à mão."],
-    ["2", "Top 5 componentes", "Button, input, card, busca e header (1º Web Component)."],
-    ["3", "CI/CD no GitLab", "Build automático + gate de acessibilidade (eMAG/WCAG)."],
-    ["4", "Publicar o Storybook", "Vira o novo site — aposenta as imagens estáticas."],
+    ["1", "Tokens do Figma oficial", "Hoje os tokens são transcritos à mão; falta o export real via Tokens Studio."],
+    ["2", "31 componentes restantes", "Accordion, Breadcrumb, Dropdown, Menu, Table e outros — exigem acesso ao Figma."],
+    ["3", "Gate de acessibilidade automático", "CI já builda; falta ligar axe-core como bloqueio de PR."],
+    ["4", "Aval para virar o site oficial", "Storybook publicado pode substituir designsystem.ms.gov.br."],
   ];
-  let ry = 1.6;
+  let ry = 1.55;
   steps.forEach((st) => {
-    s.addShape(pres.shapes.OVAL, { x: 0.65, y: ry, w: 0.55, h: 0.55, fill: { color: C.white } });
-    s.addText(st[0], { x: 0.65, y: ry, w: 0.55, h: 0.55, fontFace: HEAD, fontSize: 22, bold: true, color: C.brand, align: "center", valign: "middle", margin: 0 });
-    s.addText(st[1], { x: 1.4, y: ry - 0.05, w: 5.4, h: 0.4, fontFace: HEAD, fontSize: 17, bold: true, color: C.white, margin: 0 });
-    s.addText(st[2], { x: 1.4, y: ry + 0.33, w: 5.6, h: 0.5, fontFace: BODY, fontSize: 12.5, color: C.ice, margin: 0 });
-    ry += 1.0;
+    s.addShape(pres.shapes.OVAL, { x: 0.65, y: ry, w: 0.55, h: 0.55, fill: { color: C.brand } });
+    s.addText(st[0], { x: 0.65, y: ry, w: 0.55, h: 0.55, fontFace: HEAD, fontSize: 22, bold: true, color: C.white, align: "center", valign: "middle", margin: 0 });
+    s.addText(st[1], { x: 1.4, y: ry - 0.05, w: 5.6, h: 0.4, fontFace: HEAD, fontSize: 16, bold: true, color: C.ink, margin: 0 });
+    s.addText(st[2], { x: 1.4, y: ry + 0.33, w: 5.8, h: 0.55, fontFace: BODY, fontSize: 12, color: C.mute, margin: 0 });
+    ry += 1.05;
   });
 
-  // card "o que precisamos"
-  s.addShape(pres.shapes.RECTANGLE, { x: 7.5, y: 1.6, w: 5.2, h: 3.0, fill: { color: C.white }, shadow: shadow() });
-  s.addShape(pres.shapes.RECTANGLE, { x: 7.5, y: 1.6, w: 5.2, h: 0.12, fill: { color: C.ice } });
-  s.addText("O que precisamos", { x: 7.75, y: 1.85, w: 4.7, h: 0.45, fontFace: HEAD, fontSize: 18, bold: true, color: C.brand, margin: 0 });
+  s.addShape(pres.shapes.RECTANGLE, { x: 7.6, y: 1.55, w: 5.15, h: 3.1, fill: { color: C.bg }, line: { color: C.line, width: 1 }, shadow: shadow() });
+  s.addShape(pres.shapes.RECTANGLE, { x: 7.6, y: 1.55, w: 5.15, h: 0.12, fill: { color: C.brand } });
+  s.addText("Já não precisamos pedir", { x: 7.85, y: 1.8, w: 4.7, h: 0.4, fontFace: HEAD, fontSize: 16, bold: true, color: C.brand, margin: 0 });
   s.addText([
-    { text: "Acesso ao Figma (Tokens Studio) e ao repositório GitLab do DS.", options: { bullet: true, breakLine: true } },
-    { text: "Aval para evoluir a POC em um piloto oficial.", options: { bullet: true, breakLine: true } },
-    { text: "Definição de quem mantém (SGD) e como os times contribuem.", options: { bullet: true } },
-  ], { x: 7.75, y: 2.4, w: 4.7, h: 2.0, fontFace: BODY, fontSize: 13.5, color: C.ink, paraSpaceAfter: 10, margin: 0 });
+    { text: "Orçamento de infraestrutura — está em R$ 0/mês.", options: { bullet: true, breakLine: true } },
+    { text: "Aprovar tecnologia — Storybook/npm já validados em produção.", options: { bullet: true } },
+  ], { x: 7.85, y: 2.3, w: 4.7, h: 1.1, fontFace: BODY, fontSize: 12.5, color: C.ink, paraSpaceAfter: 8, margin: 0 });
+  s.addText("O que precisamos", { x: 7.85, y: 3.55, w: 4.7, h: 0.4, fontFace: HEAD, fontSize: 16, bold: true, color: C.brand, margin: 0 });
+  s.addText([
+    { text: "Acesso ao Figma oficial do DS-MS (Tokens Studio).", options: { bullet: true, breakLine: true } },
+    { text: "Aval para evoluir o pacote em piloto oficial da SETDIG.", options: { bullet: true } },
+  ], { x: 7.85, y: 4.05, w: 4.7, h: 1.0, fontFace: BODY, fontSize: 12.5, color: C.ink, paraSpaceAfter: 8, margin: 0 });
 
+  s.addShape(pres.shapes.RECTANGLE, { x: 0.6, y: 6.0, w: 12.13, h: 0.7, fill: { color: C.brand } });
   s.addText("Um passo pequeno agora evita um gargalo grande depois.", {
-    x: 0.6, y: 6.1, w: 12, h: 0.5, fontFace: HEAD, fontSize: 17, bold: true, italic: true, color: C.white, margin: 0,
+    x: 0.6, y: 6.0, w: 12.13, h: 0.7, fontFace: HEAD, fontSize: 16, bold: true, italic: true, color: C.white, align: "center", valign: "middle", margin: 0,
   });
-  footer(s, pres, 5, true);
+  footer(s, pres, 7, false);
 
   await pres.writeFile({ fileName: path.join(__dirname, "DS-MS-Apresentacao.pptx") });
-  console.log("OK: DS-MS-Apresentacao.pptx gerado.");
+  console.log("OK: DS-MS-Apresentacao.pptx gerado (7 slides).");
 })();

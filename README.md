@@ -1,174 +1,89 @@
-# DS-MS — Design System dos sistemas de Mato Grosso do Sul
+# DS-MS — Design System de Mato Grosso do Sul
 
-> **Em uma frase:** Sistema de design oficial dos serviços digitais do governo de Mato Grosso do Sul (Brasil), mantido pela **SETDIG — Secretaria-Executiva de Transformação Digital**.
+> Sistematização do design system oficial do Governo do Estado de Mato Grosso do Sul: tirar os componentes do "só Figma + imagens" e publicá-los como **código real, multi-stack** (PHP, Python, JS), mantido pela **SETDIG — Secretaria-Executiva de Transformação Digital**.
 
-A entrega é um **design system público para sites e sistemas administrativos** com três foundations principais (Introdução, Fundamentos, Componentes) e templates para Desktop, Tablet e Mobile. O nome curto é **DS-MS**.
+[![npm](https://img.shields.io/npm/v/@design-system-ms/ds-sis?label=npm)](https://www.npmjs.com/package/@design-system-ms/ds-sis)
 
-A documentação é escrita em **Português do Brasil (pt-BR)** — mantenha esse idioma em todo conteúdo que produzir.
+## Links ao vivo
 
----
+| O quê | Onde |
+|---|---|
+| **Pacote npm** | [npmjs.com/package/@design-system-ms/ds-sis](https://www.npmjs.com/package/@design-system-ms/ds-sis) — `npm install @design-system-ms/ds-sis` |
+| **Documentação viva (Storybook)** | [fabioramos-02.github.io/DS-MS-Design-System](https://fabioramos-02.github.io/DS-MS-Design-System/) |
+| **Exemplo de consumo real** | [fabioramos-02.github.io/DS-MS-Design-System/exemplo-consumo](https://fabioramos-02.github.io/DS-MS-Design-System/exemplo-consumo/) — instala o pacote publicado via `npm install`, não é mock |
+| **Repositório** | [github.com/fabioramos-02/DS-MS-Design-System](https://github.com/fabioramos-02/DS-MS-Design-System) |
 
-## Fontes (sources of truth)
+## O problema que este repositório resolve
 
-| Fonte                                                                 | Local                                                                                           |
-|----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| Figma — "Template-Site-DS"                                            | Anexado neste projeto como sistema de arquivos virtual `.fig`. Páginas: Cover, Template-Baixa-Fidelidade, Template-Alta-Fidelidade, Template-Desktop (18 frames), Template-Tablet (13 frames), Template-Mobile (15 frames). |
-| PDF — `Documentacao-Design-System-Figma.pdf`                          | `uploads/` — fornecido pelo usuário (PDF binário; não conseguimos extrair texto limpo)         |
-| Site oficial / repositórios mencionados pelo header da doc           | "Repositório GitLab" + "Repositório TFS" + "Figma UI Kit" — links **não fornecidos** ao agente |
+O site oficial [designsystem.ms.gov.br](https://www.designsystem.ms.gov.br/) documenta os componentes do DS-MS apenas em **imagens** (anatomia, variações, anti-padrões) — zero código pronto para usar. Cada time do Estado (PHP, Python, JS) reimplementa o mesmo componente do zero a partir do Figma, gerando divergência visual, retrabalho e acessibilidade inconsistente. Já existe **evidência real desse drift** num site de outra secretaria do mesmo governo — ver [`docs/09-comparacao-segov-codesul.md`](docs/09-comparacao-segov-codesul.md).
 
-> **Sem URLs públicas do GitLab/TFS ou repositório npm `@design-system-ms/ds-sis`** — todos os tokens foram derivados diretamente dos componentes do Figma (cores, tipos, espaçamentos, sombras).
+A solução aqui: uma **fonte única de tokens** (JSON) que gera CSS/SCSS/JS/PHP/Python automaticamente, componentes entregues como CSS+HTML (modelo USWDS/gov.uk) ou Web Components nos interativos, documentados ao vivo no Storybook e publicados de verdade no npm. Contexto completo, decisões e arquitetura em [`docs/`](docs/).
 
----
+## Status atual
 
-## Produtos representados
+**10 de 41 componentes** oficiais do DS-MS implementados e publicados (`v0.1.0`): Button, Input, Search, Selection (checkbox/radio/toggle), Link, Card, Tag, Notification, Footer, e Header como **Web Component** (`<ms-header>`). Os 31 restantes (Accordion, Breadcrumb, Dropdown, Menu, Table, etc.) exigem acesso ao Figma oficial — não foram inventados sem fonte fiel. Detalhe completo do que falta e por quê: [`docs/08-proximos-passos.md`](docs/08-proximos-passos.md).
 
-Apesar do título "Design System de Mato Grosso do Sul", o que está documentado no Figma cobre **um único produto**: a própria **biblioteca DS-MS** (`@design-system-ms/ds-sis`), que se manifesta em duas superfícies:
+Custo de infraestrutura hoje: **R$ 0/mês** (npm público + jsDelivr + GitHub Actions/Pages, todos nos planos gratuitos) — ver [`docs/10-custos-publicacao-pacote.md`](docs/10-custos-publicacao-pacote.md).
 
-1. **Site de documentação** — onde o sistema é explicado (Boas-Vindas, Paleta de Cores, Tipografia, Espaçamento, Bordas, Sombras, Overlay, Componentes…). Responsivo: Desktop 1440, Tablet 768, Mobile 360.
-2. **Componentes consumíveis** — botões, inputs, busca, selects, checkbox, header/footer governamentais — destinados a sistemas administrativos e públicos estaduais.
+## Estrutura do repositório
 
-Não foram fornecidos screenshots, codebase de aplicações reais nem decks. Todas as recriações de UI partem **apenas** do Figma.
+| Caminho | O que é |
+|---|---|
+| [`docs/`](docs/) | Planejamento, arquitetura, pesquisa e decisões — comece pelo [índice](docs/README.md) |
+| [`poc/`](poc/) | Implementação real: tokens (Style Dictionary), os 10 componentes, Storybook, build publicável (`dist/`) |
+| [`exemplo-consumo/`](exemplo-consumo/) | Página que instala `@design-system-ms/ds-sis` via `npm install` de verdade — prova que o pacote publicado funciona |
+| [`apresentacao/`](apresentacao/) | Gerador (`pptxgenjs`) do deck de apresentação para a gestão |
+| [`.github/workflows/`](.github/workflows/) | CI (`ci.yml`), deploy do Storybook+exemplo no GitHub Pages (`pages.yml`), publish no npm em tag semver (`publish-npm.yml`) |
+| `colors_and_type.css` | Tokens de cor/tipografia/espaçamento/raio/sombra extraídos do Figma — fonte que `poc/tokens/*.json` espelha |
+| `components.css` | CSS dos componentes (botão, input, busca, card, header/footer) — fonte que `poc/src/components/*` espelha |
+| `assets/` | Logos oficiais (DS-MS, SETDIG, brasão) em SVG |
+| `preview/` | Cards HTML isolados, um por token/componente, para inspeção visual rápida sem montar o Storybook |
+| `ui_kits/` | Recriações React (JSX) do site de documentação e de um template administrativo, como referência visual |
+| `uploads/` | PDF original da documentação Figma, fornecido como fonte |
+| `SKILL.md` | Front-matter de Agent Skill (Claude Code) para gerar artefatos com a identidade do DS-MS |
 
----
+## Usar o pacote
 
-## Fundamentos de conteúdo (Content Fundamentals)
+```bash
+npm install @design-system-ms/ds-sis
+```
 
-**Idioma:** Português do Brasil, sempre. Mantenha acentuação e cedilha.
+```html
+<link rel="stylesheet" href="node_modules/@design-system-ms/ds-sis/dist/css/ds-sis.css">
+<script type="module" src="node_modules/@design-system-ms/ds-sis/dist/js/ds-sis.js"></script>
 
-**Pessoa & tom:** Voz institucional, mas calorosa. Usa **"nós"** quando fala do time / do governo ("Nós da equipe do Design System...") e **"você"** ao se dirigir a quem está construindo / consumindo ("Use as cores para...", "Para utilizar a paleta..."). Evita gírias. Imperativo educativo é comum em rótulos curtos ("Buscar", "Importe os Estilos", "Aplicação", "Uso e exemplo").
+<button class="btn btn-primary btn-md">Salvar</button>
+<ms-header secretaria="SETDIG"></ms-header>
+```
 
-**Capitalização:** **Sentence case** em títulos e labels. Capitaliza substantivos próprios da marca: *Design System*, *DS-MS*, *SETDIG*, nomes de produtos. Headers de seção começam com maiúscula só na primeira palavra: "Paleta de Cores", "Importe os Estilos", "Cor Primária", "Dando Intenção para as Cores", "Uso e exemplo".
+Sem Node no projeto (PHP/Python via CDN), ou snippets prontos por stack (Blade, Jinja, React): ver [`docs/04-multistack.md`](docs/04-multistack.md).
 
-**Emojis:** **Nunca.** O sistema não usa emoji em nenhum lugar (rótulos, ícones ou cópia). Iconografia é sempre vetorial.
+## Desenvolver localmente
 
-**Vibe:** Governamental brasileiro contemporâneo. Sério mas acessível; explica o "por que" antes do "como". A documentação é detalhada — definições antes de exemplos.
+```bash
+cd poc
+npm install
+npm run storybook        # Storybook local, http://localhost:6006
+npm run build             # gera dist/css/ds-sis.css + dist/js/ds-sis.js (o que é publicado)
+```
 
-**Exemplos canônicos (do Figma):**
+Guia completo de componentes, tokens e estrutura: [`poc/README.md`](poc/README.md).
 
-> "SETDIG Design System é nossa abordagem personalizada para criar experiências e produtos digitais abrangentes. Enraizado em uma base de princípios de design inclusivos, o Design System não é apenas um sistema, mas um ecossistema de código funcional, ferramentas práticas de design, recursos detalhados e diretrizes claras de interface humana."
+## Fundamentos visuais (resumo)
 
-> "Nós da equipe do Design System creditamos que as melhores ideias vêm de uma mistura diversificada de mentes e talentos, e promovemos ativamente uma comunidade onde contribuições, feedback e novos designs não são apenas bem-vindos, mas essenciais."
+- **Cor primária:** `#004F9F` (`--color-primary-500`) — azul institucional do Estado, reservado para header/footer, CTAs, links e estados ativos. Sem gradientes.
+- **Tipografia:** Open Sans (display/headings/interações) + Roboto (body/captions/código), via Google Fonts.
+- **Espaçamento:** escala base-8 (2, 4, 8, 16, 24, 32, 40, 56, 64, 72, 88).
+- **Raio:** 2px (inputs) · 4px (botões/tags) · 8px (cards) · 16/24/32px (superfícies grandes) · `9999px` (avatares/toggles).
+- **Sombra:** quatro níveis (`shadow-4/6/12/24`), cor única `rgba(0,32,64,0.30)`.
+- **Ícones:** sempre SVG (convenção [Iconify](https://iconify.design/)) — nunca emoji, nunca ícone-fonte proprietário.
 
-> "As cores no nosso design system desempenham um papel fundamental na criação de uma experiência visual coesa e atraente para os usuários."
+Detalhamento completo (hover/press, bordas, iconografia, voz e tom da marca) está versionado em `colors_and_type.css` e `components.css` — leia o código-fonte, é a referência viva. Arquitetura de tokens e como eles chegam a cada linguagem: [`docs/01-arquitetura.md`](docs/01-arquitetura.md).
 
-> "Use as cores para criar experiências significativas, como, guiar a navegação do usuário, garantir consistência, enquanto, também, expressa hierarquia, estados."
+## Documentação completa
 
-Padrão observado em **micro-cópia**: parágrafos longos descritivos seguidos de uma frase imperativa curta ("Use … para …"). Em UI: rótulos de uma só palavra ("Buscar", "Botão", "Título", "Texto demonstrativo", "Texto de ajuda").
+Todo o raciocínio por trás das decisões — pesquisa de Storybook, ecossistema de CI/CD, comparação com outro site do governo, custos, roadmap — está em [`docs/`](docs/README.md).
 
----
+## Mantido por
 
-## Fundamentos visuais (Visual Foundations)
-
-### Cores
-Paleta governamental sóbria, **dominada por um único azul institucional `#004F9F`** (= Cor Primária 500 = `--color-primary-500`). É o azul de chrome de site governamental brasileiro, idêntico ao tom do escudo de Mato Grosso do Sul. A neutralidade (cinzas frios) ocupa a maior parte das superfícies; o azul é reservado para cabeçalho, rodapé, CTAs primários, links e estados ativos. Acentos só em feedback (erro vermelho `#DA1E28`, sucesso verde `#198038`, alerta laranja `#FF6200`, info azul-claro `#067BCC`). **Não há gradientes.** Surfaces são sólidas; o único "soft" é o azul tint `#CCDCEC` (primary-100).
-
-### Tipografia
-Duas fontes gratuitas, Google Fonts: **Open Sans** (display + headings + interações) e **Roboto** (body, captions, tags, código). Open Sans **Bold 700** é a voz visual da marca — não há decorativas. Para mono usa-se **Archivo** (rótulos de tokens em swatches), mas é coadjuvante. Escala generosa: display até 96px no desktop; body começa em 14px. Letter-spacing levemente negativo (-1px / -0.01em) só em Display.
-
-### Espaçamento
-Sistema **base-8 com nudges 2/4**: 2, 4, 8, 16, 24, 32, 40, 56, 64, 72, 88. **Não há valor "10"** — se você precisa de algo "perto de 10", arredonde para 8 ou 16. 32 é o gap padrão entre cards em layouts de documentação. 16 é o gap interno mais comum.
-
-### Backgrounds / fundos
-**Branco predominante** (`#FFFFFF`). Faixas inteiras de azul institucional `#004F9F` aparecem **apenas no header e no footer** (faixas de 96px de altura, da extremidade à extremidade). Cards usam fundo branco com borda de 1px (`#99B9D9` ou `#EFEFF0`). Não usa imagens full-bleed, nem padrões/texturas/grãos. Não usa ilustrações desenhadas à mão. A única "imagem" repetida é o logotipo institucional da SETDIG.
-
-### Animação
-**Mínima e funcional.** O Figma não documenta motion. Adote transições padrão de 120–150ms `ease` em hover/focus, sem bounces nem easing exuberante. Não há entrance animations. Reações táteis: `transform: translateY(1px)` em `:active`.
-
-### Hover / Press states
-- **Botão primário** (`.btn-primary`): hover → tom 600 (`#002F5F`, mais escuro). Active → 700.
-- **Botão secundário**: hover → fundo `rgba(0,79,159,.06)` (tint suavíssimo).
-- **Link / botão simples**: hover → tom 600 + sublinhado.
-- **Cartões clicáveis**: hover → eleva via `shadow-4` + borda intensifica para azul-300.
-- **Inputs**: hover → borda escurece (`#545D64`); focus → borda azul 500 + halo `0 0 0 2px rgba(0,79,159,.15)`.
-- **Press**: leve translação Y; sem mudança de tamanho.
-
-### Bordas
-Larguras canônicas: **1px, 2px, 4px, 8px, 16px**. A maioria das bordas em UI é 1px. Botões usam 2px (também o estilo "outline" do secondary). Cor padrão: `#A9AEB1` (border-default). Em foco/active: `#004F9F`. Em erro: `#DA1E28`.
-
-### Cantos (Border radius)
-**Escala discreta** — não usa o "pill" indiscriminadamente:
-- `2px` — inputs de texto, busca (sutilíssimo, quase reto)
-- `4px` — botões, checkbox, tags
-- `8px` — cards, blocos de código
-- `16px / 24px / 32px` — superfícies maiores
-- `9999px` — só para avatares circulares e toggles
-
-### Sombras
-Quatro sombras nomeadas. Direção idêntica (offset positivo Y, sem X), cor única **`rgba(0,32,64,0.30)`** (preto-azulado, não preto puro): 
-- `shadow-4`  → blur 8  (default, cards em hover)
-- `shadow-6`  → blur 12
-- `shadow-12` → blur 24 (modais, popovers)
-- `shadow-24` → blur 48 (overlays grandes)
-
-**Não há inner shadows** documentadas. Não há "glow" colorido.
-
-### Transparência / blur
-- **Overlay scrim**: `rgba(1, 15, 30, 0.5)` (azul-preto bem escuro, 50%). Usado para escurecer atrás de modais.
-- Tints com alpha apenas em hover (ex.: `rgba(0,79,159,.06)`).
-- **Não há backdrop-filter / blur** documentado. Não há vidro fosco.
-
-### Layout / grid
-Documentação desktop em **container 800px** centralizado em viewport 1440. Header e footer ocupam viewport inteiro (1440). Menu lateral fixo à esquerda (172px de largura). Mini-menu de navegação local à direita (176px de largura). Espaçamento padrão `gap: 32px` ou `64px` entre seções.
-
-### Iconografia
-Ver seção **ICONOGRAPHY** abaixo.
-
-### Imagens
-Não há fotografias documentadas. O design system não comunica calor com fotos — comunica seriedade com chrome azul + iconografia limpa.
-
----
-
-## ICONOGRAPHY
-
-**Estilo:** Outline + filled mix; traço médio (~1.5px equivalente). Tamanho padrão **16px** (em UI compacta, header) ou **24px** (cards, headings). Pintados com `currentColor` na maioria dos casos — herdam a cor do contexto (texto azul → ícone azul).
-
-**Sistema usado:** O Figma referencia ícones pelos nomes da convenção **[Iconify](https://iconify.design/)** (ex.: `ion:book-outline`, `bi:clipboard`, `uil:search`, `logos:figma`, `logos:gitlab`). Não há fonte de ícone proprietária; cada ícone é um SVG individual extraído do conjunto correspondente do Iconify.
-
-**Coleções referenciadas no Figma:**
-| Prefixo Iconify | Coleção                | Uso                              |
-|------------------|-------------------------|----------------------------------|
-| `ion:`           | Ionicons                | Navegação (`book-outline`)       |
-| `bi:`            | Bootstrap Icons         | UI utilitário (`clipboard`)       |
-| `uil:`           | Unicons (line)          | Busca (`search`)                  |
-| `logos:`         | SVG Logos               | Marcas de terceiros (`figma`, `gitlab`) |
-
-**Como usar neste design system:**
-- Para ícones genéricos, importe via CDN do Iconify (ex.: `<span class="iconify" data-icon="ion:book-outline"></span>`). Veja `ui_kits/docs-site/index.html` para o exemplo.
-- Logos próprios (DS-MS, SETDIG, governo MS) estão em `assets/` como SVGs limpos.
-- **Não há ícone-fonte proprietário** (não há `dsms-icons.ttf` ou similar) — sempre SVG.
-- **Emoji nunca é usado.** Unicode-as-icon nunca é usado. Sempre SVG.
-
-**Substituição declarada:** Não fizemos substituição — o sistema Iconify é gratuito e carregado por CDN.
-
----
-
-## Index (manifesto da raiz)
-
-| Arquivo                          | O que é                                                    |
-|----------------------------------|------------------------------------------------------------|
-| `README.md`                      | Este arquivo — visão geral, foundations, índice            |
-| `SKILL.md`                       | Front-matter para Claude Code / Agent Skills               |
-| `colors_and_type.css`            | Tokens de cor + tipo + spacing + radius + shadow           |
-| `components.css`                 | Botões, inputs, busca, cards, header/footer, code-block    |
-| `assets/`                        | Logos SVG (DS-MS, SETDIG, escudo), `logo-tfs.png`          |
-| `preview/`                       | Cards individuais que populam a aba **Design System**       |
-| `ui_kits/docs-site/`             | Recriação do site de documentação DS-MS (Desktop 1440)     |
-| `ui_kits/admin-template/`        | Template de login administrativo + página interna           |
-
-### UI kits
-
-- **`ui_kits/docs-site/`** — Site público de documentação. Telas: Boas-Vindas / Visão Geral, Paleta de Cores, Tipografia, Componentes (estados de botão e input). Navegação por links.
-- **`ui_kits/admin-template/`** — Telas administrativas do governo construídas com o DS: Login Administrativo, Página Interna com Data Table, Página de Erro.
-
-### Preview cards (Design System tab)
-
-Cada arquivo em `preview/*.html` é um card individual (~700px). São renderizações independentes dos tokens — paleta primária, neutra, feedback; specimens de display/heading/body; spacing scale; raios; sombras; e estados de cada componente.
-
----
-
-## Notas e cautelas
-
-- Os hex dos níveis 700/800/900 da primary foram **inferidos por progressão** a partir dos 100/200/600 declarados no Figma — pode haver pequena variação para o valor oficial publicado.
-- A documentação fala em `@design-system-ms/ds-sis` e cita `import '@design-system-ms/ds-sis/lib/styles.css'`, mas **não temos acesso ao pacote real**. As classes em `components.css` reconstroem o comportamento descrito; nomes batem com os exemplos do Figma (`.display-large`, `.heading-xx-large`, `.body-medium`, `.shadow-4`).
-- Iconify é carregado via CDN nos protótipos — se o repositório oficial usa um sprite local, troque os `<span class="iconify">` por `<svg><use href="#...">`.
-- Não recebemos slides — `slides/` não foi criado.
+**SGD** (Superintendência de Governo Digital) / **SETDIG** — Secretaria-Executiva de Transformação Digital, Governo do Estado de Mato Grosso do Sul.
