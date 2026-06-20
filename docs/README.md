@@ -23,6 +23,8 @@ Esta pasta levanta a **POC, o planejamento e a ideia** de como começar a resolv
 | [06-governanca-acessibilidade.md](06-governanca-acessibilidade.md) | Semver, contribution, eMAG + WCAG 2.1 AA |
 | [07-roadmap.md](07-roadmap.md) | Fases incrementais de adoção (plano original) |
 | [08-proximos-passos.md](08-proximos-passos.md) | Status atual pós-implementação e próximos passos concretos |
+| [09-comparacao-segov-codesul.md](09-comparacao-segov-codesul.md) | Comparação real (Playwright) com site SEGOV/Codesul — prova de drift e gaps de acessibilidade |
+| [10-custos-publicacao-pacote.md](10-custos-publicacao-pacote.md) | Custos reais de infraestrutura para publicar o pacote (npm/CDN/CI/Storybook) |
 
 ## POC rodável
 
