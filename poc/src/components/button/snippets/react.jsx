@@ -1,6 +1,6 @@
 // DS-MS Button — React
-import '@dsms/ds-sis/dist/css/ds-sis.css';
-import { ColorPrimary500 } from '@dsms/ds-sis/dist/js/tokens.js';
+import '@design-system-ms/ds-sis/dist/css/ds-sis.css';
+import { ColorPrimary500 } from '@design-system-ms/ds-sis/dist/js/tokens.js';
 
 export function Acoes() {
   return (

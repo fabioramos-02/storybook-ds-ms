@@ -6,11 +6,11 @@
 flowchart TD
     F["Figma + Tokens Studio<br/>designer edita tokens e specs"]
     F -->|"export tokens JSON · commit / Merge Request"| R
-    subgraph R["Repositório GitLab @dsms/ds-sis — GitLab CI (.gitlab-ci.yml)"]
+    subgraph R["Repositório GitLab @design-system-ms/ds-sis — GitLab CI (.gitlab-ci.yml)"]
         direction LR
         S1["tokens<br/>Style Dictionary"] --> S2["test<br/>a11y axe + visual"] --> S3["build<br/>Storybook + pacote"] --> S4["publish<br/>npm + Package Registry + deploy"]
     end
-    R -->|"publica versão (semver)"| CONS["Consumidores<br/>JS → npm i @dsms/ds-sis<br/>PHP → CDN link/script<br/>Python → CDN + tokens.py"]
+    R -->|"publica versão (semver)"| CONS["Consumidores<br/>JS → npm i @design-system-ms/ds-sis<br/>PHP → CDN link/script<br/>Python → CDN + tokens.py"]
     R -->|deploy| SITE["designsystem.ms.gov.br<br/>Storybook publicado — substitui as imagens"]
 ```
 

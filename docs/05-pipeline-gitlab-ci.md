@@ -35,7 +35,7 @@ test:
 build:
   stage: build
   script:
-    - npm run build                  # empacota @dsms/ds-sis (css + web components)
+    - npm run build                  # empacota @design-system-ms/ds-sis (css + web components)
     - npm run build-storybook -- --output-dir public   # site → public/
   artifacts:
     paths: [dist/, public/]

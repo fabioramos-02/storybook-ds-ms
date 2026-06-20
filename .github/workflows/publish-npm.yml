@@ -27,7 +27,7 @@ jobs:
       - name: Gerar tokens + bundle publicável (CSS+JS)
         run: npm run build
 
-      - name: Publicar @dsms/ds-sis
+      - name: Publicar @design-system-ms/ds-sis
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -58,7 +58,7 @@ npm run build            # tokens -> dist/css/ds-sis.css + dist/js/ds-sis.js
 
 ## Publicar (npm público + jsDelivr + GitHub Pages)
 
-O pacote é `@dsms/ds-sis`, publicado em **npm público** (não precisa de registry privado — é design system de governo, sem segredo a proteger). Custos detalhados em [`../docs/10-custos-publicacao-pacote.md`](../docs/10-custos-publicacao-pacote.md) (cenário recomendado: **R$ 0/mês**).
+O pacote é `@design-system-ms/ds-sis`, publicado em **npm público** (não precisa de registry privado — é design system de governo, sem segredo a proteger). Custos detalhados em [`../docs/10-custos-publicacao-pacote.md`](../docs/10-custos-publicacao-pacote.md) (cenário recomendado: **R$ 0/mês**).
 
 ### Passos manuais (uma vez, feitos por quem tem acesso ao npm/GitHub — não automatizáveis por IA)
 1. Gerar um **Automation token** (Read and write) na org/scope `dsms` em npmjs.com → Access Tokens. **Nunca cole o token em chat ou em arquivo versionado.**
@@ -74,8 +74,8 @@ O pacote é `@dsms/ds-sis`, publicado em **npm público** (não precisa de regis
   git push origin main --tags
   ```
 - Depois do primeiro publish, a CDN funciona **automaticamente, sem configuração**:
-  `https://cdn.jsdelivr.net/npm/@dsms/ds-sis/dist/css/ds-sis.css`
-  `https://cdn.jsdelivr.net/npm/@dsms/ds-sis/dist/js/ds-sis.js`
+  `https://cdn.jsdelivr.net/npm/@design-system-ms/ds-sis/dist/css/ds-sis.css`
+  `https://cdn.jsdelivr.net/npm/@design-system-ms/ds-sis/dist/js/ds-sis.js`
 
 ## O que conferir (verificação)
 
@@ -101,7 +101,7 @@ No Storybook (`npm run storybook`):
 
 ```
 poc/
-  package.json                 nome @dsms/ds-sis; scripts: tokens, build, storybook, build-storybook
+  package.json                 nome @design-system-ms/ds-sis; scripts: tokens, build, storybook, build-storybook
   style-dictionary.config.js   formatos css/scss/js/php/python/json (+ PHP/Python custom)
   scripts/build-css.js         concatena tokens.css + CSS dos 10 componentes -> dist/css/ds-sis.css
   vite.lib.config.js           empacota src/index.js -> dist/js/ds-sis.js (lit bundlado, sem CSS duplicado)

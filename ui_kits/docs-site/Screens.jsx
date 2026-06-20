@@ -128,7 +128,7 @@ function ColorsScreen() {
         <p className="body-small" style={{ marginTop: 16, marginBottom: 8 }}>
           Para utilizar a paleta de cores do Design System em seu projeto é necessário importar dos estilos.
         </p>
-        <CodeBlock code={`import '@dsms/ds-sis/lib/styles.css'`} languages={['JavaScript']} />
+        <CodeBlock code={`import '@design-system-ms/ds-sis/lib/styles.css'`} languages={['JavaScript']} />
       </section>
 
       <section>

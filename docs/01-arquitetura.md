@@ -12,7 +12,7 @@ flowchart TB
         H2["Web Components Lit — só interativos: header, busca…"]
     end
     subgraph C3["CAMADA 3 — DISTRIBUIÇÃO"]
-        D1["npm @dsms/ds-sis — times JS"]
+        D1["npm @design-system-ms/ds-sis — times JS"]
         D2["CDN jsDelivr — times PHP/Python sem Node"]
         D3["dist/php · dist/python — tokens nativos por linguagem"]
     end
@@ -68,10 +68,10 @@ Componentes com comportamento (menu mobile, busca, overlay/modal) viram **custom
 
 | Canal | Público | Como consome |
 |---|---|---|
-| **npm** `@dsms/ds-sis` | Times JS/React/Vue | `npm i @dsms/ds-sis` |
+| **npm** `@design-system-ms/ds-sis` | Times JS/React/Vue | `npm i @design-system-ms/ds-sis` |
 | **CDN** (jsDelivr/Pages) | Times PHP/Python sem Node | `<link>` do CSS + `<script>` dos Web Components |
 | **Tokens por linguagem** | Back-ends e temas | importam `dist/php/Tokens.php` ou `dist/python/tokens.py` |
 
-O nome `@dsms/ds-sis` e o import `@dsms/ds-sis/lib/styles.css` **já estão previstos** na documentação atual do projeto (`README.md` da raiz) — esta arquitetura concretiza o que já era a intenção.
+O nome `@design-system-ms/ds-sis` e o import `@design-system-ms/ds-sis/lib/styles.css` **já estão previstos** na documentação atual do projeto (`README.md` da raiz) — esta arquitetura concretiza o que já era a intenção.
 
 Detalhes de consumo por linguagem em [04-multistack.md](04-multistack.md).

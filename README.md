@@ -16,13 +16,13 @@ A documentação é escrita em **Português do Brasil (pt-BR)** — mantenha ess
 | PDF — `Documentacao-Design-System-Figma.pdf`                          | `uploads/` — fornecido pelo usuário (PDF binário; não conseguimos extrair texto limpo)         |
 | Site oficial / repositórios mencionados pelo header da doc           | "Repositório GitLab" + "Repositório TFS" + "Figma UI Kit" — links **não fornecidos** ao agente |
 
-> **Sem URLs públicas do GitLab/TFS ou repositório npm `@dsms/ds-sis`** — todos os tokens foram derivados diretamente dos componentes do Figma (cores, tipos, espaçamentos, sombras).
+> **Sem URLs públicas do GitLab/TFS ou repositório npm `@design-system-ms/ds-sis`** — todos os tokens foram derivados diretamente dos componentes do Figma (cores, tipos, espaçamentos, sombras).
 
 ---
 
 ## Produtos representados
 
-Apesar do título "Design System de Mato Grosso do Sul", o que está documentado no Figma cobre **um único produto**: a própria **biblioteca DS-MS** (`@dsms/ds-sis`), que se manifesta em duas superfícies:
+Apesar do título "Design System de Mato Grosso do Sul", o que está documentado no Figma cobre **um único produto**: a própria **biblioteca DS-MS** (`@design-system-ms/ds-sis`), que se manifesta em duas superfícies:
 
 1. **Site de documentação** — onde o sistema é explicado (Boas-Vindas, Paleta de Cores, Tipografia, Espaçamento, Bordas, Sombras, Overlay, Componentes…). Responsivo: Desktop 1440, Tablet 768, Mobile 360.
 2. **Componentes consumíveis** — botões, inputs, busca, selects, checkbox, header/footer governamentais — destinados a sistemas administrativos e públicos estaduais.
@@ -169,6 +169,6 @@ Cada arquivo em `preview/*.html` é um card individual (~700px). São renderiza�
 ## Notas e cautelas
 
 - Os hex dos níveis 700/800/900 da primary foram **inferidos por progressão** a partir dos 100/200/600 declarados no Figma — pode haver pequena variação para o valor oficial publicado.
-- A documentação fala em `@dsms/ds-sis` e cita `import '@dsms/ds-sis/lib/styles.css'`, mas **não temos acesso ao pacote real**. As classes em `components.css` reconstroem o comportamento descrito; nomes batem com os exemplos do Figma (`.display-large`, `.heading-xx-large`, `.body-medium`, `.shadow-4`).
+- A documentação fala em `@design-system-ms/ds-sis` e cita `import '@design-system-ms/ds-sis/lib/styles.css'`, mas **não temos acesso ao pacote real**. As classes em `components.css` reconstroem o comportamento descrito; nomes batem com os exemplos do Figma (`.display-large`, `.heading-xx-large`, `.body-medium`, `.shadow-4`).
 - Iconify é carregado via CDN nos protótipos — se o repositório oficial usa um sprite local, troque os `<span class="iconify">` por `<svg><use href="#...">`.
 - Não recebemos slides — `slides/` não foi criado.

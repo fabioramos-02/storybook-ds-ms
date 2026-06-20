@@ -6,18 +6,18 @@ O ponto-chave: **os componentes são agnósticos de framework**. Os tokens são 
 
 | Stack | Tokens | Componentes | Como puxa |
 |---|---|---|---|
-| **JS / React / Vue** | `import` de `dist/js/tokens.js` | classes CSS **ou** Web Components | `npm i @dsms/ds-sis` |
+| **JS / React / Vue** | `import` de `dist/js/tokens.js` | classes CSS **ou** Web Components | `npm i @design-system-ms/ds-sis` |
 | **PHP** (Laravel/Blade, WordPress) | `dist/php/Tokens.php` | `<link>` CSS + classes / `<ms-*>` | CDN ou Composer/asset |
 | **Python** (Django/Flask Jinja) | `dist/python/tokens.py` | `<link>` CSS + classes / `<ms-*>` | CDN ou pacote estático |
 
 ## JS / React
 
 ```bash
-npm i @dsms/ds-sis
+npm i @design-system-ms/ds-sis
 ```
 ```jsx
-import '@dsms/ds-sis/dist/css/ds-sis.css';
-import { tokens } from '@dsms/ds-sis/dist/js/tokens.js';
+import '@design-system-ms/ds-sis/dist/css/ds-sis.css';
+import { tokens } from '@design-system-ms/ds-sis/dist/js/tokens.js';
 
 export function Salvar() {
   return <button className="btn btn-primary btn-md">Salvar</button>;
@@ -31,8 +31,8 @@ Sem Node no projeto: puxa o CSS/JS por **CDN** (ou copia para `public/`).
 
 ```blade
 {{-- layout.blade.php --}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dsms/ds-sis/dist/css/ds-sis.css">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@dsms/ds-sis/dist/js/ds-sis.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@design-system-ms/ds-sis/dist/css/ds-sis.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@design-system-ms/ds-sis/dist/js/ds-sis.js"></script>
 
 {{-- uso: classe CSS --}}
 <button class="btn btn-primary btn-md">{{ __('Salvar') }}</button>
@@ -52,8 +52,8 @@ echo \DSMS\Tokens::COLOR_PRIMARY_500; // "#004F9F"
 
 ```jinja
 {# base.html #}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dsms/ds-sis/dist/css/ds-sis.css">
-<script type="module" src="https://cdn.jsdelivr.net/npm/@dsms/ds-sis/dist/js/ds-sis.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@design-system-ms/ds-sis/dist/css/ds-sis.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@design-system-ms/ds-sis/dist/js/ds-sis.js"></script>
 
 <button class="btn btn-primary btn-md">Salvar</button>
 <ms-header secretaria="SETDIG"></ms-header>

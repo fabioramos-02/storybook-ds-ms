@@ -2,7 +2,7 @@
 
 ## Versionamento (Semantic Versioning)
 
-O pacote `@dsms/ds-sis` segue **semver** (`MAJOR.MINOR.PATCH`):
+O pacote `@design-system-ms/ds-sis` segue **semver** (`MAJOR.MINOR.PATCH`):
 
 | Mudança | Incrementa | Exemplo |
 |---|---|---|
@@ -50,6 +50,6 @@ Por ser um produto de **governo brasileiro**, a conformidade não é opcional:
 
 ## Métricas de saúde do DS (sugestão)
 
-- **Adoção**: nº de produtos consumindo `@dsms/ds-sis` e em qual versão (detecta produtos "presos" em versão antiga).
+- **Adoção**: nº de produtos consumindo `@design-system-ms/ds-sis` e em qual versão (detecta produtos "presos" em versão antiga).
 - **Cobertura de acessibilidade**: % de componentes com página de testes preenchida.
 - **Drift**: nº de componentes reimplementados "por fora" (meta: zero).

@@ -34,7 +34,7 @@ Capturado via Playwright (MCP) em `https://www.segov.ms.gov.br/orgaos_colegiados
 | Tipografia do corpo | `system-ui, -apple-system, "Segoe UI", Roboto, ...` (pilha padrão do navegador) | `Open Sans` (headings/interações) + `Roboto` (body), via Google Fonts — ver `colors_and_type.css` | ❌ **SEGOV não carrega as fontes da marca** — usa a fonte default do sistema operacional do visitante |
 | Cor de link/breadcrumb | `rgb(0, 79, 159)` = `#004F9F` | `--content-link` = `#004F9F`/`#0D99F7` conforme contexto | ✅ Compatível |
 
-**Conclusão prática:** a cor de marca está certa porque provavelmente foi copiada manualmente do mesmo manual de identidade visual do Estado — mas a **tipografia não é a oficial**. Isso é o "drift" do jeito mais visível: duas secretarias do mesmo governo, mesma cor, fontes diferentes. Um pacote `@dsms/ds-sis` consumido via `<link>` resolveria isso automaticamente.
+**Conclusão prática:** a cor de marca está certa porque provavelmente foi copiada manualmente do mesmo manual de identidade visual do Estado — mas a **tipografia não é a oficial**. Isso é o "drift" do jeito mais visível: duas secretarias do mesmo governo, mesma cor, fontes diferentes. Um pacote `@design-system-ms/ds-sis` consumido via `<link>` resolveria isso automaticamente.
 
 ## Componente: Menu dropdown / mega-menu
 
@@ -50,4 +50,4 @@ O menu "Institucional" abre um painel com itens e **submenus aninhados** (seta `
 1. **A cor institucional `#004F9F` é respeitada** mesmo fora do DS-MS oficial — confirma que o token está certo e é reconhecido informalmente como "a cor do governo".
 2. **Tudo o que não é cor diverge**: tipografia, raio de borda, timing de animação, ícone (PNG vs SVG), e principalmente **acessibilidade** (teclado e leitor de tela falham no acordeão do SEGOV).
 3. **Sem um pacote único para consumir**, cada secretaria reimplementa os mesmos padrões (acordeão, menu) com qualidade desigual — exatamente a dor descrita em [`00-visao-geral.md`](00-visao-geral.md), agora com evidência de um site real do próprio governo de MS.
-4. **Argumento de negócio:** publicar `@dsms/ds-sis` não é só "manter consistência visual" — é **corrigir falhas de acessibilidade que hoje existem em produção** em outro órgão do mesmo Estado.
+4. **Argumento de negócio:** publicar `@design-system-ms/ds-sis` não é só "manter consistência visual" — é **corrigir falhas de acessibilidade que hoje existem em produção** em outro órgão do mesmo Estado.

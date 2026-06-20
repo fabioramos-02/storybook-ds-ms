@@ -1,4 +1,4 @@
-# 10 — Custos para publicar o pacote `@dsms/ds-sis`
+# 10 — Custos para publicar o pacote `@design-system-ms/ds-sis`
 
 Preços pesquisados em junho/2026. Valores em USD nas fontes originais (referência de câmbio: ~R$ 5,40/USD — ajustar na hora de orçar oficialmente). Este documento orça **a infraestrutura**, não a hora de desenvolvimento.
 
@@ -12,12 +12,12 @@ Preços pesquisados em junho/2026. Valores em USD nas fontes originais (referên
 
 | Opção | Custo | Observação |
 |---|---|---|
-| **npm público** (`npmjs.com`, pacote aberto) | **Grátis** | Qualquer um pode `npm install @dsms/ds-sis`. Exige que o código seja público — adequado, já que é um *design system de governo* (sem segredo a proteger). |
+| **npm público** (`npmjs.com`, pacote aberto) | **Grátis** | Qualquer um pode `npm install @design-system-ms/ds-sis`. Exige que o código seja público — adequado, já que é um *design system de governo* (sem segredo a proteger). |
 | **npm privado** | **US$ 7/usuário/mês** | Só necessário se quisermos o pacote fechado. Não recomendado: não há razão de negócio pra esconder tokens de cor e CSS de um órgão público. |
 | **GitLab Package Registry** (dentro do próprio GitLab institucional) | **Incluso no GitLab Free** | Suporta npm, e ainda PyPI, Maven, Composer (útil se PHP/Python quiserem consumir via gerenciador de pacote nativo, não só CDN). Limite de armazenamento compartilhado de 5GB/namespace no plano Free — folgado para um design system (poucos MB por versão). |
 | **GitHub Packages** | **Grátis até 500MB** (free), 2GB no Pro | Alternativa se o código for hospedado no GitHub em vez do GitLab. Overage: US$ 0,008/GB/dia além da cota. |
 
-**Recomendação (decisão real):** **npm público** (`@dsms/ds-sis`), publicado via GitHub Actions em tag semver. Zero custo. GitLab Package Registry/GitHub Packages ficam como espelho futuro opcional, não necessários agora.
+**Recomendação (decisão real):** **npm público** (`@design-system-ms/ds-sis`), publicado via GitHub Actions em tag semver. Zero custo. GitLab Package Registry/GitHub Packages ficam como espelho futuro opcional, não necessários agora.
 
 ## 2. CDN (para times PHP/Python que não usam Node, via `<link>`/`<script>`)
 
@@ -63,7 +63,7 @@ Preços pesquisados em junho/2026. Valores em USD nas fontes originais (referên
 
 | Item | Serviço | Custo mensal | Custo anual |
 |---|---|---|---|
-| Registro do pacote | npm público (`@dsms/ds-sis`) | R$ 0 | R$ 0 |
+| Registro do pacote | npm público (`@design-system-ms/ds-sis`) | R$ 0 | R$ 0 |
 | CDN | jsDelivr (automático, zero config) | R$ 0 | R$ 0 |
 | CI/CD | GitHub Actions (repo público, ilimitado) | R$ 0 | R$ 0 |
 | Documentação (Storybook) | GitHub Pages | R$ 0 | R$ 0 |
