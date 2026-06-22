@@ -1,34 +1,67 @@
 /* ============================================================================
-   DS-MS — Search (POC). Fiel a .search de components.css (Property1BuscarFocusSmall).
+   DS-MS — Search-global
+   Fiel ao Figma (node 77:155548). 3 estados: default (só ícone, 48x48),
+   actived (campo fechado + placeholder), focused (borda destacada amarela +
+   botão limpar). Pill total.
    ============================================================================ */
 @import "../../../dist/css/tokens.css";
 
-.search {
+.ds-search {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  height: var(--search-height);
-  padding: 0 16px;
-  background: #fff;
-  border: 1px solid var(--search-border);
-  border-radius: var(--search-radius);
-  color: var(--color-neutral-500);
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: 10px;
-  line-height: 16px;
+  gap: 12px;
+  border-radius: 9999px;
+  border: 1px solid rgba(10, 9, 9, .08);
+  background: #ffffff;
+  font-family: "Open Sans", system-ui, sans-serif;
+  cursor: pointer;
 }
-.search input {
+
+.ds-search-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  border: 0;
   background: transparent;
+  color: #30302e;
+  cursor: pointer;
+}
+
+/* default: só o botão de lupa */
+.ds-search-default { padding: 0; border-color: transparent; }
+.ds-search-default .ds-search-icon-btn { border: 1px solid rgba(10, 9, 9, .04); }
+
+/* actived: pílula com placeholder + lupa à direita */
+.ds-search-actived { width: 350px; padding-left: 16px; }
+.ds-search-actived .ds-search-text { flex: 1 0 0; font-size: 16px; line-height: 18px; color: #565654; }
+
+/* focused: borda destacada amarela + texto digitado + botão limpar */
+.ds-search-focused {
+  width: 350px;
+  padding-left: 16px;
+  border: 2px solid #ccac00;
+  cursor: text;
+}
+.ds-search-focused .ds-search-input {
+  flex: 1 0 0;
   border: 0;
   outline: 0;
-  width: 100%;
+  background: transparent;
   font-family: inherit;
-  font-size: var(--search-font-size);
-  color: var(--color-neutral-700);
+  font-size: 16px;
+  line-height: 18px;
+  color: #1d1d1b;
 }
-.search input::placeholder { color: var(--color-neutral-300); }
-.search svg { color: var(--color-neutral-500); flex: none; }
-.search:focus-within {
-  border-color: var(--color-primary-500);
-  box-shadow: 0 0 0 2px rgba(0, 79, 159, .15);
+.ds-search-clear {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  background: transparent;
+  color: #8e8e8e;
+  cursor: pointer;
 }

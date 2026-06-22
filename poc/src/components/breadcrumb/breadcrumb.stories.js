@@ -1,28 +1,33 @@
 import { html } from 'lit';
 import './breadcrumb.css';
 
+const back = html`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M5 12l7-7M5 12l7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
 export default { title: 'Componentes/Breadcrumb', tags: ['autodocs'] };
 
-export const Basico = {
+export const Desktop = {
   render: () => html`
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Serviços</a></li>
-        <li><a href="#">Saúde</a></li>
-        <li><span class="is-current" aria-current="page">Agendar consulta</span></li>
+    <nav class="ds-breadcrumb" aria-label="breadcrumb" style="width:100%">
+      <button class="ds-breadcrumb-back" aria-label="Voltar">${back}</button>
+      <ol class="ds-breadcrumb-list">
+        <li><a href="#">Início</a><span class="ds-breadcrumb-sep">›</span></li>
+        <li><a href="#">Lista de Órgãos</a><span class="ds-breadcrumb-sep">›</span></li>
+        <li><span class="ds-breadcrumb-current" aria-current="page">Secretaria de Estado de Governo e Gestão Estratégica</span></li>
       </ol>
     </nav>
   `,
 };
 
-export const DoisNiveis = {
+export const Mobile = {
   render: () => html`
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li><a href="#">Início</a></li>
-        <li><span class="is-current" aria-current="page">Contato</span></li>
-      </ol>
-    </nav>
+    <div style="max-width:320px; border:1px solid #D4D7D8;">
+      <nav class="ds-breadcrumb" aria-label="breadcrumb">
+        <button class="ds-breadcrumb-back" aria-label="Voltar">${back}</button>
+        <ol class="ds-breadcrumb-list">
+          <li><a href="#">Início</a><span class="ds-breadcrumb-sep">›</span></li>
+          <li><span class="ds-breadcrumb-current" aria-current="page">Secretaria de Estado de Governo e Gestão Estratégica</span></li>
+        </ol>
+      </nav>
+    </div>
   `,
 };

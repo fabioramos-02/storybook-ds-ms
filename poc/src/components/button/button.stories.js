@@ -2,12 +2,19 @@ import { html } from 'lit';
 import './button.css';
 
 /**
- * Button do DS-MS (POC).
- * Renderiza a entrega "CSS classes + HTML" (modelo USWDS/gov.uk):
- * o consumidor aplica `.btn` + variante + tamanho num <button> nativo.
+ * Button do DS-MS — fiel ao Figma (node 77:136152).
+ * Dois eixos: `styled` (paleta: neutral/primary/secondary/tertiary) x
+ * `type` (estilo: primary=filled, secondary=outline, tertiary=texto/ghost).
  */
-const render = ({ variant, size, label, disabled }) => html`
-  <button class="btn btn-${variant} btn-${size}" ?disabled=${disabled}>${label}</button>
+const STYLED_CLASS = {
+  neutral: 'btn-neutral',
+  primary: 'btn-primary-palette',
+  secondary: 'btn-secondary-palette',
+  tertiary: 'btn-tertiary-palette',
+};
+
+const render = ({ styled, type, size, label, disabled }) => html`
+  <button class="btn ${STYLED_CLASS[styled]} btn-${type} btn-${size}" ?disabled=${disabled}>${label}</button>
 `;
 
 export default {
@@ -15,36 +22,50 @@ export default {
   tags: ['autodocs'],
   render,
   argTypes: {
-    variant: {
+    styled: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'simple', 'danger'],
-      description: 'Variante visual do botão',
+      options: ['neutral', 'primary', 'secondary', 'tertiary'],
+      description: 'Paleta de cor do botão',
+    },
+    type: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'tertiary'],
+      description: 'Estilo visual: primary=preenchido, secondary=contornado, tertiary=texto',
     },
     size: {
       control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
-      description: 'Tamanho (sm 32px · md 40px · lg 48px)',
+      options: ['md', 'sm'],
+      description: 'Tamanho (md 48px · sm 32px)',
     },
     label: { control: 'text', description: 'Texto do botão' },
     disabled: { control: 'boolean', description: 'Estado desabilitado' },
   },
-  args: { variant: 'primary', size: 'md', label: 'Botão', disabled: false },
+  args: { styled: 'primary', type: 'primary', size: 'md', label: 'Acessar serviço', disabled: false },
 };
 
 export const Primary = {};
-export const Secondary = { args: { variant: 'secondary' } };
-export const Simple = { args: { variant: 'simple', label: 'Saiba mais' } };
-export const Danger = { args: { variant: 'danger', label: 'Excluir' } };
+export const Secondary = { args: { type: 'secondary' } };
+export const Tertiary = { args: { type: 'tertiary' } };
+export const Neutral = { args: { styled: 'neutral' } };
+export const SecondaryPalette = { args: { styled: 'secondary', label: 'Confirmar' } };
+export const TertiaryPalette = { args: { styled: 'tertiary', label: 'Atenção' } };
 export const Disabled = { args: { disabled: true, label: 'Indisponível' } };
 
-/** Todos os tamanhos lado a lado + estado desabilitado. */
-export const Tamanhos = {
+/** Matriz completa: todas as combinações styled x type, tamanho md. */
+export const Matriz = {
   render: () => html`
-    <div style="display:flex; gap:12px; align-items:center;">
-      <button class="btn btn-primary btn-lg">Large</button>
-      <button class="btn btn-primary btn-md">Medium</button>
-      <button class="btn btn-primary btn-sm">Small</button>
-      <button class="btn btn-primary btn-md" disabled>Disabled</button>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      ${['neutral', 'primary', 'secondary', 'tertiary'].map(
+        (styled) => html`
+          <div style="display:flex; gap:12px; align-items:center;">
+            ${['primary', 'secondary', 'tertiary'].map(
+              (type) => html`
+                <button class="btn ${STYLED_CLASS[styled]} btn-${type} btn-md">${styled}/${type}</button>
+              `
+            )}
+          </div>
+        `
+      )}
     </div>
   `,
 };

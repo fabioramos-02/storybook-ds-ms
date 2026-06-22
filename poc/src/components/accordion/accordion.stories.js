@@ -6,10 +6,10 @@ export default { title: 'Componentes/Accordion', tags: ['autodocs'] };
 export const Basico = {
   render: () => html`
     <details class="accordion">
-      <summary>Como funciona a maturidade digital?</summary>
+      <summary>Title</summary>
       <div class="accordion-body">
-        Cada carta de serviço é avaliada numa régua de 0 a 4, de totalmente presencial a 100%
-        digital.
+        Answer the frequently asked question in a simple sentence, a longish paragraph, or even
+        in a list.
       </div>
     </details>
   `,
@@ -18,8 +18,11 @@ export const Basico = {
 export const Aberto = {
   render: () => html`
     <details class="accordion" open>
-      <summary>Pergunta já expandida</summary>
-      <div class="accordion-body">Conteúdo visível por padrão (atributo <code>open</code>).</div>
+      <summary>Title</summary>
+      <div class="accordion-body">
+        Answer the frequently asked question in a simple sentence, a longish paragraph, or even
+        in a list.
+      </div>
     </details>
   `,
 };

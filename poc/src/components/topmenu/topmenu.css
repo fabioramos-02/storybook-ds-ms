@@ -1,0 +1,63 @@
+/* ============================================================================
+   DS-MS — Topmenu
+   Fiel ao Figma (node 77:135294). Barra utilitária acima do Header: logo
+   ms.gov.br, links de acessibilidade ("ir para conteúdo/navegação/busca"),
+   ouvidoria/transparência, redes sociais. Versão mobile colapsa pra logo +
+   menu (⋮) + libras/contraste.
+   ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
+.ds-topmenu {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 112px;
+  background: #ffffff;
+  box-shadow: 0px 2px 4px 0px rgba(0, 15, 30, .02);
+  font-family: "Open Sans", system-ui, sans-serif;
+  font-size: 14px;
+  gap: 20px;
+}
+.ds-topmenu.is-mobile { padding: 0 12px; justify-content: center; gap: 24px; }
+
+.ds-topmenu-logo {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding-right: 8px;
+  background: #004f9f;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  gap: 8px;
+}
+.ds-topmenu-logo::before { content: ""; display: inline-block; width: 32px; height: 32px; background: rgba(255,255,255,.15); }
+
+.ds-topmenu-links { display: flex; align-items: center; gap: 20px; flex: 1 0 0; }
+.ds-topmenu-links a,
+.ds-topmenu-links button {
+  color: #004f9f;
+  text-decoration: none;
+  background: none;
+  border: 0;
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.ds-topmenu-links a:hover { text-decoration: underline; }
+
+.ds-topmenu-right { display: flex; align-items: center; gap: 20px; }
+.ds-topmenu-right a { color: #004f9f; text-decoration: none; white-space: nowrap; }
+.ds-topmenu-right a:hover { text-decoration: underline; }
+
+.ds-topmenu-social {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  border-left: 1px solid #d5d5d5;
+}
+.ds-topmenu-social-label { color: #8e8e8d; font-weight: 600; font-size: 14px; }
+.ds-topmenu-social-icons { display: flex; align-items: center; gap: 12px; }
+
+.ds-topmenu-toggle { color: #004f9f; background: none; border: 0; cursor: pointer; }

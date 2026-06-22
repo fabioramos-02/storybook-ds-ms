@@ -4,16 +4,22 @@ import { Meta } from '@storybook/blocks';
 
 # Button — uso, acessibilidade e código
 
-O Button é entregue como **classe CSS + HTML** (`.btn` + variante + tamanho num `<button>` nativo).
+O Button é entregue como **classe CSS + HTML** (`.btn` + `styled` (paleta) + `type` (estilo) +
+tamanho num `<button>` nativo). Fiel ao Figma (node `77:136152`, seção "Components").
 Funciona em qualquer stack (PHP, Python, JS) sem framework.
 
-## Quando usar
-- **primary** — ação principal da tela (um por contexto).
-- **secondary** — ação alternativa, sem competir com a primária.
-- **simple** — ação de baixa ênfase (parece um link).
-- **danger** — ação destrutiva (excluir).
+## Eixos
 
-Tamanhos: `sm` (32px), `md` (40px, padrão), `lg` (48px).
+- **styled** — paleta: `neutral` · `primary` · `secondary` · `tertiary`.
+- **type** — estilo visual: `primary` (preenchido) · `secondary` (contornado) · `tertiary` (texto/ghost).
+- **size** — `sm` (32px) · `md` (48px, padrão).
+
+Formato shape: pill total (`border-radius: 9999px`) em todas as combinações.
+
+Classes: `.btn .btn-{styled} .btn-{type} .btn-{size}` — onde `.btn-{styled}` é
+`btn-neutral` / `btn-primary-palette` / `btn-secondary-palette` / `btn-tertiary-palette`
+(prefixo `-palette` evita colisão com as classes de `type`, que usam `btn-primary` /
+`btn-secondary` / `btn-tertiary` diretamente).
 
 ## Acessibilidade (eMAG + WCAG 2.1 AA)
 

@@ -1,24 +1,70 @@
 /* ============================================================================
-   DS-MS — Breadcrumb (POC). Sem origem em components.css da raiz — implementado
-   a partir da documentação pública de designsystem.ms.gov.br/breadcrumb/
-   (estrutura, estados, acessibilidade), não do Figma oficial (acesso bloqueado
-   institucionalmente, ver docs/08-proximos-passos.md).
+   DS-MS — Breadcrumb
+   Fiel ao Figma (node 77:135241). Botão voltar (seta) + lista de itens com
+   underline dashed; item atual sem link, cor neutra. mobile=true trunca pro
+   item anterior + mostra atual em 2 linhas.
    ============================================================================ */
 @import "../../../dist/css/tokens.css";
 
-.breadcrumb {
-  display: flex; align-items: center; flex-wrap: wrap;
-  gap: var(--breadcrumb-gap);
-  margin: 0; padding: 0; list-style: none;
-  font-family: "Roboto", system-ui, sans-serif;
-  font-size: var(--breadcrumb-font-size);
+.ds-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+  border-top: 1px solid rgba(10, 9, 9, .04);
+  background: #ffffff;
+  font-family: "Open Sans", system-ui, sans-serif;
 }
-.breadcrumb li { display: flex; align-items: center; gap: var(--breadcrumb-gap); }
-.breadcrumb li:not(:last-child)::after {
-  content: "›";
-  color: var(--breadcrumb-separator-color);
+
+.ds-breadcrumb-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  border: 1px solid rgba(10, 9, 9, .08);
+  background: transparent;
+  color: #30302e;
+  flex-shrink: 0;
+  cursor: pointer;
 }
-.breadcrumb a { color: var(--breadcrumb-item-color); text-decoration: none; }
-.breadcrumb a:hover { text-decoration: underline; }
-.breadcrumb a:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
-.breadcrumb .is-current { color: var(--breadcrumb-current-color); font-weight: 700; }
+.ds-breadcrumb-back:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
+
+.ds-breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ds-breadcrumb-list li { display: flex; align-items: center; }
+.ds-breadcrumb-sep {
+  color: #8e8e8e;
+  font-size: 11px;
+  padding: 0 8px;
+}
+.ds-breadcrumb-list a {
+  color: #004f9f;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+  border-bottom: 1px dashed #8e8e8e;
+  padding: 4px 0;
+}
+.ds-breadcrumb-list a:hover { color: #003f7f; }
+.ds-breadcrumb-list a:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
+.ds-breadcrumb-current {
+  color: #565654;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 4px 0;
+}
+
+@media (max-width: 480px) {
+  .ds-breadcrumb-list a:not(:last-of-type) { display: none; }
+}

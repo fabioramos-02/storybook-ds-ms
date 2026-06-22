@@ -1,7 +1,8 @@
 /* ============================================================================
-   DS-MS — Button (POC)
-   Consome os tokens GERADOS pelo Style Dictionary (dist/css/tokens.css).
-   Base reaproveitada de components.css da raiz (.btn / .btn-primary / ...).
+   DS-MS — Button
+   Fiel ao Figma (node 77:136152, seção "Components"). Eixos: styled (paleta) x
+   type (estilo: primary=filled, secondary=outline, tertiary=texto/ghost).
+   Pill total (radius huge), 2 tamanhos (md 48px / sm 32px).
    ============================================================================ */
 @import "../../../dist/css/tokens.css";
 
@@ -9,11 +10,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 4px;
   font-family: "Roboto", system-ui, sans-serif;
-  font-weight: var(--button-font-weight);
-  border-radius: var(--button-radius);
-  border: 2px solid transparent;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: 1px solid transparent;
   background: transparent;
   cursor: pointer;
   transition: background-color .15s ease, color .15s ease, border-color .15s ease, transform .05s ease;
@@ -21,8 +22,6 @@
   text-decoration: none;
 }
 
-/* Foco visível — requisito de acessibilidade (eMAG/WCAG: foco perceptível).
-   Cor igual ao root colors_and_type.css: var(--color-info-600). */
 .btn:focus-visible {
   outline: 2px solid var(--color-info-600);
   outline-offset: 2px;
@@ -35,43 +34,45 @@
 }
 
 /* Tamanhos */
-.btn-sm { height: var(--button-size-sm-height); padding: 0 var(--button-size-sm-padding-x); font-size: var(--button-size-sm-font-size); }
-.btn-md { height: var(--button-size-md-height); padding: 0 var(--button-size-md-padding-x); font-size: var(--button-size-md-font-size); }
-.btn-lg { height: var(--button-size-lg-height); padding: 0 var(--button-size-lg-padding-x); font-size: var(--button-size-lg-font-size); }
+.btn-md { height: 48px; padding: 12px 16px; font-size: 16px; }
+.btn-sm { height: 32px; padding: 4px 12px; font-size: 14px; }
 
-/* Variante: primária */
-.btn-primary {
-  background: var(--button-primary-background-default);
-  color: var(--button-primary-text);
-  border-color: var(--button-primary-background-default);
-}
-.btn-primary:hover  { background: var(--button-primary-background-hover);  border-color: var(--button-primary-background-hover); }
-.btn-primary:active { background: var(--button-primary-background-active); border-color: var(--button-primary-background-active); }
+/* ===== styled=neutral ===== */
+.btn-neutral.btn-primary  { background: rgba(10,9,9,.08); color: #1d1d1b; }
+.btn-neutral.btn-primary:hover { background: rgba(10,9,9,.12); }
 
-/* Variante: secundária (outline) */
-.btn-secondary {
-  background: transparent;
-  color: var(--color-primary-500);
-  border-color: var(--color-primary-500);
-}
-.btn-secondary:hover  { background: rgba(0, 79, 159, .06); }
-.btn-secondary:active { background: rgba(0, 79, 159, .12); }
+.btn-neutral.btn-secondary { background: transparent; color: #30302e; border-color: rgba(10,9,9,.04); }
+.btn-neutral.btn-secondary:hover { background: rgba(10,9,9,.04); color: #1d1d1b; border-color: rgba(10,9,9,.08); }
 
-/* Variante: simples (link) */
-.btn-simple {
-  background: transparent;
-  color: var(--color-primary-500);
-  border-color: transparent;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-.btn-simple:hover { color: var(--color-primary-600); text-decoration: underline; }
+.btn-neutral.btn-tertiary { background: transparent; color: #30302e; }
+.btn-neutral.btn-tertiary:hover { color: #1d1d1b; }
 
-/* Variante: perigo */
-.btn-danger {
-  background: var(--color-error-500);
-  color: #fff;
-  border-color: var(--color-error-500);
-}
-.btn-danger:hover  { background: var(--color-error-600); border-color: var(--color-error-600); }
-.btn-danger:active { background: var(--color-error-700); border-color: var(--color-error-700); }
+/* ===== styled=primary ===== */
+.btn-primary-palette.btn-primary { background: #004f9f; color: #f9f9f9; }
+.btn-primary-palette.btn-primary:hover { background: #003f7f; }
+
+.btn-primary-palette.btn-secondary { background: transparent; color: #004f9f; border-color: #004f9f; }
+.btn-primary-palette.btn-secondary:hover { background: rgba(10,9,9,.04); color: #003f7f; border-color: #003f7f; }
+
+.btn-primary-palette.btn-tertiary { background: transparent; color: #004f9f; }
+.btn-primary-palette.btn-tertiary:hover { color: #003f7f; }
+
+/* ===== styled=secondary ===== */
+.btn-secondary-palette.btn-primary { background: #007f31; color: #f9f9f9; }
+.btn-secondary-palette.btn-primary:hover { background: #006024; }
+
+.btn-secondary-palette.btn-secondary { background: transparent; color: #007f31; border-color: #007f31; }
+.btn-secondary-palette.btn-secondary:hover { background: rgba(10,9,9,.04); color: #006024; border-color: #006024; }
+
+.btn-secondary-palette.btn-tertiary { background: transparent; color: #007f31; }
+.btn-secondary-palette.btn-tertiary:hover { color: #006024; }
+
+/* ===== styled=tertiary ===== */
+.btn-tertiary-palette.btn-primary { background: #ffd500; color: #30302e; border-color: #ffd500; }
+.btn-tertiary-palette.btn-primary:hover { background: #ccac00; border-color: #ccac00; }
+
+.btn-tertiary-palette.btn-secondary { background: transparent; color: #ffd500; border-color: #ffd500; }
+.btn-tertiary-palette.btn-secondary:hover { background: rgba(10,9,9,.04); color: #ccac00; border-color: #ccac00; }
+
+.btn-tertiary-palette.btn-tertiary { background: transparent; color: #ffd500; }
+.btn-tertiary-palette.btn-tertiary:hover { color: #ccac00; }
