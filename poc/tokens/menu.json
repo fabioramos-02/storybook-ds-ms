@@ -1,0 +1,9 @@
+{
+  "menu": {
+    "height": { "value": "48px" },
+    "background": { "value": "{color.neutral.800.value}" },
+    "submenuBackground": { "value": "{color.neutral.700.value}" },
+    "itemColor": { "value": "{color.neutral.white.value}" },
+    "itemHoverBackground": { "value": "{color.neutral.700.value}" }
+  }
+}

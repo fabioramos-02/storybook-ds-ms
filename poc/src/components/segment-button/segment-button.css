@@ -1,0 +1,46 @@
+/* ============================================================================
+   DS-MS — Segment Button (POC). Sem origem em components.css da raiz —
+   implementado a partir da documentação pública de
+   designsystem.ms.gov.br/segment-button/. Seleção exclusiva é nativa via
+   input[type=radio]:checked — mesmo truque de .toggle em selection.css —
+   sem JS necessário.
+   ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
+.segment-button {
+  display: inline-flex;
+  background: var(--segment-button-background);
+  border-radius: var(--segment-button-radius);
+  padding: 2px;
+  gap: 2px;
+}
+.segment-button input {
+  position: absolute;
+  opacity: 0;
+  width: 1px; height: 1px;
+  pointer-events: none;
+}
+.segment-button label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--segment-button-height);
+  padding: 0 16px;
+  border-radius: calc(var(--segment-button-radius) - 1px);
+  font-family: "Roboto", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--segment-button-font-size);
+  color: var(--segment-button-item-color);
+  cursor: pointer;
+  transition: background-color .12s ease, color .12s ease;
+  white-space: nowrap;
+}
+.segment-button input:checked + label {
+  background: var(--segment-button-selected-background);
+  color: var(--segment-button-selected-color);
+}
+.segment-button input:focus-visible + label {
+  outline: 2px solid var(--color-info-600);
+  outline-offset: 2px;
+}
+.segment-button input:disabled + label { opacity: .5; cursor: not-allowed; }

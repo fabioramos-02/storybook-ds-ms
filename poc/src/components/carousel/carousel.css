@@ -1,0 +1,64 @@
+/* ============================================================================
+   DS-MS — Carousel (POC). Sem origem em components.css da raiz — implementado
+   a partir da documentação pública de designsystem.ms.gov.br/carousel/.
+   3º Web Component do DS-MS (ms-carousel): autoplay pausável + controles +
+   navegação por teclado são comportamento real, exigem JS (mesmo critério do
+   Header/Menu) — ver carousel.mdx.
+   ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
+.ds-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.ds-carousel:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
+
+.ds-carousel .carousel-track {
+  display: flex;
+  height: var(--carousel-height);
+  transition: transform .4s ease;
+}
+.ds-carousel .carousel-slide {
+  flex: 0 0 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--carousel-slide-background);
+  text-align: center;
+  padding: 24px;
+}
+.ds-carousel .carousel-slide h3 {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 1.5rem; margin: 0 0 8px; color: var(--color-neutral-700);
+}
+.ds-carousel .carousel-slide p {
+  font-family: "Roboto", system-ui, sans-serif;
+  margin: 0; color: var(--color-neutral-500);
+}
+
+.ds-carousel .carousel-control {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px;
+  border-radius: 50%; border: 0;
+  background: var(--carousel-control-background);
+  color: var(--carousel-control-color);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0px 1px 4px rgba(0,32,64,.2);
+}
+.ds-carousel .carousel-control.prev { left: 12px; }
+.ds-carousel .carousel-control.next { right: 12px; }
+.ds-carousel .carousel-control:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
+
+.ds-carousel .carousel-dots {
+  position: absolute; bottom: 12px; left: 0; right: 0;
+  display: flex; justify-content: center; gap: 8px;
+}
+.ds-carousel .carousel-dots button {
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 0; padding: 0;
+  background: var(--carousel-dot-color);
+  cursor: pointer;
+}
+.ds-carousel .carousel-dots button[aria-current="true"] { background: var(--carousel-dot-active-color); }
+.ds-carousel .carousel-dots button:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }

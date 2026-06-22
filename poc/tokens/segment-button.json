@@ -1,0 +1,11 @@
+{
+  "segmentButton": {
+    "height": { "value": "40px" },
+    "radius": { "value": "4px" },
+    "fontSize": { "value": "14px" },
+    "background": { "value": "{color.neutral.100.value}" },
+    "itemColor": { "value": "{color.neutral.600.value}" },
+    "selectedBackground": { "value": "{color.primary.500.value}" },
+    "selectedColor": { "value": "{color.content.onBrand.value}" }
+  }
+}

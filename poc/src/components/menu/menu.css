@@ -1,0 +1,74 @@
+/* ============================================================================
+   DS-MS — Menu (POC). Sem origem em components.css da raiz — implementado a
+   partir da documentação pública de designsystem.ms.gov.br/menu/.
+   2º Web Component do DS-MS (ms-menu), mesmo critério do Header: tem
+   comportamento real (toggle mobile, submenu) -> centralizado num custom
+   element em vez de cada stack reimplementar o JS.
+   Cor de fundo da spec oficial (#212121) não existe na paleta local —
+   aproximado para --color-neutral-800 (#192025), o tom mais próximo
+   disponível sem acesso ao Figma (ver docs/08-proximos-passos.md).
+   ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
+.ds-menu {
+  background: var(--menu-background);
+  height: var(--menu-height);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.ds-menu > ul {
+  display: flex; align-items: center; gap: 0;
+  margin: 0; padding: 0; list-style: none;
+  height: 100%;
+}
+.ds-menu li { position: relative; height: 100%; display: flex; align-items: center; }
+.ds-menu a, .ds-menu .menu-link {
+  display: flex; align-items: center; gap: 6px;
+  height: 100%; padding: 0 20px;
+  color: var(--menu-item-color);
+  text-decoration: none;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-weight: 700; font-size: 14px;
+  background: transparent; border: 0; cursor: pointer;
+}
+.ds-menu a:hover, .ds-menu .menu-link:hover { background: var(--menu-item-hover-background); }
+.ds-menu a:focus-visible, .ds-menu .menu-link:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+
+.ds-menu .submenu {
+  display: none;
+  position: absolute; top: 100%; left: 0;
+  min-width: 200px;
+  flex-direction: column;
+  background: var(--menu-submenu-background);
+  padding: 4px;
+  margin: 0; list-style: none;
+  z-index: 20;
+}
+.ds-menu li.has-submenu:hover .submenu,
+.ds-menu li.has-submenu.is-open .submenu { display: flex; }
+.ds-menu .submenu a { height: auto; padding: 10px 16px; }
+
+.ds-menu .menu-toggle {
+  display: none;
+  margin-left: auto;
+  background: transparent; border: 0; color: var(--menu-item-color);
+  cursor: pointer; padding: 12px 16px;
+}
+.ds-menu .menu-toggle:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+
+@media (max-width: 768px) {
+  .ds-menu { height: auto; flex-wrap: wrap; }
+  .ds-menu > ul { display: none; flex-direction: column; width: 100%; height: auto; }
+  .ds-menu > ul.is-open { display: flex; }
+  .ds-menu .submenu { position: static; }
+  .ds-menu .menu-toggle { display: inline-flex; }
+}
+
+/* Classe gêmea do @media — demonstra o estado mobile no Storybook independente
+   da largura real do iframe (mesmo recurso usado em header.css). */
+.ds-menu.is-mobile { height: auto; flex-wrap: wrap; }
+.ds-menu.is-mobile > ul { display: none; flex-direction: column; width: 100%; height: auto; }
+.ds-menu.is-mobile > ul.is-open { display: flex; }
+.ds-menu.is-mobile .submenu { position: static; }
+.ds-menu.is-mobile .menu-toggle { display: inline-flex; }

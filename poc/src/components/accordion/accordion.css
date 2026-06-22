@@ -1,0 +1,48 @@
+/* ============================================================================
+   DS-MS — Accordion (POC). Sem origem em components.css da raiz — implementado
+   a partir da documentação pública de designsystem.ms.gov.br/accordion/.
+   Decisão técnica: <details>/<summary> nativo — disclosure do browser já
+   resolve expand/collapse + leitura por screen reader, sem JS necessário
+   (mesmo critério de "CSS+HTML primeiro" do resto do POC).
+   ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
+.accordion {
+  border: 1px solid var(--accordion-border);
+  border-radius: var(--accordion-radius);
+  overflow: hidden;
+}
+.accordion + .accordion { margin-top: 8px; }
+.accordion summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: var(--accordion-header-padding-y) var(--accordion-header-padding-x);
+  font-family: "Roboto", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: var(--accordion-title-font-size);
+  color: var(--accordion-title-color);
+}
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion summary::after {
+  content: "▸";
+  flex: none;
+  transition: transform .2s ease;
+}
+.accordion[open] summary::after { transform: rotate(90deg); }
+.accordion summary:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
+.accordion summary:hover { background: var(--color-neutral-100); }
+.accordion .accordion-body {
+  padding: 0 var(--accordion-header-padding-x) var(--accordion-header-padding-y);
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--accordion-body-color);
+  border-top: 1px solid var(--accordion-border);
+}
+.accordion.is-disabled summary { pointer-events: none; opacity: .5; }
+
+/* Sub-accordion: indentação leve dentro do corpo */
+.accordion .accordion { margin: 8px 0 0; }

@@ -1,0 +1,9 @@
+{
+  "breadcrumb": {
+    "fontSize": { "value": "14px" },
+    "gap": { "value": "8px" },
+    "separatorColor": { "value": "{color.neutral.400.value}" },
+    "itemColor": { "value": "{color.primary.500.value}" },
+    "currentColor": { "value": "{color.neutral.700.value}" }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "carousel": {
+    "height": { "value": "280px" },
+    "slideBackground": { "value": "{color.primary.100.value}" },
+    "controlBackground": { "value": "{color.neutral.white.value}" },
+    "controlColor": { "value": "{color.neutral.700.value}" },
+    "dotColor": { "value": "{color.neutral.300.value}" },
+    "dotActiveColor": { "value": "{color.primary.500.value}" }
+  }
+}

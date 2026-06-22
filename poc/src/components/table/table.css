@@ -1,0 +1,35 @@
+/* ============================================================================
+   DS-MS — Table (POC). Sem origem em components.css da raiz — implementado a
+   partir da documentação pública de designsystem.ms.gov.br/table/. Ordenação
+   e seleção em lote interativas ficam fora de escopo (exigem JS) — ver
+   table.mdx. Status de linha reaproveita .tag (já implementado).
+   ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
+.table { width: 100%; border-collapse: collapse; font-family: "Roboto", system-ui, sans-serif; font-size: 14px; }
+.table th, .table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--table-border);
+  text-align: left;
+  vertical-align: middle;
+}
+.table th {
+  background: var(--table-header-background);
+  color: var(--table-header-color);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.table tbody tr:hover { background: var(--table-row-hover); }
+.table tbody tr:focus-within { background: var(--table-row-hover); }
+
+.table-striped tbody tr:nth-child(even) { background: var(--table-stripe-background); }
+.table-striped tbody tr:nth-child(even):hover { background: var(--table-row-hover); }
+
+.table-compact th, .table-compact td { padding: 8px 12px; }
+
+.table .col-actions { text-align: right; white-space: nowrap; }
+.table .col-select { width: 1%; }
+
+.table caption { text-align: left; padding: 8px 0; font-weight: 700; color: var(--table-header-color); }

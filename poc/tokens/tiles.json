@@ -1,0 +1,11 @@
+{
+  "tiles": {
+    "radius": { "value": "8px" },
+    "padding": { "value": "24px" },
+    "gap": { "value": "16px" },
+    "neutralBackground": { "value": "{color.neutral.100.value}" },
+    "neutralColor": { "value": "{color.neutral.700.value}" },
+    "primaryBackground": { "value": "{color.primary.500.value}" },
+    "primaryColor": { "value": "{color.content.onBrand.value}" }
+  }
+}

@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/Segment Button/Acessibilidade & uso" />
+
+# Segment Button — uso e acessibilidade
+
+Implementado a partir da documentação pública de
+[designsystem.ms.gov.br/segment-button](https://www.designsystem.ms.gov.br/segment-button/) —
+sem Figma de origem (ver [`docs/08-proximos-passos.md`](../../../../docs/08-proximos-passos.md)).
+
+## Decisão técnica: radio nativo, sem JS
+A regra do componente é "apenas uma opção selecionada por vez" — exatamente o comportamento
+nativo de um grupo `<input type="radio" name="...">`. Em vez de reimplementar isso em
+JavaScript, cada opção é um radio escondido (`opacity:0`) + `<label>` estilizado como botão; o
+estado selecionado vem de `:checked + label`, igual ao truque já usado no `.toggle` de
+`selection.css`.
+
+## Estrutura
+```html
+<div class="segment-button" role="group" aria-label="Modo de visualização">
+  <input type="radio" name="view" id="view-list" checked>
+  <label for="view-list">Lista</label>
+  <input type="radio" name="view" id="view-grid">
+  <label for="view-grid">Grade</label>
+</div>
+```
+
+## Acessibilidade
+- `role="group"` + `aria-label` no container — leitor de tela anuncia o conjunto.
+- `name` compartilhado entre os radios garante seleção exclusiva nativa (sem precisar de
+  `aria-pressed` manual nem JS para impedir múltipla seleção).
+- `:focus-visible` no label via seletor de irmão (`input:focus-visible + label`).
+- **Não usar** para ações destrutivas — é seletor de estado/visualização, não confirmação.

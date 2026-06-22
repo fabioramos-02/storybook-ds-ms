@@ -1,0 +1,9 @@
+{
+  "label": {
+    "fontSize": { "value": "{input.label.fontSize.value}" },
+    "fontWeight": { "value": "{input.label.fontWeight.value}" },
+    "color": { "value": "{color.neutral.700.value}" },
+    "requiredColor": { "value": "{color.error.500.value}" },
+    "disabledColor": { "value": "{color.neutral.300.value}" }
+  }
+}

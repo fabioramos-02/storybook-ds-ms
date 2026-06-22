@@ -1,0 +1,42 @@
+/* ============================================================================
+   DS-MS — Tiles (POC). Sem origem em components.css da raiz — implementado a
+   partir da documentação pública de designsystem.ms.gov.br/tiles/.
+   Componente de ação ampliada (navegação para módulos/funcionalidades) —
+   puramente visual/navegacional, sem estado interno, CSS+HTML puro.
+   ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
+.tiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--tiles-gap);
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: var(--tiles-padding);
+  border-radius: var(--tiles-radius);
+  background: var(--tiles-neutral-background);
+  color: var(--tiles-neutral-color);
+  text-decoration: none;
+  box-shadow: 0px 1px 2px rgba(0,32,64,.08);
+  transition: box-shadow .15s ease, transform .12s ease;
+  min-height: 44px;
+}
+.tile:hover { box-shadow: 0px 4px 8px rgba(0,32,64,.16); }
+.tile:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
+.tile:active { transform: scale(.99); }
+.tile.is-selected { outline: 2px solid var(--color-primary-500); }
+.tile.is-disabled { opacity: .5; pointer-events: none; }
+
+.tile-primary { background: var(--tiles-primary-background); color: var(--tiles-primary-color); }
+
+.tile-linked { background: transparent; border: 1px solid var(--tiles-neutral-background); color: var(--color-primary-500); box-shadow: none; }
+
+.tile-horizontal { flex-direction: row; align-items: center; gap: 16px; }
+
+.tile .tile-icon { width: 32px; height: 32px; flex: none; }
+.tile .tile-label { font-family: "Roboto", system-ui, sans-serif; font-weight: 700; font-size: 16px; }
+.tile .tile-description { font-family: "Roboto", system-ui, sans-serif; font-size: 13px; opacity: .85; margin: 0; }

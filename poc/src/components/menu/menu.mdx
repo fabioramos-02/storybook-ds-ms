@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/Menu/Acessibilidade & uso" />
+
+# Menu — Web Component, uso e acessibilidade
+
+Implementado a partir da documentação pública de
+[designsystem.ms.gov.br/menu](https://www.designsystem.ms.gov.br/menu/) — sem Figma de origem
+(ver [`docs/08-proximos-passos.md`](../../../../docs/08-proximos-passos.md)). Cor de fundo
+oficial documentada (#212121) não existe na paleta local — usei `--color-neutral-800`
+(#192025), o tom mais próximo disponível; ajustar quando o Figma real estiver acessível.
+
+## Por que Web Component, e não só CSS+HTML
+Mesmo critério do `<ms-header>` ([header.mdx](../header/header.mdx)): o Menu tem **comportamento
+real** — submenu que abre por hover/clique, e toggle de menu completo em mobile
+(`aria-expanded`). Centralizando em `<ms-menu>`, qualquer stack só cola a tag:
+
+```html
+<script type="module" src=".../ds-sis.js"></script>
+<ms-menu></ms-menu>
+```
+
+## Decisão técnica: Light DOM
+Mesma decisão do Header — `createRenderRoot()` retorna `this`, herda o CSS global
+(`menu.css`/`ds-sis.css`) em vez de isolar em Shadow DOM, mantendo uma única fonte de CSS.
+
+## Acessibilidade (eMAG + WCAG 2.1 AA)
+- `<nav aria-label="Menu principal">` — região nomeada.
+- Botão de menu mobile com `aria-expanded`/`aria-controls="ms-menu-list"` — igual ao Header.
+- Itens com submenu usam `<ul class="submenu">` aninhada; submenu some/aparece via `:hover` no
+  desktop e `.is-open` no mobile (ainda sem teclado dedicado para abrir submenu sem hover —
+  próximo incremento: `@click`/`Enter` no item pai, hoje cobre só o caso desktop com mouse).
+- `:focus-visible` nos links com outline branco sobre fundo escuro.
+- Prop `force-mobile`/`open` permite demonstrar os 3 estados (Desktop, Mobile fechado, Mobile
+  aberto) sem depender da largura real do iframe do Storybook — mesmo recurso do Header.

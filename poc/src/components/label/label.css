@@ -1,0 +1,19 @@
+/* ============================================================================
+   DS-MS — Label (POC), versão standalone. `.field-label` (input.css) já cobre
+   o caso de label-de-campo; este `.label` é a versão isolada para uso fora de
+   formulário (ex.: rótulo de seção, badge textual) — pedida como item próprio
+   na lista oficial de 13 componentes do Storybook. Reaproveita os mesmos
+   tokens de fonte de input.json (referência cross-arquivo no Style Dictionary).
+   ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
+.label {
+  display: inline-block;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  line-height: 24px;
+  color: var(--label-color);
+}
+.label .required { color: var(--label-required-color); margin-left: 2px; }
+.label.is-disabled { color: var(--label-disabled-color); }

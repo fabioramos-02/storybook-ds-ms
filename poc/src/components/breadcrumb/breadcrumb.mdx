@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/Breadcrumb/Acessibilidade & uso" />
+
+# Breadcrumb — uso e acessibilidade
+
+CSS+HTML puro — sem comportamento, não precisa de Web Component. Implementado a partir da
+documentação pública de [designsystem.ms.gov.br/breadcrumb](https://www.designsystem.ms.gov.br/breadcrumb/)
+(estrutura, estados, boas práticas), não do Figma oficial — ver
+[`docs/08-proximos-passos.md`](../../../../docs/08-proximos-passos.md) sobre o bloqueio de acesso.
+
+## Estrutura
+```html
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li><a href="#">Início</a></li>
+    <li><a href="#">Serviços</a></li>
+    <li><span class="is-current" aria-current="page">Página atual</span></li>
+  </ol>
+</nav>
+```
+
+## Regra de uso
+Todos os níveis anteriores ao atual são links (`<a>`); o último item é o item atual, **não é
+link** — usar `<span class="is-current" aria-current="page">`. Indicado para portais com mais
+de 2 níveis de hierarquia.
+
+## Acessibilidade
+- `<nav aria-label="breadcrumb">` — região nomeada para leitor de tela.
+- `aria-current="page"` no item atual — indica a página corrente sem depender só de cor/negrito.
+- `:focus-visible` nos links com outline visível sobre fundo claro.

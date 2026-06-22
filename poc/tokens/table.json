@@ -1,0 +1,9 @@
+{
+  "table": {
+    "headerBackground": { "value": "{color.neutral.100.value}" },
+    "headerColor": { "value": "{color.neutral.700.value}" },
+    "border": { "value": "{color.neutral.200.value}" },
+    "rowHover": { "value": "{color.primary.100.value}" },
+    "stripeBackground": { "value": "{color.neutral.100.value}" }
+  }
+}

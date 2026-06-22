@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/Tiles/Acessibilidade & uso" />
+
+# Tiles — uso e acessibilidade
+
+Implementado a partir da documentação pública de
+[designsystem.ms.gov.br/tiles](https://www.designsystem.ms.gov.br/tiles/) — sem Figma de
+origem (ver [`docs/08-proximos-passos.md`](../../../../docs/08-proximos-passos.md)).
+
+## Definição
+"Componente de ação ampliada" para representar funcionalidades, módulos ou áreas de navegação
+dentro de uma central de sistema — portais administrativos, catálogos de serviços.
+
+## Variantes
+- `.tile` (neutro, padrão) · `.tile-primary` (destaque, fundo sólido) · `.tile-linked` (borda,
+  uso moderado) · `.tile-horizontal` (ícone à esquerda, texto à direita — listas).
+
+## Responsividade
+Grid recomendado: 2–4 colunas no desktop, reduzindo no tablet, **1 coluna no mobile** com
+altura mínima clicável de 44px (`.tiles-grid` usa `auto-fit, minmax(200px, 1fr)` — já colapsa
+para 1 coluna sozinho em telas estreitas, sem precisar de media query adicional).
+
+## Acessibilidade
+- Cada tile é um `<a>` (navegação) ou `<button>` (ação sem navegação) — área clicável
+  inteira, nunca só o ícone/label.
+- `:focus-visible` com outline — essencial porque tiles costumam ter pouco contraste de borda.
+- `.is-disabled` e `.is-selected` comunicam estado sem depender só de cor (usar também
+  `aria-disabled`/`aria-pressed` no HTML real, conforme o contexto de uso).

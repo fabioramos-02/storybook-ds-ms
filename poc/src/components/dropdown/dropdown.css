@@ -1,0 +1,68 @@
+/* ============================================================================
+   DS-MS — Dropdown (POC). Sem origem em components.css da raiz — implementado
+   a partir da documentação pública de designsystem.ms.gov.br/dropdown/.
+
+   Spec oficial lista 6 variantes (select, combobox, autocomplete, menu,
+   multi-select, searchable select). Cobertura desta rodada:
+   - "select" simples -> já existe como .field-select (input.css) — sem CSS
+     novo, só documentado aqui (ver dropdown.mdx).
+   - "menu" (ações administrativas) -> .dropdown abaixo, via <details>/<summary>
+     nativo (mesmo padrão do Accordion), sem JS.
+   Combobox/autocomplete/multi-select/searchable select EXIGEM JS real
+   (filtro dinâmico, múltipla seleção) — fora de escopo, documentado no .mdx.
+   ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
+.dropdown { position: relative; display: inline-block; }
+.dropdown summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--dropdown-menu-border);
+  border-radius: 4px;
+  background: var(--dropdown-menu-background);
+  font-family: "Roboto", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--dropdown-item-color);
+}
+.dropdown summary::-webkit-details-marker { display: none; }
+.dropdown summary::after { content: "▾"; }
+.dropdown summary:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
+
+.dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%; left: 0;
+  margin-top: 4px;
+  min-width: 180px;
+  background: var(--dropdown-menu-background);
+  border: 1px solid var(--dropdown-menu-border);
+  border-radius: 4px;
+  box-shadow: 0px 4px 8px rgba(0,32,64,.16);
+  padding: 4px;
+  z-index: 10;
+  max-height: 280px;
+  overflow-y: auto;
+}
+.dropdown .dropdown-menu a,
+.dropdown .dropdown-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 0;
+  background: transparent;
+  color: var(--dropdown-item-color);
+  text-decoration: none;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+.dropdown .dropdown-menu a:hover,
+.dropdown .dropdown-menu button:hover { background: var(--dropdown-item-hover-background); }
+.dropdown .dropdown-menu a:focus-visible,
+.dropdown .dropdown-menu button:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: -2px; }

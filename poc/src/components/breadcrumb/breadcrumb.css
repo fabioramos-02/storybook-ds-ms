@@ -1,0 +1,24 @@
+/* ============================================================================
+   DS-MS — Breadcrumb (POC). Sem origem em components.css da raiz — implementado
+   a partir da documentação pública de designsystem.ms.gov.br/breadcrumb/
+   (estrutura, estados, acessibilidade), não do Figma oficial (acesso bloqueado
+   institucionalmente, ver docs/08-proximos-passos.md).
+   ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
+.breadcrumb {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: var(--breadcrumb-gap);
+  margin: 0; padding: 0; list-style: none;
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: var(--breadcrumb-font-size);
+}
+.breadcrumb li { display: flex; align-items: center; gap: var(--breadcrumb-gap); }
+.breadcrumb li:not(:last-child)::after {
+  content: "›";
+  color: var(--breadcrumb-separator-color);
+}
+.breadcrumb a { color: var(--breadcrumb-item-color); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb a:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
+.breadcrumb .is-current { color: var(--breadcrumb-current-color); font-weight: 700; }

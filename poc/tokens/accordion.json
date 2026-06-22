@@ -1,0 +1,11 @@
+{
+  "accordion": {
+    "border": { "value": "{color.neutral.200.value}" },
+    "radius": { "value": "8px" },
+    "headerPaddingY": { "value": "16px" },
+    "headerPaddingX": { "value": "20px" },
+    "titleColor": { "value": "{color.neutral.700.value}" },
+    "titleFontSize": { "value": "16px" },
+    "bodyColor": { "value": "{color.neutral.500.value}" }
+  }
+}

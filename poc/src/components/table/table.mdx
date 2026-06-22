@@ -1,0 +1,32 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/Table/Acessibilidade & uso" />
+
+# Table — uso e acessibilidade
+
+Implementado a partir da documentação pública de
+[designsystem.ms.gov.br/table](https://www.designsystem.ms.gov.br/table/) — sem Figma de
+origem (ver [`docs/08-proximos-passos.md`](../../../../docs/08-proximos-passos.md)).
+
+## Escopo desta implementação
+CSS+HTML semântico (`<table>`/`<thead>`/`<tbody>`) cobre: tabela simples, com seleção (reusa
+`.checkbox` de `selection.css`), com status (reusa `.tag`), com ações, variantes `.table-striped`
+e `.table-compact`. **Fora de escopo nesta rodada** (exigem JavaScript real, não CSS+HTML):
+ordenação clicável de coluna, paginação, ações em lote dinâmicas. Ficam documentadas como
+próximo passo, mesmo critério que `08-proximos-passos.md` já usa para outros gaps.
+
+## Boas práticas (da spec oficial)
+✅ Máximo 6–8 colunas, coluna de ações por último, paginação abaixo da tabela.
+❌ Cor sem significado (sempre combinar com texto/ícone), esconder ações críticas, omitir
+confirmação em ações destrutivas.
+
+## Responsividade
+Recomendação oficial para mobile: converter para lista empilhada ou cards — **não
+implementado** nesta rodada (a tabela atual rola horizontalmente em telas estreitas via
+`overflow-x` no container, padrão já usado em outros projetos consumidores).
+
+## Acessibilidade
+- `<caption>` nomeia a tabela para leitor de tela.
+- `<th scope>` implícito pela posição em `<thead>`; checkboxes usam `aria-label` descritivo
+  por linha (não dependem só da posição visual).
+- Contraste do header (`--table-header-background`/`--table-header-color`) testado AA.
