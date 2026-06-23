@@ -12,7 +12,7 @@
   font-family: "Roboto", system-ui, sans-serif;
   font-size: var(--label-font-size);
   font-weight: var(--label-font-weight);
-  line-height: 24px;
+  line-height: var(--font-lineheight-24);
   color: var(--label-color);
 }
 .label .required { color: var(--label-required-color); margin-left: 2px; }

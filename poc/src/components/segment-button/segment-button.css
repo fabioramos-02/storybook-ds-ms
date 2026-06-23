@@ -11,8 +11,8 @@
   display: inline-flex;
   background: var(--segment-button-background);
   border-radius: var(--segment-button-radius);
-  padding: 2px;
-  gap: 2px;
+  padding: var(--spacing-2);
+  gap: var(--spacing-2);
 }
 .segment-button input {
   position: absolute;
@@ -25,10 +25,10 @@
   align-items: center;
   justify-content: center;
   height: var(--segment-button-height);
-  padding: 0 16px;
+  padding: 0 var(--spacing-16);
   border-radius: calc(var(--segment-button-radius) - 1px);
   font-family: "Roboto", system-ui, sans-serif;
-  font-weight: 700;
+  font-weight: var(--font-weight-700);
   font-size: var(--segment-button-font-size);
   color: var(--segment-button-item-color);
   cursor: pointer;

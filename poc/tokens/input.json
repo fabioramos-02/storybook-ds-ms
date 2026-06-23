@@ -10,7 +10,7 @@
     },
     "helper": { "fontSize": { "value": "10px" } },
     "border": {
-      "default": { "value": "{color.neutral.300.value}" },
+      "default": { "value": "{color.neutral.400.value}" },
       "hover": { "value": "{color.neutral.500.value}" },
       "focus": { "value": "{color.primary.500.value}" },
       "error": { "value": "{color.error.500.value}" }

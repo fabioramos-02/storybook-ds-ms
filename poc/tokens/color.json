@@ -1,61 +1,96 @@
 {
   "color": {
     "primary": {
-      "100": { "value": "#CCDCEC", "comment": "tint azul" },
-      "200": { "value": "#99B9D9" },
-      "300": { "value": "#6695C5" },
-      "400": { "value": "#3372B2" },
-      "500": { "value": "#004F9F", "comment": "azul institucional MS — marca" },
-      "600": { "value": "#002F5F" },
-      "700": { "value": "#002040" }
+      "100": { "value": "#e6edf5" },
+      "500": { "value": "#3372b2" },
+      "600": { "value": "#004f9f", "comment": "azul institucional MS — marca (color/brand/skyline)" },
+      "700": { "value": "#003f7f" },
+      "900": { "value": "#002040" },
+      "1000": { "value": "#001020" }
+    },
+    "secondary": {
+      "100": { "value": "#ccedd8" },
+      "600": { "value": "#007f31" },
+      "700": { "value": "#006024" },
+      "900": { "value": "#00210c" }
+    },
+    "tertiary": {
+      "100": { "value": "#fff8cc" },
+      "500": { "value": "#ffd500", "comment": "color/brand/golden" },
+      "600": { "value": "#ccac00" },
+      "900": { "value": "#332c00" }
+    },
+    "red": {
+      "300": { "value": "#eda8ab" },
+      "600": { "value": "#da1e28" },
+      "700": { "value": "#a91e23" }
     },
     "neutral": {
-      "white": { "value": "#FFFFFF" },
-      "100": { "value": "#EAEBEC" },
-      "200": { "value": "#D4D7D8" },
-      "300": { "value": "#A9AEB1" },
-      "400": { "value": "#6E757A" },
-      "500": { "value": "#545D64" },
-      "600": { "value": "#29353D" },
-      "700": { "value": "#212A31" },
-      "800": { "value": "#192025" },
-      "900": { "value": "#101518" },
-      "950": { "value": "#080B0C" },
-      "1000": { "value": "#0A0909" }
+      "0": { "value": "#ffffff" },
+      "100": { "value": "#f9f9f9" },
+      "200": { "value": "#d5d5d5" },
+      "400": { "value": "#8e8e8e" },
+      "500": { "value": "#8e8e8d" },
+      "800": { "value": "#565654" },
+      "900": { "value": "#30302e" },
+      "1000": { "value": "#1d1d1b" }
     },
-    "error": {
-      "100": { "value": "#F6D3D5" },
-      "200": { "value": "#EDA8AB" },
-      "300": { "value": "#BD5458" },
-      "400": { "value": "#C83D42" },
-      "500": { "value": "#DA1E28" },
-      "600": { "value": "#7F161A" },
-      "700": { "value": "#540F12" },
-      "800": { "value": "#2A0709" }
+    "alpha": {
+      "brand": {
+        "4": { "value": "#004f9f0a" },
+        "8": { "value": "#004f9f14" },
+        "24": { "value": "#004f9f3d" }
+      },
+      "dark": {
+        "2": { "value": "#0a090905" },
+        "4": { "value": "#0a09090a" },
+        "8": { "value": "#0a090914" }
+      },
+      "light": {
+        "50": { "value": "#ffffff80" }
+      },
+      "neutral900": {
+        "4": { "value": "#2323230a", "comment": "rgba(35,35,35,.04) — zebra do Table" },
+        "12": { "value": "#2323231f", "comment": "rgba(35,35,35,.12) — base usada no node Table (280:45414), distinta de alpha/dark" },
+        "24": { "value": "#2323233d", "comment": "rgba(35,35,35,.24) — thead do Table" }
+      }
     },
-    "success": {
-      "500": { "value": "#198038" },
-      "700": { "value": "#08210F" }
+    "primitive": {
+      "white": { "value": "#ffffff" },
+      "black": { "value": "#000000" }
     },
-    "warning": {
-      "500": { "value": "#FF6200" },
-      "700": { "value": "#331A09" }
-    },
-    "support": {
-      "500": { "value": "#FF5E40" },
-      "700": { "value": "#331A09" }
-    },
-    "info": {
-      "100": { "value": "#CDEBFF" },
-      "200": { "value": "#B2D5F4" },
-      "300": { "value": "#77AFFD" },
-      "400": { "value": "#67ACE4" },
-      "500": { "value": "#067BCC" },
-      "600": { "value": "#0D99F7" },
-      "700": { "value": "#011F33" }
+    "icon": {
+      "primary": { "value": "{color.primary.600.value}" },
+      "secondary": { "value": "{color.secondary.600.value}" },
+      "neutral": { "value": "{color.neutral.900.value}" }
     },
     "content": {
-      "onBrand": { "value": "#FFFFFF", "comment": "texto sobre superfície de marca" }
+      "onBrand": { "value": "{color.neutral.0.value}", "comment": "texto sobre superfície de marca" }
+    },
+    "error": {
+      "100": { "value": "{color.red.300.value}" },
+      "500": { "value": "{color.red.600.value}" },
+      "700": { "value": "{color.red.700.value}" },
+      "comment": "alias semântico — Figma não define escala 'error' própria, usa color/red"
+    },
+    "success": {
+      "100": { "value": "{color.secondary.100.value}" },
+      "500": { "value": "{color.secondary.600.value}" },
+      "700": { "value": "{color.secondary.900.value}" },
+      "comment": "alias semântico — Figma usa color/secondary (verde) pro estado positivo"
+    },
+    "warning": {
+      "100": { "value": "{color.tertiary.100.value}" },
+      "500": { "value": "{color.tertiary.600.value}" },
+      "700": { "value": "{color.tertiary.900.value}" },
+      "comment": "alias semântico — Figma usa color/tertiary (dourado) pro estado de alerta"
+    },
+    "info": {
+      "100": { "value": "{color.primary.100.value}" },
+      "500": { "value": "{color.primary.500.value}" },
+      "600": { "value": "{color.primary.600.value}" },
+      "700": { "value": "{color.primary.900.value}" },
+      "comment": "alias semântico — usado em outline:focus-visible nos componentes; Figma não tem escala 'info' própria, reusa primary"
     }
   }
 }

@@ -19,14 +19,14 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  gap: var(--spacing-8);
+  padding: var(--spacing-8) var(--spacing-16);
   border: 1px solid var(--dropdown-menu-border);
-  border-radius: 4px;
+  border-radius: 4px; /* fora da escala radius.json (sm=8px, mais próximo) — mantém literal pra não alterar fidelidade Figma */
   background: var(--dropdown-menu-background);
   font-family: "Roboto", system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 14px;
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-sm);
   color: var(--dropdown-item-color);
 }
 .dropdown summary::-webkit-details-marker { display: none; }
@@ -36,13 +36,13 @@
 .dropdown .dropdown-menu {
   position: absolute;
   top: 100%; left: 0;
-  margin-top: 4px;
+  margin-top: var(--spacing-4);
   min-width: 180px;
   background: var(--dropdown-menu-background);
   border: 1px solid var(--dropdown-menu-border);
   border-radius: 4px;
   box-shadow: 0px 4px 8px rgba(0,32,64,.16);
-  padding: 4px;
+  padding: var(--spacing-4);
   z-index: 10;
   max-height: 280px;
   overflow-y: auto;
@@ -52,14 +52,14 @@
   display: block;
   width: 100%;
   text-align: left;
-  padding: 8px 12px;
+  padding: var(--spacing-8) var(--spacing-12);
   border-radius: 4px;
   border: 0;
   background: transparent;
   color: var(--dropdown-item-color);
   text-decoration: none;
   font-family: "Roboto", system-ui, sans-serif;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   cursor: pointer;
 }
 .dropdown .dropdown-menu a:hover,

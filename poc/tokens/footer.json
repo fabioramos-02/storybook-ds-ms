@@ -1,0 +1,24 @@
+{
+  "footer": {
+    "background": { "value": "{color.neutral.0.value}" },
+    "linksBackground": { "value": "{color.neutral.200.value}" },
+    "linksBorder": { "value": "{color.alpha.dark.4.value}" },
+    "linksPaddingY": { "value": "{spacing.32.value}" },
+    "linksPaddingX": { "value": "{spacing.112.value}" },
+    "gridGap": { "value": "{spacing.32.value}" },
+    "categoryGap": { "value": "{spacing.12.value}" },
+    "categoryTitleColor": { "value": "{color.neutral.800.value}" },
+    "categoryItemGap": { "value": "{spacing.8.value}" },
+    "linkColor": { "value": "{color.primary.600.value}" },
+    "infoPaddingY": { "value": "{spacing.40.value}" },
+    "infoPaddingX": { "value": "{spacing.112.value}" },
+    "addressTitleColor": { "value": "{color.neutral.900.value}" },
+    "addressTextColor": { "value": "{color.neutral.800.value}" },
+    "socialTitleColor": { "value": "{color.neutral.900.value}" },
+    "socialTextColor": { "value": "{color.neutral.800.value}" },
+    "subsetorColor": { "value": "{color.primary.600.value}" },
+    "subsetorBorder": { "value": "#ccdcec", "comment": "literal Figma — não bate com nenhuma escala primary/neutral existente" },
+    "copyrightBackground": { "value": "{color.primary.600.value}" },
+    "copyrightColor": { "value": "{color.neutral.0.value}" }
+  }
+}

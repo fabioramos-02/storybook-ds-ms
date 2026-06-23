@@ -9,23 +9,23 @@
 .ds-breadcrumb {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 8px 0;
-  border-top: 1px solid rgba(10, 9, 9, .04);
-  background: #ffffff;
-  font-family: "Open Sans", system-ui, sans-serif;
+  gap: var(--breadcrumb-gap);
+  padding: var(--spacing-8) 0;
+  border-top: 1px solid var(--breadcrumb-border);
+  background: var(--color-neutral-0);
+  font-family: var(--font-family-default);
 }
 
 .ds-breadcrumb-back {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 9999px;
-  border: 1px solid rgba(10, 9, 9, .08);
+  width: var(--spacing-32);
+  height: var(--spacing-32);
+  border-radius: var(--radius-huge);
+  border: 1px solid var(--breadcrumb-back-button-border);
   background: transparent;
-  color: #30302e;
+  color: var(--color-neutral-900);
   flex-shrink: 0;
   cursor: pointer;
 }
@@ -42,27 +42,27 @@
 }
 .ds-breadcrumb-list li { display: flex; align-items: center; }
 .ds-breadcrumb-sep {
-  color: #8e8e8e;
-  font-size: 11px;
-  padding: 0 8px;
+  color: var(--breadcrumb-separator-color);
+  font-size: var(--font-size-1xsm);
+  padding: 0 var(--spacing-8);
 }
 .ds-breadcrumb-list a {
-  color: #004f9f;
+  color: var(--breadcrumb-item-color);
   font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--breadcrumb-font-size);
+  line-height: var(--breadcrumb-line-height);
   text-decoration: none;
-  border-bottom: 1px dashed #8e8e8e;
-  padding: 4px 0;
+  border-bottom: 1px dashed var(--breadcrumb-separator-color);
+  padding: var(--spacing-4) 0;
 }
-.ds-breadcrumb-list a:hover { color: #003f7f; }
+.ds-breadcrumb-list a:hover { color: var(--breadcrumb-item-color-hover); }
 .ds-breadcrumb-list a:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
 .ds-breadcrumb-current {
-  color: #565654;
+  color: var(--breadcrumb-current-color);
   font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  padding: 4px 0;
+  font-size: var(--breadcrumb-font-size);
+  line-height: var(--breadcrumb-line-height);
+  padding: var(--spacing-4) 0;
 }
 
 @media (max-width: 480px) {

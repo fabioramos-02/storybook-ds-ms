@@ -1,0 +1,7 @@
+{
+  "radius": {
+    "none": { "value": "0px" },
+    "sm": { "value": "8px" },
+    "huge": { "value": "9999px" }
+  }
+}

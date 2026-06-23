@@ -10,35 +10,35 @@
   display: flex; align-items: center;
   height: var(--header-height);
   padding: 0 var(--header-padding-x);
-  background: var(--color-primary-500);
-  color: #fff;
+  background: var(--header-background);
+  color: var(--header-color);
   gap: var(--header-gap);
 }
 .ds-header .brand { display: flex; align-items: center; gap: 0; }
-.ds-header .brand .ds-ms-logo { height: 32px; width: 110px; background: rgba(255,255,255,.25); border-radius: 4px; }
+.ds-header .brand .ds-ms-logo { height: var(--spacing-32); width: 110px; background: rgba(255,255,255,.25); border-radius: 4px; }
 .ds-header .brand .brand-sub {
-  font-family: "Open Sans", system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 10px;
+  font-family: var(--font-family-default);
+  font-weight: var(--font-weight-700);
+  font-size: var(--header-brand-sub-font-size);
   line-height: 1.4;
-  color: #fff;
-  margin-left: 8px;
+  color: var(--header-color);
+  margin-left: var(--spacing-8);
   white-space: pre-line;
 }
 .ds-header nav {
-  display: flex; gap: 24px;
-  font-family: "Open Sans", system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: #fff;
+  display: flex; gap: var(--header-nav-gap);
+  font-family: var(--font-family-default);
+  font-weight: var(--font-weight-700);
+  font-size: var(--header-nav-font-size);
+  color: var(--header-color);
 }
-.ds-header nav a { color: #fff; text-decoration: none; }
+.ds-header nav a { color: var(--header-color); text-decoration: none; }
 .ds-header nav a:hover { text-decoration: underline; }
 .ds-header nav a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-.ds-header .right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+.ds-header .right { margin-left: auto; display: flex; align-items: center; gap: var(--spacing-16); }
 .ds-header .version {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-family: "Roboto", system-ui, sans-serif; font-weight: 700; font-size: 12px;
+  display: inline-flex; align-items: center; gap: var(--spacing-4);
+  font-family: var(--header-version-font-family); font-weight: var(--font-weight-700); font-size: var(--header-version-font-size);
 }
 
 /* Botão de menu — só aparece em telas estreitas (ou .is-mobile para demo no Storybook) */
@@ -86,42 +86,42 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #004f9f;
-  padding: 0 112px 16px;
+  background: var(--header-bar-background);
+  padding: 0 var(--header-bar-padding-x) var(--header-bar-padding-bottom);
 }
 .ds-header-bar-logo {
   display: flex;
   align-items: flex-end;
-  height: 88px;
+  height: var(--header-bar-logo-height);
 }
 .ds-header-bar-logo-pill {
-  background: #ffffff;
-  border-radius: 0 0 9999px 9999px;
+  background: var(--color-neutral-0);
+  border-radius: 0 0 var(--header-bar-logo-pill-radius) var(--header-bar-logo-pill-radius);
   display: flex;
   align-items: flex-end;
   justify-content: center;
   height: 100%;
-  padding: 8px;
+  padding: var(--header-bar-logo-pill-padding);
 }
 .ds-header-bar-logo-pill img,
 .ds-header-bar-logo-pill svg { height: 56px; width: 48px; }
 .ds-header-bar-org {
   display: flex;
   align-items: center;
-  padding: 4px 0 14px;
+  padding: var(--spacing-4) 0 14px;
 }
 .ds-header-bar-org-item {
-  border-left: 1px solid rgba(255, 255, 255, .5);
-  padding: 0 8px;
-  color: #ffffff;
+  border-left: 1px solid var(--header-bar-org-border);
+  padding: 0 var(--header-bar-org-padding-x);
+  color: var(--header-bar-org-color);
   text-align: right;
 }
-.ds-header-bar-org-item strong { display: block; font-size: 14px; font-weight: 800; line-height: 16px; }
-.ds-header-bar-org-item span { display: block; font-size: 10px; font-weight: 600; line-height: 14px; }
+.ds-header-bar-org-item strong { display: block; font-size: var(--font-size-sm); font-weight: 800; line-height: var(--font-lineheight-16); }
+.ds-header-bar-org-item span { display: block; font-size: var(--header-brand-sub-font-size); font-weight: var(--font-weight-600); line-height: 14px; }
 
-.ds-header-bar-social { display: flex; gap: 12px; align-items: flex-end; padding-bottom: 24px; }
-.ds-header-bar-social svg { width: 24px; height: 24px; }
+.ds-header-bar-social { display: flex; gap: var(--header-bar-social-gap); align-items: flex-end; padding-bottom: var(--header-bar-social-padding-bottom); }
+.ds-header-bar-social svg { width: var(--header-bar-social-icon-size); height: var(--header-bar-social-icon-size); }
 
 @media (max-width: 768px) {
-  .ds-header-bar { padding: 0 16px 12px; }
+  .ds-header-bar { padding: 0 var(--spacing-16) var(--spacing-12); }
 }

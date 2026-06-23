@@ -1,7 +1,28 @@
 {
   "header": {
-    "height": { "value": "96px" },
-    "paddingX": { "value": "112px" },
-    "gap": { "value": "32px" }
+    "height": { "value": "96px", "comment": "fora da escala spacing.json (mais próximo é 112px)" },
+    "paddingX": { "value": "{spacing.112.value}" },
+    "gap": { "value": "{spacing.32.value}" },
+    "background": { "value": "{color.primary.500.value}" },
+    "color": { "value": "{color.neutral.0.value}" },
+    "brandSubFontSize": { "value": "10px", "comment": "fora da escala typography.json (menor tamanho documentado é 11px)" },
+    "navGap": { "value": "{spacing.24.value}" },
+    "navFontSize": { "value": "{font.size.sm.value}" },
+    "versionFontFamily": { "value": "\"Roboto\", system-ui, sans-serif", "comment": "mesmo caso do Button/Menu — Roboto não documentado em typography.json" },
+    "versionFontSize": { "value": "{font.size.xsm.value}" },
+    "bar": {
+      "background": { "value": "{color.primary.600.value}" },
+      "paddingX": { "value": "{spacing.112.value}" },
+      "paddingBottom": { "value": "{spacing.16.value}" },
+      "logoHeight": { "value": "88px", "comment": "fora da escala spacing — específico do node 77:135390" },
+      "logoPillRadius": { "value": "{radius.huge.value}" },
+      "logoPillPadding": { "value": "{spacing.8.value}" },
+      "orgPaddingX": { "value": "{spacing.8.value}" },
+      "orgBorder": { "value": "{color.alpha.light.50.value}" },
+      "orgColor": { "value": "{color.neutral.0.value}" },
+      "socialGap": { "value": "{spacing.12.value}" },
+      "socialPaddingBottom": { "value": "{spacing.24.value}" },
+      "socialIconSize": { "value": "{spacing.24.value}" }
+    }
   }
 }

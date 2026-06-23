@@ -1,9 +1,13 @@
 {
   "breadcrumb": {
-    "fontSize": { "value": "14px" },
-    "gap": { "value": "8px" },
+    "fontSize": { "value": "{font.size.sm.value}" },
+    "lineHeight": { "value": "20px" },
+    "gap": { "value": "{spacing.16.value}" },
     "separatorColor": { "value": "{color.neutral.400.value}" },
-    "itemColor": { "value": "{color.primary.500.value}" },
-    "currentColor": { "value": "{color.neutral.700.value}" }
+    "itemColor": { "value": "{color.primary.600.value}" },
+    "itemColorHover": { "value": "{color.primary.700.value}" },
+    "currentColor": { "value": "{color.neutral.800.value}" },
+    "border": { "value": "{color.alpha.dark.4.value}" },
+    "backButtonBorder": { "value": "{color.alpha.dark.8.value}" }
   }
 }

@@ -1,19 +1,32 @@
 {
   "button": {
-    "primary": {
-      "background": {
-        "default": { "value": "{color.primary.500.value}" },
-        "hover":   { "value": "{color.primary.600.value}" },
-        "active":  { "value": "{color.primary.700.value}" }
-      },
-      "text": { "value": "{color.content.onBrand.value}" }
-    },
-    "radius": { "value": "4px" },
-    "fontWeight": { "value": "700" },
+    "fontFamily": { "value": "\"Roboto\", system-ui, sans-serif", "comment": "fora da escala typography.json — Figma node 77:136152 usa Roboto só em Button, não documentado como font/family/* próprio" },
+    "fontWeight": { "value": "{font.weight.600.value}" },
+    "radius": { "value": "{radius.huge.value}" },
+    "gap": { "value": "{spacing.4.value}" },
     "size": {
-      "sm": { "height": { "value": "32px" }, "paddingX": { "value": "16px" }, "fontSize": { "value": "16px" } },
-      "md": { "height": { "value": "40px" }, "paddingX": { "value": "16px" }, "fontSize": { "value": "14px" } },
-      "lg": { "height": { "value": "48px" }, "paddingX": { "value": "24px" }, "fontSize": { "value": "16px" } }
+      "md": { "height": { "value": "{spacing.48.value}" }, "paddingY": { "value": "{spacing.12.value}" }, "paddingX": { "value": "{spacing.16.value}" }, "fontSize": { "value": "{font.size.md.value}" } },
+      "sm": { "height": { "value": "{spacing.32.value}" }, "paddingY": { "value": "{spacing.4.value}" }, "paddingX": { "value": "{spacing.12.value}" }, "fontSize": { "value": "{font.size.sm.value}" } }
+    },
+    "neutral": {
+      "primary": { "background": { "value": "{color.alpha.dark.8.value}" }, "backgroundHover": { "value": "{color.alpha.dark.4.value}", "comment": "literal Figma — opacidade menor que .08 no hover é intencional (mistura sobre fundo claro)" }, "text": { "value": "{color.neutral.1000.value}" } },
+      "secondary": { "border": { "value": "{color.alpha.dark.4.value}" }, "borderHover": { "value": "{color.alpha.dark.8.value}" }, "backgroundHover": { "value": "{color.alpha.dark.4.value}" }, "text": { "value": "{color.neutral.900.value}" }, "textHover": { "value": "{color.neutral.1000.value}" } },
+      "tertiary": { "text": { "value": "{color.neutral.900.value}" }, "textHover": { "value": "{color.neutral.1000.value}" } }
+    },
+    "primary": {
+      "primary": { "background": { "value": "{color.primary.600.value}" }, "backgroundHover": { "value": "{color.primary.700.value}" }, "text": { "value": "{color.neutral.100.value}" } },
+      "secondary": { "border": { "value": "{color.primary.600.value}" }, "backgroundHover": { "value": "{color.alpha.dark.4.value}" }, "text": { "value": "{color.primary.600.value}" }, "textHover": { "value": "{color.primary.700.value}" } },
+      "tertiary": { "text": { "value": "{color.primary.600.value}" }, "textHover": { "value": "{color.primary.700.value}" } }
+    },
+    "secondary": {
+      "primary": { "background": { "value": "{color.secondary.600.value}" }, "backgroundHover": { "value": "{color.secondary.700.value}" }, "text": { "value": "{color.neutral.100.value}" } },
+      "secondary": { "border": { "value": "{color.secondary.600.value}" }, "backgroundHover": { "value": "{color.alpha.dark.4.value}" }, "text": { "value": "{color.secondary.600.value}" }, "textHover": { "value": "{color.secondary.700.value}" } },
+      "tertiary": { "text": { "value": "{color.secondary.600.value}" }, "textHover": { "value": "{color.secondary.700.value}" } }
+    },
+    "tertiary": {
+      "primary": { "background": { "value": "{color.tertiary.500.value}" }, "backgroundHover": { "value": "{color.tertiary.600.value}" }, "text": { "value": "{color.neutral.900.value}" } },
+      "secondary": { "border": { "value": "{color.tertiary.500.value}" }, "backgroundHover": { "value": "{color.alpha.dark.4.value}" }, "text": { "value": "{color.tertiary.500.value}" }, "textHover": { "value": "{color.tertiary.600.value}" } },
+      "tertiary": { "text": { "value": "{color.tertiary.500.value}" }, "textHover": { "value": "{color.tertiary.600.value}" } }
     }
   }
 }

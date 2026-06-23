@@ -1,8 +1,16 @@
 {
   "search": {
-    "height": { "value": "32px" },
-    "radius": { "value": "2px" },
-    "fontSize": { "value": "14px" },
-    "border": { "value": "{color.primary.300.value}" }
+    "gap": { "value": "{spacing.12.value}" },
+    "border": { "value": "{color.alpha.dark.8.value}" },
+    "iconBtnSize": { "value": "{spacing.48.value}" },
+    "iconColor": { "value": "{color.neutral.900.value}" },
+    "defaultBorder": { "value": "{color.alpha.dark.4.value}" },
+    "activedWidth": { "value": "350px", "comment": "literal — não bate com nenhum spacing token (mais próximo é 320px)" },
+    "activedTextColor": { "value": "{color.neutral.800.value}" },
+    "activedFontSize": { "value": "{font.size.md.value}" },
+    "activedLineHeight": { "value": "{font.lineheight.18.value}" },
+    "focusedBorder": { "value": "{color.tertiary.600.value}" },
+    "inputColor": { "value": "{color.neutral.1000.value}" },
+    "clearColor": { "value": "{color.neutral.400.value}" }
   }
 }

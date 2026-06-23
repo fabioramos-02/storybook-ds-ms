@@ -1,9 +1,11 @@
 {
   "table": {
-    "headerBackground": { "value": "{color.neutral.100.value}" },
-    "headerColor": { "value": "{color.neutral.700.value}" },
-    "border": { "value": "{color.neutral.200.value}" },
-    "rowHover": { "value": "{color.primary.100.value}" },
-    "stripeBackground": { "value": "{color.neutral.100.value}" }
+    "headerBackground": { "value": "{color.alpha.neutral900.24.value}" },
+    "headerBorder": { "value": "{color.alpha.neutral900.24.value}" },
+    "headerColor": { "value": "#191919", "comment": "fora da escala — valor literal do Figma (node 280:45414)" },
+    "border": { "value": "{color.alpha.neutral900.12.value}" },
+    "rowHover": { "value": "{color.alpha.brand.4.value}" },
+    "stripeBackground": { "value": "{color.alpha.neutral900.4.value}" },
+    "wrapBorder": { "value": "{color.alpha.neutral900.12.value}" }
   }
 }

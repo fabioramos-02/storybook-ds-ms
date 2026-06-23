@@ -1,0 +1,19 @@
+{
+  "navbar": {
+    "menuHeight": { "value": "{spacing.72.value}" },
+    "menuPaddingX": { "value": "{spacing.112.value}" },
+    "menuGap": { "value": "{spacing.16.value}" },
+    "background": { "value": "{color.neutral.0.value}" },
+    "secretariaColor": { "value": "{color.primary.600.value}" },
+    "itemBorder": { "value": "{color.alpha.dark.8.value}" },
+    "itemColor": { "value": "{color.neutral.900.value}" },
+    "itemFontSize": { "value": "{font.size.md.value}" },
+    "itemLineHeight": { "value": "{font.lineheight.24.value}" },
+    "menuToggleColor": { "value": "{color.primary.600.value}" },
+    "searchBorder": { "value": "{color.alpha.dark.8.value}" },
+    "searchColor": { "value": "{color.neutral.800.value}" },
+    "searchBtnColor": { "value": "{color.neutral.900.value}" },
+    "mobileToggleBorder": { "value": "{color.alpha.dark.4.value}" },
+    "mobileToggleColor": { "value": "{color.neutral.900.value}" }
+  }
+}

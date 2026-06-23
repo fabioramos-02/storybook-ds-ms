@@ -2,14 +2,14 @@
 @import "../../../dist/css/tokens.css";
 
 .notification {
-  display: flex; align-items: flex-start; gap: 12px;
-  padding: 12px 16px;
+  display: flex; align-items: flex-start; gap: var(--spacing-12);
+  padding: var(--spacing-12) var(--spacing-16);
   border-radius: var(--notification-radius);
   border-left: 4px solid var(--notification-info-border);
   background: var(--notification-info-background);
   color: var(--notification-info-text);
   font-family: "Roboto", system-ui, sans-serif;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   line-height: 1.5;
 }
 .notification.is-success { background: var(--notification-success-background); border-left-color: var(--notification-success-border); color: var(--notification-success-text); }

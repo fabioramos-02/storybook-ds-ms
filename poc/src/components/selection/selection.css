@@ -8,7 +8,7 @@
   width: var(--selection-checkbox-size); height: var(--selection-checkbox-size);
   border-radius: var(--selection-checkbox-radius);
   border: 1px solid var(--selection-checkbox-border);
-  background: #fff;
+  background: var(--color-neutral-0);
   display: inline-grid; place-items: center;
   cursor: pointer;
   transition: background-color .12s ease, border-color .12s ease;
@@ -30,7 +30,7 @@
   width: var(--selection-radio-size); height: var(--selection-radio-size);
   border-radius: 50%;
   border: 1px solid var(--selection-checkbox-border);
-  background: #fff;
+  background: var(--color-neutral-0);
   display: inline-grid; place-items: center;
   cursor: pointer;
 }
@@ -54,9 +54,9 @@
 .toggle::after {
   content: "";
   position: absolute;
-  left: 2px; top: 2px;
-  width: 16px; height: 16px;
-  background: #fff; border-radius: 50%;
+  left: var(--spacing-2); top: var(--spacing-2);
+  width: var(--spacing-16); height: var(--spacing-16);
+  background: var(--color-neutral-0); border-radius: 50%;
   transition: transform .15s ease;
   box-shadow: 0 1px 2px rgba(0,0,0,.2);
 }

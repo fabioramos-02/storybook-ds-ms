@@ -3,7 +3,7 @@
     "checkbox": {
       "size": { "value": "24px" },
       "radius": { "value": "4px" },
-      "border": { "value": "{color.neutral.300.value}" },
+      "border": { "value": "{color.neutral.400.value}" },
       "checkedBackground": { "value": "{color.info.500.value}" }
     },
     "radio": {
@@ -13,7 +13,7 @@
     "toggle": {
       "width": { "value": "40px" },
       "height": { "value": "20px" },
-      "trackOff": { "value": "{color.neutral.300.value}" },
+      "trackOff": { "value": "{color.neutral.400.value}" },
       "trackOn": { "value": "{color.primary.500.value}" }
     }
   }

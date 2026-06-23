@@ -1,11 +1,14 @@
 {
   "accordion": {
-    "border": { "value": "{color.neutral.200.value}" },
-    "radius": { "value": "8px" },
-    "headerPaddingY": { "value": "16px" },
-    "headerPaddingX": { "value": "20px" },
-    "titleColor": { "value": "{color.neutral.700.value}" },
-    "titleFontSize": { "value": "16px" },
-    "bodyColor": { "value": "{color.neutral.500.value}" }
+    "border": { "value": "{color.alpha.dark.8.value}" },
+    "borderOpen": { "value": "{color.alpha.brand.24.value}" },
+    "radius": { "value": "{radius.sm.value}" },
+    "headerPadding": { "value": "{spacing.16.value}" },
+    "titleColor": { "value": "{color.neutral.900.value}" },
+    "titleColorOpen": { "value": "{color.primary.600.value}" },
+    "titleFontFamily": { "value": "{font.family.accent.value}" },
+    "titleFontSize": { "value": "{font.size.1xlg.value}" },
+    "titleLineHeight": { "value": "{font.lineheight.28.value}" },
+    "bodyColor": { "value": "{color.neutral.800.value}" }
   }
 }

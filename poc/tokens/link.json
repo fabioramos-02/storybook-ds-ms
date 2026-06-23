@@ -1,0 +1,14 @@
+{
+  "link": {
+    "fontSize": { "value": "{font.size.sm.value}" },
+    "lineHeight": { "value": "{font.lineheight.16.value}" },
+    "gap": { "value": "{spacing.4.value}" },
+    "iconSize": { "value": "{spacing.16.value}" },
+    "primary": { "color": { "value": "{color.primary.600.value}" }, "colorHover": { "value": "{color.primary.700.value}" } },
+    "secondary": { "color": { "value": "{color.secondary.600.value}" }, "colorHover": { "value": "{color.secondary.700.value}" } },
+    "tertiary": { "color": { "value": "{color.tertiary.500.value}" }, "colorHover": { "value": "{color.tertiary.600.value}" } },
+    "negative": { "color": { "value": "{color.red.600.value}" }, "colorHover": { "value": "{color.red.700.value}" } },
+    "light": { "color": { "value": "{color.neutral.0.value}" }, "colorHover": { "value": "{color.neutral.900.value}" } },
+    "dark": { "color": { "value": "{color.neutral.800.value}" }, "colorHover": { "value": "{color.neutral.0.value}" } }
+  }
+}

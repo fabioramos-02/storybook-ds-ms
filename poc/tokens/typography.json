@@ -1,0 +1,31 @@
+{
+  "font": {
+    "family": {
+      "default": { "value": "\"Open Sans\", system-ui, sans-serif" },
+      "accent": { "value": "\"Avenir Next LT Pro\", \"Open Sans\", system-ui, sans-serif" }
+    },
+    "weight": {
+      "400": { "value": "400" },
+      "600": { "value": "600" },
+      "700": { "value": "700" }
+    },
+    "size": {
+      "1xsm": { "value": "11px" },
+      "xsm": { "value": "12px" },
+      "sm": { "value": "14px" },
+      "md": { "value": "16px" },
+      "lg": { "value": "18px" },
+      "1xlg": { "value": "20px" },
+      "2xlg": { "value": "24px" },
+      "3xlg": { "value": "32px" }
+    },
+    "lineheight": {
+      "12": { "value": "12px" },
+      "16": { "value": "16px" },
+      "18": { "value": "18px" },
+      "20": { "value": "20px" },
+      "24": { "value": "24px" },
+      "28": { "value": "28px" }
+    }
+  }
+}

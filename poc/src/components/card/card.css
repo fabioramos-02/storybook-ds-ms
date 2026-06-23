@@ -10,92 +10,92 @@
   display: flex;
   flex-direction: column;
   width: 288px;
-  background: #ffffff;
-  border: 1px solid rgba(10, 9, 9, .04);
-  border-radius: 8px;
-  box-shadow: 0px 2px 4px 0px rgba(0, 15, 30, .02);
+  background: var(--color-neutral-0);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  font-family: "Open Sans", system-ui, sans-serif;
+  font-family: var(--font-family-default);
   transition: box-shadow .15s ease;
 }
 .ds-card[href]:hover,
 .ds-card.is-hovered {
   cursor: pointer;
-  box-shadow: 0px 8px 12px 0px rgba(0, 15, 30, .04), 0px 2px 4px 0px rgba(0, 15, 30, .02);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .ds-card-faixa {
   position: absolute;
   top: 0; bottom: 0; left: 0;
-  width: 8px;
-  background: var(--ds-card-accent, #007f31);
+  width: var(--card-faixa-width);
+  background: var(--ds-card-accent, var(--color-secondary-600));
 }
 
-.ds-card-body { padding: 12px 16px; }
+.ds-card-body { padding: var(--card-body-padding-y) var(--card-body-padding-x); }
 
 .ds-card-title-row {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  padding-bottom: 8px;
+  gap: var(--spacing-8);
+  padding-bottom: var(--spacing-8);
 }
 .ds-card-title {
   flex: 1 0 0;
   margin: 0;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 24px;
-  color: #30302e;
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-lg);
+  line-height: var(--font-lineheight-24);
+  color: var(--card-title-color);
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .ds-card-action {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: var(--spacing-32);
+  height: var(--spacing-32);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #30302e;
+  color: var(--card-action-color);
 }
 
 .ds-card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 4px;
-  padding-top: 8px;
+  gap: var(--spacing-8) var(--spacing-4);
+  padding-top: var(--spacing-8);
 }
 .ds-tag {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 20px;
-  padding: 2px 8px;
-  border-radius: 9999px;
+  height: var(--spacing-20);
+  padding: var(--spacing-2) var(--spacing-8);
+  border-radius: var(--radius-huge);
   font-weight: 800;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: var(--font-size-sm);
+  line-height: var(--font-lineheight-16);
   white-space: nowrap;
 }
-.ds-tag-category { background: #e6edf5; color: #002040; }
-.ds-tag-services  { background: #ccedd8; color: #00210c; text-transform: uppercase; }
-.ds-tag-profile    { background: #fff8cc; color: #332c00; }
+.ds-tag-category { background: var(--card-tag-category-background); color: var(--card-tag-category-text); }
+.ds-tag-services  { background: var(--card-tag-services-background); color: var(--card-tag-services-text); text-transform: uppercase; }
+.ds-tag-profile    { background: var(--card-tag-profile-background); color: var(--card-tag-profile-text); }
 
-.ds-card-footer { padding-top: 16px; }
-.ds-card-actions { display: flex; gap: 12px; align-items: flex-start; }
+.ds-card-footer { padding-top: var(--spacing-16); }
+.ds-card-actions { display: flex; gap: var(--spacing-12); align-items: flex-start; }
 
 .ds-card-icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 9999px;
-  border: 1px solid rgba(10, 9, 9, .04);
+  width: var(--spacing-32);
+  height: var(--spacing-32);
+  border-radius: var(--radius-huge);
+  border: 1px solid var(--card-icon-btn-border);
   background: transparent;
-  color: #30302e;
+  color: var(--card-action-color);
   cursor: pointer;
 }
 .ds-card-icon-btn:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }

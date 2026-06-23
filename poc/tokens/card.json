@@ -1,11 +1,23 @@
 {
   "card": {
-    "radius": { "value": "8px" },
-    "padding": { "value": "16px" },
-    "border": { "value": "{color.neutral.100.value}" },
+    "radius": { "value": "{radius.sm.value}" },
+    "border": { "value": "{color.alpha.dark.4.value}" },
+    "shadow": { "value": "0px 2px 4px 0px rgba(0, 15, 30, .02)", "comment": "fora da escala — sombra literal do Figma (node 77:136619), sem token de elevação próprio" },
+    "shadowHover": { "value": "0px 8px 12px 0px rgba(0, 15, 30, .04), 0px 2px 4px 0px rgba(0, 15, 30, .02)", "comment": "idem shadow — literal" },
+    "faixaWidth": { "value": "{spacing.8.value}" },
+    "bodyPaddingY": { "value": "{spacing.12.value}" },
+    "bodyPaddingX": { "value": "{spacing.16.value}" },
+    "titleColor": { "value": "{color.neutral.900.value}" },
+    "actionColor": { "value": "{color.neutral.900.value}" },
+    "iconBtnBorder": { "value": "{color.alpha.dark.4.value}" },
+    "tag": {
+      "category": { "background": { "value": "{color.primary.100.value}" }, "text": { "value": "{color.primary.900.value}" } },
+      "services": { "background": { "value": "{color.secondary.100.value}" }, "text": { "value": "{color.secondary.900.value}" } },
+      "profile": { "background": { "value": "{color.tertiary.100.value}" }, "text": { "value": "{color.tertiary.900.value}" } }
+    },
     "link": {
-      "border": { "value": "{color.primary.200.value}" },
-      "borderHover": { "value": "{color.primary.300.value}" },
+      "border": { "value": "{color.primary.100.value}" },
+      "borderHover": { "value": "{color.primary.100.value}" },
       "titleColor": { "value": "{color.neutral.1000.value}" }
     }
   }

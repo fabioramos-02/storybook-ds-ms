@@ -2,16 +2,16 @@
 @import "../../../dist/css/tokens.css";
 
 .tag {
-  display: inline-flex; align-items: center; gap: 4px;
+  display: inline-flex; align-items: center; gap: var(--spacing-4);
   height: var(--tag-height);
-  padding: 0 8px;
+  padding: 0 var(--spacing-8);
   border-radius: var(--tag-radius);
   background: var(--tag-default-background);
   color: var(--tag-default-text);
   font-family: "Roboto", system-ui, sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 16px;
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-xsm);
+  line-height: var(--font-lineheight-16);
 }
 .tag-success { background: var(--tag-success-background); color: var(--tag-success-text); }
 .tag-error   { background: var(--tag-error-background);   color: var(--tag-error-text); }

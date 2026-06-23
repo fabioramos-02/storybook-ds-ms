@@ -8,10 +8,10 @@
 .ds-link {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-family: "Open Sans", system-ui, sans-serif;
-  font-size: 14px;
-  line-height: 16px;
+  gap: var(--link-gap);
+  font-family: var(--font-family-default);
+  font-size: var(--link-font-size);
+  line-height: var(--link-line-height);
   text-decoration: none;
   padding: 2px 0 4px;
   cursor: pointer;
@@ -19,24 +19,24 @@
 }
 .ds-link:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
 
-.ds-link-primary   { color: #004f9f; }
-.ds-link-primary:hover   { color: #003f7f; border-bottom-color: #003f7f; }
+.ds-link-primary   { color: var(--link-primary-color); }
+.ds-link-primary:hover   { color: var(--link-primary-color-hover); border-bottom-color: var(--link-primary-color-hover); }
 
-.ds-link-secondary { color: #007f31; }
-.ds-link-secondary:hover { color: #006024; border-bottom-color: #006024; }
+.ds-link-secondary { color: var(--link-secondary-color); }
+.ds-link-secondary:hover { color: var(--link-secondary-color-hover); border-bottom-color: var(--link-secondary-color-hover); }
 
-.ds-link-tertiary  { color: #ffd500; }
-.ds-link-tertiary:hover  { color: #ccac00; border-bottom-color: #ccac00; }
+.ds-link-tertiary  { color: var(--link-tertiary-color); }
+.ds-link-tertiary:hover  { color: var(--link-tertiary-color-hover); border-bottom-color: var(--link-tertiary-color-hover); }
 
-.ds-link-negative  { color: #da1e28; }
-.ds-link-negative:hover  { color: #a91e23; border-bottom-color: #a91e23; }
+.ds-link-negative  { color: var(--link-negative-color); }
+.ds-link-negative:hover  { color: var(--link-negative-color-hover); border-bottom-color: var(--link-negative-color-hover); }
 
 /* light = texto claro (uso sobre fundo escuro/colorido) */
-.ds-link-light { color: #ffffff; }
-.ds-link-light:hover { color: #30302e; border-bottom-color: #30302e; }
+.ds-link-light { color: var(--link-light-color); }
+.ds-link-light:hover { color: var(--link-light-color-hover); border-bottom-color: var(--link-light-color-hover); }
 
 /* dark = texto escuro neutro (uso sobre fundo claro) */
-.ds-link-dark { color: #565654; }
-.ds-link-dark:hover { color: #ffffff; border-bottom-color: #ffffff; }
+.ds-link-dark { color: var(--link-dark-color); }
+.ds-link-dark:hover { color: var(--link-dark-color-hover); border-bottom-color: var(--link-dark-color-hover); }
 
-.ds-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+.ds-link svg { width: var(--link-icon-size); height: var(--link-icon-size); flex-shrink: 0; }
