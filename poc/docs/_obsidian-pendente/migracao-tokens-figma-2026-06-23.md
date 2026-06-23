@@ -39,7 +39,7 @@ error/success/warning/info = aliases pra red/secondary/tertiary/primary (Figma n
 
 - [x] Lote 1: accordion, breadcrumb, table (commit f86dead)
 - [x] Lote 2: button, link, card
-- [ ] Lote 3: footer, tiles, search, menu
+- [x] Lote 3: footer, tiles, search, menu
 - [ ] Lote 4: navbar, header, topmenu, logo-mask
 - [ ] Lote 5: tag, notification, dropdown, selection, input, label, segment-button, carousel (só var(), sem redesign)
 
