@@ -1,6 +1,6 @@
 ---
 tags: [design-system, ms, tokens, figma, migracao]
-status: em-andamento
+status: concluido
 data: 2026-06-23
 branch: feat/tokens-figma-sync
 destino-vault: 10-conhecimento/design-system-ms/migracao-tokens-figma-2026-06-23.md
@@ -41,7 +41,15 @@ error/success/warning/info = aliases pra red/secondary/tertiary/primary (Figma n
 - [x] Lote 2: button, link, card
 - [x] Lote 3: footer, tiles, search, menu
 - [x] Lote 4: navbar, header, topmenu, logo-mask (commit f0b1997)
-- [ ] Lote 5: tag, notification, dropdown, selection, input, label, segment-button, carousel (só var(), sem redesign)
+- [x] Lote 5: tag, notification, dropdown, selection, input, label, segment-button, carousel (commit 8e6168e)
+
+## Migração CSS → var() completa (41/41 componentes)
+
+Lote 5 achou bug real: input.css/label.css/carousel.css referenciavam
+`var(--color-neutral-700)` e `var(--color-neutral-300)`, que nunca existiram
+na escala neutral gerada (0/100/200/400/500/800/900/1000) — custom property
+indefinida, regra ignorada silenciosamente. Corrigido pro step mais próximo
+existente (800 texto, 500 placeholder/disabled).
 
 ## Comandos úteis
 
