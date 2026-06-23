@@ -1,0 +1,7 @@
+{
+  "logoMask": {
+    "specBackground": { "value": "{color.neutral.100.value}" },
+    "specBorder": { "value": "{color.neutral.400.value}" },
+    "specColor": { "value": "{color.neutral.400.value}" }
+  }
+}

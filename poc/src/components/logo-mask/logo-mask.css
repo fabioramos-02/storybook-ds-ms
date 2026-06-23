@@ -4,6 +4,8 @@
    órgão/projeto dentro do Header/Navbar — garante área reservada consistente
    (horizontal 160x48, squared 48x48) independente do logo real.
    ============================================================================ */
+@import "../../../dist/css/tokens.css";
+
 .ds-logomask {
   display: inline-flex;
   align-items: center;
@@ -15,11 +17,11 @@
 
 /* mask=true: guia de especificação (placeholder pro designer), não aparece em produção */
 .ds-logomask.is-spec {
-  background: #f9f9f9;
-  border: 1px dashed #8e8e8e;
-  color: #8e8e8e;
+  background: var(--logo-mask-spec-background);
+  border: 1px dashed var(--logo-mask-spec-border);
+  color: var(--logo-mask-spec-color);
   font-weight: 800;
-  font-size: 32px;
+  font-size: var(--font-size-3xlg);
 }
 .ds-logomask-squared.is-spec { font-size: 12px; }
 

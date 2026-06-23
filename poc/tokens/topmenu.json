@@ -1,0 +1,15 @@
+{
+  "topmenu": {
+    "height": { "value": "{spacing.32.value}" },
+    "paddingX": { "value": "{spacing.112.value}" },
+    "gap": { "value": "{spacing.20.value}" },
+    "background": { "value": "{color.neutral.0.value}" },
+    "fontSize": { "value": "{font.size.sm.value}" },
+    "logoBackground": { "value": "{color.primary.600.value}" },
+    "logoColor": { "value": "{color.neutral.0.value}" },
+    "linkColor": { "value": "{color.primary.600.value}" },
+    "socialBorder": { "value": "{color.neutral.200.value}" },
+    "socialLabelColor": { "value": "{color.neutral.500.value}" },
+    "toggleColor": { "value": "{color.primary.600.value}" }
+  }
+}
