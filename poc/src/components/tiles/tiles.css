@@ -8,12 +8,12 @@
 
 .tile {
   display: flex;
-  border: 1px solid rgba(10, 9, 9, .08);
-  border-radius: 8px;
+  border: 1px solid var(--tiles-border);
+  border-radius: var(--tiles-radius);
   text-decoration: none;
-  font-family: "Open Sans", system-ui, sans-serif;
-  background: #ffffff;
-  color: #30302e;
+  font-family: var(--font-family-default);
+  background: var(--tiles-neutral-background);
+  color: var(--tiles-neutral-color);
 }
 .tile:focus-visible { outline: 2px solid var(--color-info-600); outline-offset: 2px; }
 
@@ -21,34 +21,34 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: var(--tiles-gap);
   width: 150px;
   height: 120px;
-  padding: 16px 20px;
+  padding: var(--tiles-padding) var(--tiles-padding-x);
   text-align: center;
 }
 .tile-horizontal {
   flex-direction: row;
   align-items: flex-start;
-  gap: 20px;
+  gap: var(--tiles-gap-horizontal);
   width: 324px;
-  padding: 16px 20px;
+  padding: var(--tiles-padding) var(--tiles-padding-x);
 }
 
-.tile-primary { background: #004f9f; color: #ffffff; }
-.tile-primary .tile-description { color: #f9f9f9; }
-.tile-primary .tile-link { color: #ffffff; }
+.tile-primary { background: var(--tiles-primary-background); color: var(--tiles-primary-color); }
+.tile-primary .tile-description { color: var(--tiles-primary-description-color); }
+.tile-primary .tile-link { color: var(--tiles-primary-color); }
 
-.tile-icon { width: 32px; height: 32px; flex: none; }
-.tile-label { font-weight: 700; font-size: 14px; line-height: 20px; }
-.tile-description { font-size: 14px; line-height: 20px; color: #565654; margin: 0; }
+.tile-icon { width: var(--tiles-icon-size); height: var(--tiles-icon-size); flex: none; }
+.tile-label { font-weight: var(--font-weight-700); font-size: var(--tiles-label-font-size); line-height: var(--tiles-label-line-height); }
+.tile-description { font-size: var(--tiles-label-font-size); line-height: var(--tiles-label-line-height); color: var(--tiles-neutral-description-color); margin: 0; }
 .tile-link {
   display: inline-flex;
-  font-size: 14px;
-  line-height: 16px;
-  color: #004f9f;
+  font-size: var(--tiles-label-font-size);
+  line-height: var(--font-lineheight-16);
+  color: var(--tiles-neutral-link-color);
   text-decoration: none;
-  padding-top: 2px;
+  padding-top: var(--spacing-2);
 }
 .tile-link:hover { text-decoration: underline; }
 

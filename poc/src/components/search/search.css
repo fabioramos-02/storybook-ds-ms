@@ -9,11 +9,11 @@
 .ds-search {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  border-radius: 9999px;
-  border: 1px solid rgba(10, 9, 9, .08);
-  background: #ffffff;
-  font-family: "Open Sans", system-ui, sans-serif;
+  gap: var(--search-gap);
+  border-radius: var(--radius-huge);
+  border: 1px solid var(--search-border);
+  background: var(--color-neutral-0);
+  font-family: var(--font-family-default);
   cursor: pointer;
 }
 
@@ -22,28 +22,28 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 9999px;
+  width: var(--search-icon-btn-size);
+  height: var(--search-icon-btn-size);
+  border-radius: var(--radius-huge);
   border: 0;
   background: transparent;
-  color: #30302e;
+  color: var(--search-icon-color);
   cursor: pointer;
 }
 
 /* default: só o botão de lupa */
 .ds-search-default { padding: 0; border-color: transparent; }
-.ds-search-default .ds-search-icon-btn { border: 1px solid rgba(10, 9, 9, .04); }
+.ds-search-default .ds-search-icon-btn { border: 1px solid var(--search-default-border); }
 
 /* actived: pílula com placeholder + lupa à direita */
-.ds-search-actived { width: 350px; padding-left: 16px; }
-.ds-search-actived .ds-search-text { flex: 1 0 0; font-size: 16px; line-height: 18px; color: #565654; }
+.ds-search-actived { width: var(--search-actived-width); padding-left: var(--spacing-16); }
+.ds-search-actived .ds-search-text { flex: 1 0 0; font-size: var(--search-actived-font-size); line-height: var(--search-actived-line-height); color: var(--search-actived-text-color); }
 
 /* focused: borda destacada amarela + texto digitado + botão limpar */
 .ds-search-focused {
-  width: 350px;
-  padding-left: 16px;
-  border: 2px solid #ccac00;
+  width: var(--search-actived-width);
+  padding-left: var(--spacing-16);
+  border: 2px solid var(--search-focused-border);
   cursor: text;
 }
 .ds-search-focused .ds-search-input {
@@ -52,16 +52,16 @@
   outline: 0;
   background: transparent;
   font-family: inherit;
-  font-size: 16px;
-  line-height: 18px;
-  color: #1d1d1b;
+  font-size: var(--search-actived-font-size);
+  line-height: var(--search-actived-line-height);
+  color: var(--search-input-color);
 }
 .ds-search-clear {
   display: inline-flex;
-  width: 20px;
-  height: 20px;
+  width: var(--spacing-20);
+  height: var(--spacing-20);
   border: 0;
   background: transparent;
-  color: #8e8e8e;
+  color: var(--search-clear-color);
   cursor: pointer;
 }

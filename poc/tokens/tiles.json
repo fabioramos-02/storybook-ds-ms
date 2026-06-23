@@ -1,11 +1,20 @@
 {
   "tiles": {
-    "radius": { "value": "8px" },
-    "padding": { "value": "24px" },
-    "gap": { "value": "16px" },
-    "neutralBackground": { "value": "{color.neutral.100.value}" },
+    "radius": { "value": "{radius.sm.value}" },
+    "padding": { "value": "{spacing.16.value}", "comment": "horizontal real é spacing/20 — ver paddingX" },
+    "paddingX": { "value": "{spacing.20.value}" },
+    "gap": { "value": "{spacing.4.value}" },
+    "gapHorizontal": { "value": "{spacing.20.value}" },
+    "border": { "value": "{color.alpha.dark.8.value}" },
+    "iconSize": { "value": "{spacing.32.value}" },
+    "labelFontSize": { "value": "{font.size.sm.value}" },
+    "labelLineHeight": { "value": "{font.lineheight.20.value}" },
+    "neutralBackground": { "value": "{color.neutral.0.value}" },
     "neutralColor": { "value": "{color.neutral.900.value}" },
-    "primaryBackground": { "value": "{color.primary.500.value}" },
-    "primaryColor": { "value": "{color.content.onBrand.value}" }
+    "neutralDescriptionColor": { "value": "{color.neutral.800.value}" },
+    "neutralLinkColor": { "value": "{color.primary.600.value}" },
+    "primaryBackground": { "value": "{color.primary.600.value}" },
+    "primaryColor": { "value": "{color.content.onBrand.value}" },
+    "primaryDescriptionColor": { "value": "{color.neutral.100.value}" }
   }
 }
