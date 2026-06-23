@@ -1,35 +1,57 @@
 /* ============================================================================
-   DS-MS — Table (POC). Sem origem em components.css da raiz — implementado a
-   partir da documentação pública de designsystem.ms.gov.br/table/. Ordenação
-   e seleção em lote interativas ficam fora de escopo (exigem JS) — ver
-   table.mdx. Status de linha reaproveita .tag (já implementado).
+   DS-MS — Table
+   Fiel ao Figma (node 280:45414): thead com fundo neutro 24%, bordas neutro
+   12%/24%, texto Open Sans 16px #191919, sem zebra/uppercase no spec base.
+   .ds-table-striped/.ds-table-compact e colunas col-select/col-actions são
+   extensões do projeto (status reaproveita .tag, seleção reaproveita
+   .checkbox) — não fazem parte do node Figma, mantidas por necessidade real
+   de uso (listagens com ações em lote).
    ============================================================================ */
 @import "../../../dist/css/tokens.css";
 
-.table { width: 100%; border-collapse: collapse; font-family: "Roboto", system-ui, sans-serif; font-size: 14px; }
-.table th, .table td {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--table-border);
+.ds-table-wrap { border: 1px solid rgba(35, 35, 35, .12); background: #fefefe; overflow: hidden; }
+
+.ds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Open Sans", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #191919;
+}
+.ds-table th, .ds-table td {
+  padding: 4px 8px;
   text-align: left;
   vertical-align: middle;
 }
-.table th {
-  background: var(--table-header-background);
-  color: var(--table-header-color);
+.ds-table th {
+  background: rgba(35, 35, 35, .24);
   font-weight: 700;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: .03em;
+  border-bottom: 1px solid rgba(35, 35, 35, .24);
+  border-right: 1px solid rgba(35, 35, 35, .24);
 }
-.table tbody tr:hover { background: var(--table-row-hover); }
-.table tbody tr:focus-within { background: var(--table-row-hover); }
+.ds-table th:last-child { border-right: 0; }
+.ds-table td {
+  font-weight: 400;
+  border-bottom: 1px solid rgba(35, 35, 35, .12);
+  border-right: 1px solid rgba(35, 35, 35, .12);
+}
+.ds-table td:last-child { border-right: 0; }
+.ds-table tbody tr:last-child td { border-bottom: 0; }
+.ds-table tbody tr:hover { background: rgba(0, 79, 159, .04); }
+.ds-table tbody tr:focus-within { background: rgba(0, 79, 159, .04); }
 
-.table-striped tbody tr:nth-child(even) { background: var(--table-stripe-background); }
-.table-striped tbody tr:nth-child(even):hover { background: var(--table-row-hover); }
+.ds-table-striped tbody tr:nth-child(even) { background: rgba(35, 35, 35, .04); }
+.ds-table-striped tbody tr:nth-child(even):hover { background: rgba(0, 79, 159, .04); }
 
-.table-compact th, .table-compact td { padding: 8px 12px; }
+.ds-table-compact th, .ds-table-compact td { padding: 4px 8px; }
 
-.table .col-actions { text-align: right; white-space: nowrap; }
-.table .col-select { width: 1%; }
+.ds-table .col-actions { text-align: right; white-space: nowrap; }
+.ds-table .col-select { width: 1%; }
 
-.table caption { text-align: left; padding: 8px 0; font-weight: 700; color: var(--table-header-color); }
+.ds-table caption { text-align: left; padding: 8px 0; font-weight: 700; color: #191919; }
+
+@media (max-width: 768px) {
+  .ds-table-wrap { overflow-x: auto; }
+  .ds-table { min-width: 480px; }
+}
