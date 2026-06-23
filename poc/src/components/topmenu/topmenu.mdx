@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/Topmenu/Acessibilidade & uso" />
+
+# Topmenu — uso e acessibilidade
+
+Fiel ao Figma (node `77:135294`). Barra utilitária acima do [Header](?path=/docs/componentes-header-acessibilidade---uso--docs): logo ms.gov.br, links de
+acessibilidade ("ir para conteúdo/navegação/busca"), ouvidoria/transparência, redes sociais.
+Versão mobile colapsa pra logo + menu (⋮) + libras/contraste.
+
+## Estrutura
+
+```html
+<div class="ds-topmenu">
+  <div class="ds-topmenu-logo">ms.gov.br</div>
+  <nav class="ds-topmenu-links">...</nav>
+  <div class="ds-topmenu-right">
+    <div class="ds-topmenu-social">...</div>
+    <button class="ds-topmenu-toggle">⋮</button>
+  </div>
+</div>
+```
+
+`.is-mobile` é a classe gêmea do `@media (max-width: 768px)` — permite demonstrar o estado
+mobile no Storybook independente da largura real do iframe (mesmo padrão de Navbar/Header).
+
+## Acessibilidade (eMAG + WCAG 2.1 AA)
+
+- Links "ir para conteúdo/navegação/busca" são os primeiros elementos focáveis da página —
+  pulam blocos repetitivos pra leitor de tela e usuário de teclado.
+- `.ds-topmenu-toggle` (menu mobile) precisa `aria-expanded` + `aria-controls` quando abrir o
+  menu colapsado, mesmo critério do Header.
+- Contraste dos links (`color-primary-600` sobre `color-neutral-0`) ≥ 4.5:1.
+- Ícones de rede social seguem o padrão de [Icons-Social](?path=/docs/componentes-icons-social-acessibilidade---uso--docs):
+  `aria-hidden` no SVG, texto/`aria-label` no link pai.

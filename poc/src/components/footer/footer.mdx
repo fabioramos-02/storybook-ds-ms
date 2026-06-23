@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/Footer/Acessibilidade & uso" />
+
+# Footer — uso e acessibilidade
+
+Fiel ao Figma (node `77:136748`/`77:136749`, desktop). 3 seções: links (grid de 5 categorias),
+info (endereço + redes sociais + brasão/logo), copyright (faixa azul SETDIG/Termos).
+
+## Estrutura
+
+```html
+<footer class="ds-footer" role="contentinfo">
+  <div class="ds-footer-links">
+    <div class="ds-footer-grid">...</div>
+  </div>
+  <div class="ds-footer-info">
+    <div class="ds-footer-address">...</div>
+    <div class="ds-footer-social">...</div>
+    <div class="ds-footer-logos">...</div>
+  </div>
+  <div class="ds-footer-copyright">...</div>
+</footer>
+```
+
+## Acessibilidade (eMAG + WCAG 2.1 AA)
+
+- `role="contentinfo"` no `<footer>` — marca a região como rodapé pra leitores de tela
+  (landmark navigation).
+- Cada grupo de links usa `<h3>` como título de categoria — navegação por heading funciona.
+- Endereço com link "Mapa" tem ícone de pin `aria-hidden` + texto visível — significado nunca
+  depende só do ícone.
+- Redes sociais seguem o padrão de [Icons-Social](?path=/docs/componentes-icons-social-acessibilidade---uso--docs):
+  ícone decorativo + texto da rede ao lado.
+- Contraste dos links sobre fundo branco/azul (faixa copyright) ≥ 4.5:1 nas duas faixas.

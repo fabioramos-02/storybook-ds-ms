@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/LogoMask/Acessibilidade & uso" />
+
+# LogoMask — uso e acessibilidade
+
+Fiel ao Figma (node `77:135702`). Slot de tamanho fixo pro logo do órgão/projeto dentro do
+[Header](?path=/docs/componentes-header-acessibilidade---uso--docs)/[Navbar](?path=/docs/componentes-navbar-acessibilidade---uso--docs)
+— garante área reservada consistente (horizontal `160x48`, squared `48x48`) independente do
+logo real, evitando "pulo" de layout quando a imagem carrega.
+
+## Estrutura
+
+```html
+<div class="ds-logomask ds-logomask-horizontal">
+  <img src="logo-orgao.svg" alt="Nome do órgão" />
+</div>
+```
+
+`mask=true` (`.is-spec`) é um guia de especificação — placeholder visual pro designer/dev
+substituir, não aparece em produção.
+
+## Acessibilidade (eMAG + WCAG 2.1 AA)
+
+- O `<img>` dentro do slot leva `alt` com o nome do órgão/projeto — nunca vazio nem decorativo,
+  é informação relevante de identidade.
+- `.is-spec` é só guia de desenvolvimento — remover antes de publicar (texto "Logo" não tem
+  função de acessibilidade real).
+- Tamanho fixo do slot evita reflow de layout que prejudica usuários com baixa visão durante o
+  carregamento da imagem.

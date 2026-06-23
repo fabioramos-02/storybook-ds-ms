@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/Icons-Social/Acessibilidade & uso" />
+
+# Ícones de redes sociais — uso e acessibilidade
+
+Fiel ao Figma (node `2609:468671`). SVGs simplificados pra POC — trocar pelos assets oficiais
+exportados do Figma na publicação (ver `mcp__figma__download_assets`).
+
+## Variantes
+
+Whatsapp · Telegram · Facebook · Youtube · Instagram · X. Sempre acompanhados de link/texto
+visível (ex.: `<a>Facebook</a>`) em Footer/Navbar/Topmenu — nunca usados isolados.
+
+## Acessibilidade (eMAG + WCAG 2.1 AA)
+
+- Todo SVG carrega `aria-hidden="true"` — é puramente decorativo, o texto acessível vem do
+  `<a>` que envolve o ícone (ex.: `<a href="#">${icone}Facebook</a>`), nunca do ícone isolado.
+- Se o ícone aparecer sem texto visível ao lado (ex.: barra compacta mobile), o `<a>`/`<button>`
+  pai precisa de `aria-label` explícito (ex.: `aria-label="Facebook"`).
+- Cor de marca de cada rede (`#1877F2` Facebook, `#E1306C` Instagram etc.) é decorativa — não é
+  o único meio de identificar a rede, o `aria-label`/texto sempre nomeia.

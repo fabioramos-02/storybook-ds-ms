@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/Tag/Acessibilidade & uso" />
+
+# Tag/Badge — uso e acessibilidade
+
+Fiel a `.tag*` de `components.css` (raiz). Rótulo curto pra status/categoria — `span` puro,
+sem interação.
+
+## Variantes
+
+- **Padrão** — `.tag` (paleta primary).
+- **Sucesso** — `.tag-success`.
+- **Erro** — `.tag-error`.
+- **Alerta** — `.tag-warning`.
+- **Info** — `.tag-info`.
+
+## Acessibilidade (eMAG + WCAG 2.1 AA)
+
+- Não é interativo — não recebe foco, não precisa `role` ou `tabindex`.
+- Contraste texto/fundo ≥ 4.5:1 em todas as variantes (combinações `100`/`700` da paleta).
+- Cor isolada nunca é o único sinal de significado: o texto da tag (ex.: "Erro", "Sucesso")
+  carrega o significado, a cor só reforça — funciona pra usuários com daltonismo.
+- Se a tag representar um estado de um item maior (ex.: linha de tabela), associar via texto
+  visível ou `aria-describedby`, não confiar só na cor.

@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/Navbar/Acessibilidade & uso" />
+
+# Navbar — uso e acessibilidade
+
+Fiel ao Figma (node `77:135727`). Barra de navegação principal: menu (secretaria + logo + itens)
++ busca à direita + [Breadcrumb](?path=/docs/componentes-breadcrumb-acessibilidade---uso--docs)
+abaixo. `collapsed=true` substitui os itens por botão "Menu" (hambúrguer).
+
+## Estrutura
+
+```html
+<div class="ds-navbar">
+  <div class="ds-navbar-menu">
+    <div class="ds-navbar-left">
+      <span class="ds-navbar-secretaria">...</span>
+      <div class="ds-logomask ds-logomask-horizontal">...</div>
+      <nav class="ds-navbar-items">...</nav>
+    </div>
+    <div class="ds-navbar-right">
+      <button class="ds-navbar-search">...</button>
+    </div>
+  </div>
+  <nav class="ds-breadcrumb">...</nav>
+</div>
+```
+
+`.is-mobile` é a classe gêmea do `@media (max-width: 768px)` — demonstra o estado mobile no
+Storybook independente da largura real do iframe (mesmo padrão de Header/Topmenu).
+
+## Acessibilidade (eMAG + WCAG 2.1 AA)
+
+| Categoria | O que verificar | Como |
+|---|---|---|
+| **Estrutura** | `.ds-navbar-items` é `<nav>`; itens com submenu (Institucional, Fale Conosco) sinalizam via ícone + `aria-haspopup`/`aria-expanded` | Leitor de tela anuncia "menu" no item |
+| **Teclado** | Item alcançável por `Tab`; `border-right` separador é só visual, não interrompe navegação | `.ds-navbar-item:focus-visible` |
+| **Busca** | `.ds-navbar-search` é botão que abre campo de busca real — precisa `aria-label` se só ícone | NVDA / VoiceOver |
+| **Menu colapsado** | `.ds-navbar-menu-toggle` ("Menu") precisa `aria-expanded`/`aria-controls` ao abrir | mesmo critério do Header |
+| **Contraste** | Itens (`color-neutral-900`) e secretaria (`color-primary-600`) sobre fundo branco ≥ 4.5:1 | ANDI |
+
+> O painel **Accessibility** (addon axe-core) roda automaticamente em cada story.

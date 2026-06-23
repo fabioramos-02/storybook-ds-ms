@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Componentes/Card/Acessibilidade & uso" />
+
+# Card — uso e acessibilidade
+
+Fiel ao Figma (node `77:136619`/`77:136649`). Card de serviço/conteúdo: faixa colorida lateral
+(`--ds-card-accent`), título + ação, tags (badges), footer com CTA + ícones.
+
+## Estrutura
+
+```html
+<a class="ds-card" href="#" style="--ds-card-accent: #007f31">
+  <div class="ds-card-faixa"></div>
+  <div class="ds-card-body">
+    <div class="ds-card-title-row">
+      <h3 class="ds-card-title">Título</h3>
+      <span class="ds-card-action">...</span>
+    </div>
+    <div class="ds-card-tags">...</div>
+    <div class="ds-card-footer">...</div>
+  </div>
+</a>
+```
+
+O card inteiro é um `<a>` clicável — a faixa colorida (`--ds-card-accent`) é decorativa, não
+carrega significado por si só (acompanha categoria indicada nas tags em texto).
+
+## Acessibilidade (eMAG + WCAG 2.1 AA)
+
+| Categoria | O que verificar | Como |
+|---|---|---|
+| **Estrutura** | `<a>` raiz com `href` real (não `#` em produção); título em `<h3>` | Leitor de tela anuncia link + heading |
+| **Contraste** | Texto do título e tags ≥ 4.5:1 sobre fundo branco | ANDI / Color Contrast Analyzer |
+| **Teclado** | Card alcançável por `Tab`; foco visível na borda | `.ds-card:focus-visible` |
+| **Ícones de ação** | Botões `.ds-card-icon-btn` (favoritar, site) têm `aria-label` | Nunca ícone sozinho sem texto acessível |
+| **Hover** | Estado `.is-hovered` é só visual — não afeta navegação por teclado/leitor | — |
+
+> O painel **Accessibility** (addon axe-core) roda automaticamente em cada story.
