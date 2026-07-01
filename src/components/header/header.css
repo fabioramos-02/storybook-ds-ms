@@ -1,0 +1,250 @@
+.ds-header {
+  width: 100%;
+  font-family: var(--ds-font-family-base, Arial, sans-serif);
+  background: var(--ds-color-background, #ffffff);
+  color: var(--ds-color-text-primary, #1d1d1b);
+}
+
+.ds-header *,
+.ds-header *::before,
+.ds-header *::after {
+  box-sizing: border-box;
+}
+
+.ds-header a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ds-header a:focus-visible {
+  text-decoration: underline;
+}
+
+.ds-header__container {
+  width: min(100% - 32px, var(--ds-container-xl, 1200px));
+  margin-inline: auto;
+}
+
+.ds-header__topbar {
+  background: var(--ds-color-white, #ffffff);
+  border-bottom: 1px solid var(--ds-color-border, #d5d5d5);
+}
+
+.ds-header__topbar-content {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ds-header__accessibility,
+.ds-header__links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.ds-header__accessibility a,
+.ds-header__links a {
+  color: var(--ds-color-primary-600, #004f9f);
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.ds-header__accessibility a:hover,
+.ds-header__accessibility a:focus-visible,
+.ds-header__links a:hover,
+.ds-header__links a:focus-visible {
+  text-decoration: underline;
+}
+
+.ds-header__brand {
+  background: var(--ds-color-primary-600, #004f9f);
+  color: var(--ds-color-text-inverse, #ffffff);
+}
+
+.ds-header__brand-content {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.ds-header__identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.ds-header__logo {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.ds-header__logo img {
+  display: block;
+  width: 84px;
+  height: auto;
+  max-width: 100%;
+}
+
+.ds-header__divider {
+  width: 1px;
+  height: 72px;
+  flex: 0 0 auto;
+  background: var(--ds-color-white, #ffffff);
+  opacity: 0.9;
+}
+
+.ds-header__title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ds-header__title strong {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ds-header__title span {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.ds-header__menu-button {
+  display: none;
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1px solid currentColor;
+  border-radius: var(--ds-radius-sm, 6px);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ds-header__navigation {
+  background: var(--ds-color-background, #ffffff);
+  border-bottom: 1px solid var(--ds-color-border, #d5d5d5);
+}
+
+.ds-header__navigation-content {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.ds-header__menu {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.ds-header__menu a {
+  font-size: 16px;
+  color: var(--darkgray);
+  font-weight: 700;
+}
+
+.ds-header__menu a:hover,
+.ds-header__menu a:focus-visible {
+ background:#d5d5d5 ;
+ position: relative;
+
+}
+
+.ds-header__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ds-header .ds-search {
+  width: 350px;
+  max-width: 100%;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 768px) {
+  .ds-header__topbar-content {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-block: 8px;
+  }
+
+  .ds-header__brand-content {
+    min-height: 92px;
+  }
+
+  .ds-header__logo img {
+    width: 64px;
+  }
+
+  .ds-header__divider {
+    height: 56px;
+  }
+
+  .ds-header__title strong {
+    font-size: 1.25rem;
+  }
+
+  .ds-header__title span {
+    font-size: 0.875rem;
+  }
+
+  .ds-header__menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ds-header__navigation {
+    display: none;
+  }
+
+  .ds-header__navigation.is-open {
+    display: block;
+  }
+
+  .ds-header__navigation-content {
+    align-items: stretch;
+    flex-direction: column;
+    padding-block: 16px;
+  }
+
+  .ds-header__menu {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ds-header .ds-search {
+    width: 100%;
+  }
+}
+
+.ds-component-doc__content--full {
+  width: 100%;
+  margin-top: 24px;
+  display: grid;
+  gap: 24px;
+}
+
+.ds-component-doc__content--full .ds-component-doc__card {
+  width: 100%;
+}

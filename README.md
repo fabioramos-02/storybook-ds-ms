@@ -1,89 +1,191 @@
-# DS-MS — Design System de Mato Grosso do Sul
+# Storybook — Design System MS (SETDIG)
 
-> Sistematização do design system oficial do Governo do Estado de Mato Grosso do Sul: tirar os componentes do "só Figma + imagens" e publicá-los como **código real, multi-stack** (PHP, Python, JS), mantido pela **SETDIG — Secretaria-Executiva de Transformação Digital**.
+Documentação viva de componentes, tokens e padrões visuais do **Design System do Governo de Mato Grosso do Sul**, mantido pela **Secretaria-Executiva de Transformação Digital (SETDIG)**.
 
-[![npm](https://img.shields.io/npm/v/@design-system-ms/ds-sis?label=npm)](https://www.npmjs.com/package/@design-system-ms/ds-sis)
+Ambiente construído com **Storybook + Vite**, em HTML/CSS/JavaScript puros — sem framework de UI, sem dependência de WordPress.
 
-## Links ao vivo
+> **Storybook publicado:** https://fabioramos-02.github.io/storybook-ds-ms/
 
-| O quê | Onde |
-|---|---|
-| **Pacote npm** | [npmjs.com/package/@design-system-ms/ds-sis](https://www.npmjs.com/package/@design-system-ms/ds-sis) — `npm install @design-system-ms/ds-sis` |
-| **Documentação viva (Storybook)** | [fabioramos-02.github.io/DS-MS-Design-System](https://fabioramos-02.github.io/DS-MS-Design-System/) |
-| **Exemplo de consumo real** | [fabioramos-02.github.io/DS-MS-Design-System/exemplo-consumo](https://fabioramos-02.github.io/DS-MS-Design-System/exemplo-consumo/) — instala o pacote publicado via `npm install`, não é mock |
-| **Repositório** | [github.com/fabioramos-02/DS-MS-Design-System](https://github.com/fabioramos-02/DS-MS-Design-System) |
+---
 
-## O problema que este repositório resolve
+## Aviso de migração
 
-O site oficial [designsystem.ms.gov.br](https://www.designsystem.ms.gov.br/) documenta os componentes do DS-MS apenas em **imagens** (anatomia, variações, anti-padrões) — zero código pronto para usar. Cada time do Estado (PHP, Python, JS) reimplementa o mesmo componente do zero a partir do Figma, gerando divergência visual, retrabalho e acessibilidade inconsistente. Já existe **evidência real desse drift** num site de outra secretaria do mesmo governo — ver [`docs/09-comparacao-segov-codesul.md`](docs/09-comparacao-segov-codesul.md).
+Este repositório foi refatorado a partir do antigo `DS-MS-Design-System` (que publicava o pacote npm `@design-system-ms/ds-sis`).
 
-A solução aqui: uma **fonte única de tokens** (JSON) que gera CSS/SCSS/JS/PHP/Python automaticamente, componentes entregues como CSS+HTML (modelo USWDS/gov.uk) ou Web Components nos interativos, documentados ao vivo no Storybook e publicados de verdade no npm. Contexto completo, decisões e arquitetura em [`docs/`](docs/).
+- O pacote npm foi **descontinuado**. Novos consumos devem ser feitos copiando os componentes deste Storybook ou clonando o repositório.
+- O repositório será renomeado para `storybook-ds-ms` após o merge deste refactor.
+- Web Components (`<ms-header>`, `<ms-menu>`, `<ms-carousel>`) foram substituídos por funções JS que retornam HTML.
 
-## Status atual
+---
 
-**10 de 41 componentes** oficiais do DS-MS implementados e publicados (`v0.1.0`): Button, Input, Search, Selection (checkbox/radio/toggle), Link, Card, Tag, Notification, Footer, e Header como **Web Component** (`<ms-header>`). Os 31 restantes (Accordion, Breadcrumb, Dropdown, Menu, Table, etc.) exigem acesso ao Figma oficial — não foram inventados sem fonte fiel. Detalhe completo do que falta e por quê: [`docs/08-proximos-passos.md`](docs/08-proximos-passos.md).
+## Objetivo
 
-Custo de infraestrutura hoje: **R$ 0/mês** (npm público + jsDelivr + GitHub Actions/Pages, todos nos planos gratuitos) — ver [`docs/10-custos-publicacao-pacote.md`](docs/10-custos-publicacao-pacote.md).
+Centralizar a documentação visual e técnica do Design System MS para uso em portais, sistemas e aplicações do Estado, garantindo padrão único de identidade, acessibilidade e reuso.
 
-## Estrutura do repositório
+## Tecnologias
 
-| Caminho | O que é |
-|---|---|
-| [`docs/`](docs/) | Planejamento, arquitetura, pesquisa e decisões — comece pelo [índice](docs/README.md) |
-| [`poc/`](poc/) | Implementação real: tokens (Style Dictionary), os 19 componentes, Storybook, build publicável (`dist/`) |
-| [`exemplo-consumo/`](exemplo-consumo/) | Página que instala `@design-system-ms/ds-sis` via `npm install` de verdade — prova que o pacote publicado funciona |
-| [`apresentacao/`](apresentacao/) | Gerador (`pptxgenjs`) do deck de apresentação para a gestão |
-| [`.github/workflows/`](.github/workflows/) | CI (`ci.yml`), deploy do Storybook+exemplo no GitHub Pages (`pages.yml`), publish no npm em tag semver (`publish-npm.yml`) |
-| `colors_and_type.css` | Tokens de cor/tipografia/espaçamento/raio/sombra extraídos do Figma — fonte que `poc/tokens/*.json` espelha |
-| `components.css` | CSS dos componentes (botão, input, busca, card, header/footer) — fonte que `poc/src/components/*` espelha |
-| `assets/` | Logos oficiais (DS-MS, SETDIG, brasão) em SVG |
-| `preview/` | Cards HTML isolados, um por token/componente, para inspeção visual rápida sem montar o Storybook |
-| `ui_kits/` | Recriações React (JSX) do site de documentação e de um template administrativo, como referência visual |
-| `uploads/` | PDF original da documentação Figma, fornecido como fonte |
-| `SKILL.md` | Front-matter de Agent Skill (Claude Code) para gerar artefatos com a identidade do DS-MS |
+- Storybook 10 (`@storybook/html-vite`)
+- Vite 7
+- HTML5, CSS puro (custom properties com prefixo `--ds-`), JavaScript ES modules
+- PrismJS + prism-themes (highlight de snippets nas stories)
 
-## Usar o pacote
+---
+
+## Instalação
 
 ```bash
-npm install @design-system-ms/ds-sis
-```
-
-```html
-<link rel="stylesheet" href="node_modules/@design-system-ms/ds-sis/dist/css/ds-sis.css">
-<script type="module" src="node_modules/@design-system-ms/ds-sis/dist/js/ds-sis.js"></script>
-
-<button class="btn btn-primary btn-md">Salvar</button>
-<ms-header secretaria="SETDIG"></ms-header>
-```
-
-Sem Node no projeto (PHP/Python via CDN), ou snippets prontos por stack (Blade, Jinja, React): ver [`docs/04-multistack.md`](docs/04-multistack.md).
-
-## Desenvolver localmente
-
-```bash
-cd poc
 npm install
-npm run storybook        # Storybook local, http://localhost:6006
-npm run build             # gera dist/css/ds-sis.css + dist/js/ds-sis.js (o que é publicado)
 ```
 
-Guia completo de componentes, tokens e estrutura: [`poc/README.md`](poc/README.md).
+## Scripts
 
-## Fundamentos visuais (resumo)
+| Script | O que faz |
+|---|---|
+| `npm run storybook` | Roda Storybook em `http://localhost:6006` |
+| `npm run build-storybook` | Gera Storybook estático em `storybook-static/` |
+| `npm run dev` | Roda Vite em `http://localhost:5173` |
+| `npm run build` | Build Vite |
+| `npm run lint:css` | Roda Stylelint em `src/**/*.css` |
 
-- **Cor primária:** `#004F9F` (`--color-primary-500`) — azul institucional do Estado, reservado para header/footer, CTAs, links e estados ativos. Sem gradientes.
-- **Tipografia:** Open Sans (display/headings/interações) + Roboto (body/captions/código), via Google Fonts.
-- **Espaçamento:** escala base-8 (2, 4, 8, 16, 24, 32, 40, 56, 64, 72, 88).
-- **Raio:** 2px (inputs) · 4px (botões/tags) · 8px (cards) · 16/24/32px (superfícies grandes) · `9999px` (avatares/toggles).
-- **Sombra:** quatro níveis (`shadow-4/6/12/24`), cor única `rgba(0,32,64,0.30)`.
-- **Ícones:** sempre SVG (convenção [Iconify](https://iconify.design/)) — nunca emoji, nunca ícone-fonte proprietário.
+---
 
-Detalhamento completo (hover/press, bordas, iconografia, voz e tom da marca) está versionado em `colors_and_type.css` e `components.css` — leia o código-fonte, é a referência viva. Arquitetura de tokens e como eles chegam a cada linguagem: [`docs/01-arquitetura.md`](docs/01-arquitetura.md).
+## Estrutura
 
-## Documentação completa
+```text
+storybook-ds-ms/
+├── .storybook/         Configuração do Storybook
+├── public/             Favicons, ícones SVG
+├── src/
+│   ├── styles/         Tokens CSS globais (--ds-*)
+│   ├── components/     Componentes reutilizáveis
+│   ├── docs/           Páginas institucionais (introdução, tokens)
+│   ├── utils/          Helpers (CodePreview)
+│   ├── assets/         Imagens usadas em stories
+│   ├── main.js         Entry Vite
+│   └── main.css        Import de tokens + componentes
+├── package.json
+├── vite.config.js
+└── .github/workflows/  CI/CD (deploy Pages, PR CI, PR preview)
+```
 
-Todo o raciocínio por trás das decisões — pesquisa de Storybook, ecossistema de CI/CD, comparação com outro site do governo, custos, roadmap — está em [`docs/`](docs/README.md).
+---
 
-## Mantido por
+## Padrão de nomenclatura
 
-**SGD** (Superintendência de Governo Digital) / **SETDIG** — Secretaria-Executiva de Transformação Digital, Governo do Estado de Mato Grosso do Sul.
+- **CSS:** classes com prefixo `.ds-` (`.ds-button`, `.ds-card`, `.ds-alert`).
+- **Custom properties:** prefixo `--ds-` (`--ds-color-primary-600`, `--ds-spacing-16`).
+- **Componentes JS:** função nomeada em PascalCase que retorna HTML string.
+- **Stories:** arquivo `component.stories.js` com `export default { title: 'Componentes/Nome' }`.
+
+---
+
+## Tokens disponíveis
+
+Tokens em `src/styles/`, todos com prefixo `--ds-`:
+
+| Categoria | Arquivo | Exemplos |
+|---|---|---|
+| Cores | `variables.css` | `--ds-color-brand-skyline`, `--ds-color-primary-600`, `--ds-color-text-primary` |
+| Tipografia | `typography.css` | `--ds-heading-1-font-size`, `--ds-body-md-font-size`, `--ds-font-weight-bold` |
+| Espaçamento | `spacing.css` | `--ds-spacing-4`, `--ds-spacing-16`, `--ds-spacing-32` |
+| Radius | `radius.css` | `--ds-radius-sm`, `--ds-radius-md`, `--ds-radius-huge` |
+| Sombras | `shadows.css` | `--ds-shadow-card-sm`, `--ds-shadow-md` |
+| Grid | `grid.css` | `--ds-grid-desktop-columns`, `--ds-breakpoint-desktop` |
+
+---
+
+## Como criar um novo componente
+
+Exemplo para um componente `alert`:
+
+```text
+src/components/alert/
+├── alert.css
+├── alert.js
+└── alert.stories.js
+```
+
+### 1. CSS
+
+```css
+.ds-alert {
+    padding: var(--ds-spacing-16);
+    border-radius: var(--ds-radius-md);
+    background: var(--ds-color-background);
+    color: var(--ds-color-text-primary);
+}
+```
+
+### 2. JS
+
+```js
+import './alert.css';
+
+export function Alert({ title = 'Título', description = 'Mensagem.' } = {}) {
+    return `
+        <div class="ds-alert">
+            <strong>${title}</strong>
+            <p>${description}</p>
+        </div>
+    `;
+}
+```
+
+### 3. Story
+
+```js
+import { Alert } from './alert';
+
+export default { title: 'Componentes/Alert' };
+
+export const Default = {
+    args: { title: 'Alerta', description: 'Mensagem de exemplo.' },
+    render: (args) => Alert(args),
+};
+```
+
+### 4. Registrar no CSS principal
+
+Em `src/main.css`:
+
+```css
+@import "./components/alert/alert.css";
+```
+
+---
+
+## Boas práticas
+
+- Sempre usar tokens `--ds-*`, nunca valores hardcoded.
+- Toda classe com prefixo `.ds-`.
+- Cada componente em pasta própria com `component.{css,js,stories.js}`.
+- Criar variações no Storybook para cada estado relevante (default, hover, disabled, error).
+- Zero dependência de framework externo (React/Vue/Bootstrap).
+- Acessibilidade: seguir WCAG 2.1 AA e eMAG — contraste, foco visível, semântica correta, teclado.
+- Semver: mudanças em nome de token/classe são breaking (major); adição é minor; correção interna é patch.
+
+---
+
+## Governança
+
+- **Mantido por:** SETDIG — Secretaria-Executiva de Transformação Digital (SEGOV/MS).
+- **Base legal:** Lei nº 6.035/2022; Decreto nº 16.166/2023.
+- **Site:** https://www.setdig.ms.gov.br/
+- **Contribuição:** abrir PR na branch `main` com descrição clara do componente/token adicionado, screenshots das variações e checklist de acessibilidade.
+- **Revisão:** obrigatória antes do merge.
+
+---
+
+## CI/CD
+
+3 workflows em `.github/workflows/`:
+
+- **`deploy-pages.yml`** — push em `main` → build + deploy no GitHub Pages.
+- **`ci.yml`** — pull request → `npm ci`, `lint:css`, `build-storybook`.
+- **`pr-preview.yml`** — pull request → deploy preview em subpath por PR.
+
+---
+
+## Licença
+
+MIT

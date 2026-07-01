@@ -1,33 +1,27 @@
-name: CI
+name: CI — Pull Request
 
 on:
-  push:
-    branches: [main]
-    paths: ["poc/**", ".github/workflows/ci.yml"]
   pull_request:
-    paths: ["poc/**", ".github/workflows/ci.yml"]
-
-defaults:
-  run:
-    working-directory: poc
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: "22"
-          cache: "npm"
-          cache-dependency-path: poc/package-lock.json
+          node-version: 20
+          cache: npm
 
-      - name: Instalar dependências
+      - name: Install
         run: npm ci
 
-      - name: Gerar tokens + bundle publicável (CSS+JS)
-        run: npm run build
+      - name: Lint CSS
+        run: npm run lint:css
 
-      - name: Buildar Storybook
+      - name: Build Storybook
         run: npm run build-storybook

@@ -1,2 +1,9 @@
-/.claude
-/.playwright-mcp
+node_modules/
+storybook-static/
+dist/
+*.log
+.DS_Store
+.claude/
+.playwright-mcp/
+.env
+.env.local

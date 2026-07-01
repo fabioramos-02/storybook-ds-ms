@@ -1,0 +1,12 @@
+@import "./styles/main.css";
+
+@import "./components/button/button.css";
+@import "./components/card/card.css";
+@import "./components/accordion/accordion.css";
+@import "./components/link/link.css";
+@import "./components/badge/badge.css";
+@import "./components/alert/alert.css";
+@import "./components/toast/toast.css";
+@import "./components/search/search.css";
+@import "./components/breadcrumb/breadcrumb.css";
+@import "./components/carousel/carousel.css";

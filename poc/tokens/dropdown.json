@@ -1,8 +1,0 @@
-{
-  "dropdown": {
-    "menuBackground": { "value": "{color.neutral.white.value}" },
-    "menuBorder": { "value": "{color.neutral.200.value}" },
-    "itemColor": { "value": "{color.neutral.700.value}" },
-    "itemHoverBackground": { "value": "{color.neutral.100.value}" }
-  }
-}

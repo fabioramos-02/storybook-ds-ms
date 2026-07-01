@@ -1,24 +1,30 @@
 {
-  "name": "ds-ms-design-system",
-  "version": "1.0.0",
-  "description": "> **Em uma frase:** Sistema de design oficial dos serviços digitais do governo de Mato Grosso do Sul (Brasil), mantido pela **SETDIG — Secretaria-Executiva de Transformação Digital**.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fabioramos-02/DS-MS-Design-System.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/fabioramos-02/DS-MS-Design-System/issues"
-  },
-  "homepage": "https://github.com/fabioramos-02/DS-MS-Design-System#readme"
+    "name": "storybook-ds-ms",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "description": "Storybook do Design System do Governo de MS — mantido pela SETDIG",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fabioramos-02/storybook-ds-ms.git"
+    },
+    "license": "MIT",
+    "scripts": {
+        "dev": "vite --host 0.0.0.0",
+        "build": "vite build",
+        "storybook": "storybook dev -p 6006 --host localhost",
+        "build-storybook": "storybook build",
+        "lint:css": "stylelint \"src/**/*.css\""
+    },
+    "dependencies": {
+        "prism-themes": "^1.9.0",
+        "prismjs": "^1.30.0",
+        "vite": "^7.3.0"
+    },
+    "devDependencies": {
+        "@storybook/html-vite": "^10.4.6",
+        "storybook": "^10.4.6",
+        "stylelint": "^16.10.0",
+        "stylelint-config-standard": "^36.0.1"
+    }
 }
